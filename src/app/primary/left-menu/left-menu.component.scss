@@ -1,0 +1,14 @@
+@import '../../../colors';
+
+.wc-menu-item{
+	cursor: pointer;
+	padding: 10px 20px;
+
+	&:hover{
+		background: $menu-open-background-color;
+	}
+}
+
+.wc-menu-text{
+	margin-left: 5px;
+}

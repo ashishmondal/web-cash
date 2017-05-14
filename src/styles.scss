@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Titillium+Web:700|Inconsolata');
+@import 'colors';
+
+html, body {
+	display: flex;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	height: 100%;
+	font-family: 'Open Sans', sans-serif;
+}
+
+body{
+	flex: 1;
+	background-color: $background;
+}
+
+.wc-top{
+	box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.15);
+	z-index: 2;
+}
+
+.wc-logo {
+	@extend .wc-top;
+	background-color: $menu-background-color;
+}
+
+.wc-top-menu{
+	@extend .wc-top;
+
+}
+
+.wc-left-menu{
+	background-color: $menu-background-color;
+	color: $menu-color;
+
+	&-open{
+		background-color: $menu-open-background-color;
+	}
+}
+
+.wc-currency{
+	font-family: 'Inconsolata', monospace;
+	text-align: right
+}
