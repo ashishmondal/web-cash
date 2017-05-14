@@ -8,7 +8,6 @@ import { CommonModule } from "app/common/common.module";
 	imports: [
 		NgCommonModule,
 		CommonModule,
-		TreeTableModule
 	],
 	declarations: [DashboardComponent],
 	exports: [DashboardComponent]
