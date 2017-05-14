@@ -1,5 +1,5 @@
-<p-treeTable [value]="tree" selectionMode="single">
-	<p-header>Basic</p-header>
+<p-treeTable [value]="tree" selectionMode="single" (onNodeSelect)="onAccountSelected($event)">
+	<p-header>Accounts</p-header>
 	<p-column field="name" header="Name"></p-column>
 	<p-column field="description" header="Description"></p-column>
 	<p-column field="total" header="Total">

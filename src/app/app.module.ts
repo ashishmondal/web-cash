@@ -11,6 +11,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AccountsSummaryComponent } from './accounts-summary/accounts-summary.component';
 import { AccountTransactionsComponent } from './account-transactions/account-transactions.component';
 import { TreeTableModule } from "primeng/components/treetable/treetable";
+import { DataTableModule, SharedModule } from 'primeng/primeng';
 import { CommonModule } from "app/common/common.module";
 
 @NgModule({
@@ -22,6 +23,8 @@ import { CommonModule } from "app/common/common.module";
 	],
 	imports: [
 		CommonModule,
+		SharedModule,
+		DataTableModule,
 		TreeTableModule,
 		AppRoutingModule,
 		BrowserModule,

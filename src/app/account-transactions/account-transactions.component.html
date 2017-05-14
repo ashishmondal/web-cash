@@ -1,3 +1,28 @@
-<p>
-  account-transactions works!
-</p>
+<p-dataTable [value]="transactions" [editable]="true">
+	<p-header>{{accountName}}</p-header>
+	<p-column field="date" header="Date">
+		<ng-template let-col let-tx="rowData" pTemplate="body">
+			<span>{{tx.date.toLocaleDateString()}}</span>
+		</ng-template>
+	</p-column>
+	<p-column field="num" header="Num"></p-column>
+	<p-column field="description" header="Description" [editable]="true">
+	</p-column>
+	<p-column field="transfer" header="Transfer"></p-column>
+	<p-column field="reconciled" header="R"></p-column>
+	<p-column header="Credit">
+		<ng-template let-col let-tx="rowData" pTemplate="body">
+			<span *ngIf="tx.amount>0">{{tx.amount | number:'1.2-2'}}</span>
+		</ng-template>
+	</p-column>
+	<p-column header="Debit">
+		<ng-template let-col let-tx="rowData" pTemplate="body">
+			<span *ngIf="tx.amount<0">{{-tx.amount | number:'1.2-2'}}</span>
+		</ng-template>
+	</p-column>
+	<p-column field="balance" header="Balance">
+		<ng-template let-col let-tx="rowData" pTemplate="body">
+			<span>{{tx.balance | number:'1.2-2'}}</span>
+		</ng-template>
+	</p-column>
+</p-dataTable>

@@ -19,6 +19,25 @@ export class AccountService {
 			.map(accounts => new AccountSummary(this.commodityService, accounts.find(a => a.parentId === null), accounts));
 	}
 
+
+	public getTransactions(accountId: string) {
+		return this.dataService.getData<ISplit[]>(`transactions/${accountId}`)
+			.map(splits => splits.map(s => new Split(s)))
+			.map(splits => splits.reduce((transactions, split) => {
+				const transaction = transactions.find(t => t[0].split.tx_guid === split.split.tx_guid);
+				if (transaction) {
+					transaction.push(split);
+				} else {
+					transactions.push([split]);
+				}
+				return transactions;
+			}, <Split[][]>[]))
+			.map(sg => sg.reduce((transactions, splits) => {
+				const lastBalance = transactions.length > 0 ? transactions[transactions.length - 1].balance : 0;
+				transactions.push(new Transaction(splits, lastBalance));
+				return transactions;
+			}, <Transaction[]>[]));
+	}
 	public static isNegativeBalanceAccountType(type: string) {
 		// INCOME
 		// ASSET
@@ -87,5 +106,41 @@ export class AccountSummary {
 		this.subAccounts = allAccounts
 			.filter(a => a.parentId === this.id)
 			.map(a => new AccountSummary(commodityService, a, allAccounts));
+	}
+}
+
+export interface ISplit {
+	guid: string;
+	reconcile_state: string;
+	reconcile_date: string | null;
+	amount: number;
+	tx_guid: string;
+	post_date: string;
+	description: string;
+}
+
+export class Split {
+	constructor(public split: ISplit) {
+
+	}
+}
+
+export class Transaction {
+	id: string;
+	date: Date;
+	number: number;
+	description: string;
+	reconciled: string;
+	amount: number;
+	balance: number;
+	constructor(public splits: Split[], lastBalance: number) {
+		const split = splits[0].split;
+		this.id = split.tx_guid;
+		this.date = new Date(split.post_date);
+		this.description = split.description;
+		this.reconciled = split.reconcile_state;
+		this.amount = splits.map(s => s.split.amount)
+			.reduce((previous, current) => previous + current, 0);
+		this.balance = lastBalance + this.amount;
 	}
 }

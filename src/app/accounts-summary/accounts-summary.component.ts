@@ -3,6 +3,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import { TreeNode } from "primeng/components/common/api";
 import { AccountService, IAccount } from "app/shared/account.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'wc-accounts-summary',
@@ -12,7 +13,8 @@ import { AccountService, IAccount } from "app/shared/account.service";
 export class AccountsSummaryComponent implements OnInit {
 	accounts;
 	tree: TreeNode[];
-	constructor(private accountService: AccountService) { }
+	constructor(private accountService: AccountService,
+	private router: Router) { }
 
 	ngOnInit() {
 		this.accountService.getAccountSummary()
@@ -31,5 +33,10 @@ export class AccountsSummaryComponent implements OnInit {
 				.sort((a, b) => a.name.localeCompare(b.name))
 				.map(sa => this.getDataTree(sa))
 		}
+	}
+
+	onAccountSelected(event){
+		const account = event.node.data as IAccount;
+		this.router.navigate(['/accounts', account.id]);
 	}
 }
