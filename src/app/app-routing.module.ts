@@ -1,14 +1,10 @@
 import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from "app/dashboard/dashboard/dashboard.component";
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { PageNotFoundComponent } from "app/page-not-found/page-not-found.component";
-import { AccountsSummaryComponent } from "app/accounts-summary/accounts-summary.component";
-import { AccountTransactionsComponent } from "app/account-transactions/account-transactions.component";
 
 const appRoutes: Routes = [
-	{ path: 'dashboard', component: DashboardComponent },
-	{ path: 'accounts', component: AccountsSummaryComponent },
-	 { path: 'accounts/:id', component: AccountTransactionsComponent },
+	{ path: 'dashboard', loadChildren: 'app/modules/dashboard/dashboard.module#DashboardModule' },
+	{ path: 'accounts', loadChildren: 'app/modules/accounts/accounts.module#AccountsModule' },
 	{
 		path: '',
 		redirectTo: '/dashboard',
@@ -19,7 +15,7 @@ const appRoutes: Routes = [
 
 @NgModule({
 	imports: [
-		RouterModule.forRoot(appRoutes)
+		RouterModule.forRoot(appRoutes, { preloadingStrategy: PreloadAllModules })
 	],
 	exports: [
 		RouterModule
