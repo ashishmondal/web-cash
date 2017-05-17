@@ -7,6 +7,7 @@ import { PrimaryModule } from "./primary/primary.module";
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RouterModule } from "@angular/router";
 import { AppRoutingModule } from "./app-routing.module";
+import { MenuService } from "app/shared/menu.service";
 
 @NgModule({
 	declarations: [
@@ -21,7 +22,7 @@ import { AppRoutingModule } from "./app-routing.module";
 
 		PrimaryModule,
 	],
-	providers: [],
+	providers: [MenuService],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

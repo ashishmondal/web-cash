@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuService } from "app/shared/menu.service";
 
 @Component({
 	selector: 'wc-left-menu',
@@ -7,12 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeftMenuComponent implements OnInit {
 
-	menuItems = [
-		{ text: 'Dashboard', icon: 'home' },
-		{ text: 'Bank', icon: 'bank' }
-	];
+	public get menu(){
+		return this.menuService.menu
+			.sort((a, b) => a.order - b.order);
+	}
 
-	constructor() { }
+	constructor(private menuService: MenuService) { }
 
 	ngOnInit() {
 	}
