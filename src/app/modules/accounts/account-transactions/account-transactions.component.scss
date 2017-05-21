@@ -1,0 +1,17 @@
+
+.wc-number{
+	text-align: right;
+}
+
+:host /deep/ md-input-container{ 
+	.mat-input-wrapper{
+		margin: -1em 0;
+		padding: 0;
+	}
+
+	.mat-input-underline{
+		display: none;
+	}
+}
+
+

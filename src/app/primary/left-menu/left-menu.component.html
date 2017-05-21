@@ -1,6 +1,6 @@
 <div *ngFor="let group of menu">
 	<div *ngIf="group.name" class="wc-menu-group">{{group.name}}</div>
-	<a class="wc-menu-item" *ngFor="let item of group.menuItems" href="dashboard">
+	<a class="wc-menu-item" *ngFor="let item of group.menuItems" [routerLink]="item.routerLink" routerLinkActive="wc-menu-item-active">
 		<i class="fa" [ngClass]="'fa-'+item.icon"></i>
 		<span class="wc-menu-text">{{item.text}}</span>
 	</a>

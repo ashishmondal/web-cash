@@ -9,12 +9,27 @@
 
 .wc-menu-item{
 	display: block;
-	color: inherit;
+	color: rgba(255, 255, 255, 0.5);
 	text-decoration: none;
 	padding: 10px 20px;
 
 	&:hover{
 		background: $menu-open-background-color;
+
+		i{
+		color: rgb(255, 255, 255);
+		}
+	}
+
+	i{
+		color: rgba(255, 255, 255, 0.2);
+	}
+
+	&-active{
+		color: rgb(255, 255, 255);
+		i{
+		color: rgb(255, 255, 255);
+		}
 	}
 }
 

@@ -5,7 +5,8 @@
 	<p-column field="total" header="Total">
 		<ng-template let-node="rowData" pTemplate="body">
 			<wc-currency *ngIf="node.data.commodity" [amount]="node.data.total" [commodity]="node.data.commodity"></wc-currency>
-			<!--<div class="wc-currency">{{node.data.total | currency:'INR':true:'4.2-2'}}</div>-->
 		</ng-template>
 	</p-column>
+	<p-column field="reconciled" header="Reconciled"></p-column>
+	<p-column field="lastReconcile" header="Last reconciled Date"></p-column>
 </p-treeTable>

@@ -20,7 +20,8 @@ export class MenuGroup {
 
 export class MenuItem {
 	constructor(public text: string,
-	public icon: string) {
+	public icon: string,
+	public routerLink: string[]) {
 
 	}
 }

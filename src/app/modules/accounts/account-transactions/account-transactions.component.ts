@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import { AccountService, Transaction } from "app/shared/account.service";
@@ -9,7 +9,7 @@ import { AccountService, Transaction } from "app/shared/account.service";
 	styleUrls: ['./account-transactions.component.scss']
 })
 export class AccountTransactionsComponent implements OnInit {
-	accountName: string;
+	accountName: string = "Account"
 	transactions: Transaction[];
 
 	constructor(

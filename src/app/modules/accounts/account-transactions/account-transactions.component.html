@@ -1,28 +1,31 @@
-<p-dataTable [value]="transactions" [editable]="true">
+<p-dataTable [value]="transactions" [editable]="true" resizableColumns="true">
 	<p-header>{{accountName}}</p-header>
-	<p-column field="date" header="Date">
+	<p-column field="date" header="Date" [style]="{'width':'100px'}">
 		<ng-template let-col let-tx="rowData" pTemplate="body">
-			<span>{{tx.date.toLocaleDateString()}}</span>
+			<md-input-container>
+				<input mdInput [mdDatepicker]="myDatepicker" [(ngModel)]="tx.date" >
+				<button mdSuffix [mdDatepickerToggle]="myDatepicker"></button>
+			</md-input-container>
+			<md-datepicker #myDatepicker></md-datepicker>
 		</ng-template>
 	</p-column>
-	<p-column field="num" header="Num"></p-column>
-	<p-column field="description" header="Description" [editable]="true">
-	</p-column>
-	<p-column field="transfer" header="Transfer"></p-column>
-	<p-column field="reconciled" header="R"></p-column>
-	<p-column header="Credit">
+	<p-column field="num" header="Num" [style]="{'width':'40px'}"></p-column>
+	<p-column field="description" header="Description" [editable]="true"> </p-column>
+	<p-column field="transfer" header="Transfer" [style]="{'width':'120px'}"></p-column>
+	<p-column field="reconciled" header="R" [style]="{'width':'20px'}"></p-column>
+	<p-column header="Credit" [style]="{'width':'90px'}">
 		<ng-template let-col let-tx="rowData" pTemplate="body">
-			<span *ngIf="tx.amount>0">{{tx.amount | number:'1.2-2'}}</span>
+			<div class="wc-number" *ngIf="tx.amount>0">{{tx.amount | number:'1.2-2'}}</div>
 		</ng-template>
 	</p-column>
-	<p-column header="Debit">
+	<p-column header="Debit" [style]="{'width':'90px'}">
 		<ng-template let-col let-tx="rowData" pTemplate="body">
-			<span *ngIf="tx.amount<0">{{-tx.amount | number:'1.2-2'}}</span>
+			<div class="wc-number" *ngIf="tx.amount<0">{{-tx.amount | number:'1.2-2'}}</div>
 		</ng-template>
 	</p-column>
-	<p-column field="balance" header="Balance">
+	<p-column field="balance" header="Balance" [style]="{'width':'90px'}">
 		<ng-template let-col let-tx="rowData" pTemplate="body">
-			<span>{{tx.balance | number:'1.2-2'}}</span>
+			<div class="wc-number">{{tx.balance | number:'1.2-2'}}</div>
 		</ng-template>
 	</p-column>
 </p-dataTable>

@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -8,6 +8,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { RouterModule } from "@angular/router";
 import { AppRoutingModule } from "./app-routing.module";
 import { MenuService } from "app/shared/menu.service";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
 	declarations: [
@@ -17,12 +18,13 @@ import { MenuService } from "app/shared/menu.service";
 	imports: [
 		AppRoutingModule,
 		BrowserModule,
+		BrowserAnimationsModule,
 		FormsModule,
 		HttpModule,
 
 		PrimaryModule,
 	],
-	providers: [MenuService],
+	providers: [MenuService, Title],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
