@@ -23,6 +23,11 @@
 				"../node_modules/primeng/resources/primeng.min.css",
 				"styles.scss"
 			],
+			"stylePreprocessorOptions": {
+				"includePaths": [
+					"styles"
+				]
+			},
 			"scripts": [],
 			"environmentSource": "environments/environment.ts",
 			"environments": {
