@@ -5,13 +5,15 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
 import { LogoComponent } from './logo/logo.component';
 import { WorkspaceComponent } from './workspace/workspace.component';
 import { RouterModule } from "@angular/router";
+import { UserBadgeComponent } from './top-menu/user-badge/user-badge.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
 	imports: [
 		RouterModule,
 		CommonModule
 	],
-	declarations: [LeftMenuComponent, TopMenuComponent, LogoComponent, WorkspaceComponent],
-	exports: [LeftMenuComponent, TopMenuComponent, LogoComponent, WorkspaceComponent]
+	declarations: [LeftMenuComponent, TopMenuComponent, LogoComponent, WorkspaceComponent, UserBadgeComponent, HomeComponent],
+	exports: [LeftMenuComponent, TopMenuComponent, LogoComponent, WorkspaceComponent, HomeComponent]
 })
 export class PrimaryModule { }

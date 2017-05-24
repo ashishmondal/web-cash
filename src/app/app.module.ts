@@ -13,6 +13,7 @@ import { AuthService } from "app/core/auth.service";
 import { AuthGuard } from "app/core/auth-guard.service";
 import { AngularFireModule} from 'angularfire2';
 import { environment } from '../environments/environment';
+import { AngularFireAuth } from "angularfire2/auth";
 
 @NgModule({
 	declarations: [
@@ -29,7 +30,7 @@ import { environment } from '../environments/environment';
 
 		PrimaryModule,
 	],
-	providers: [MenuService, Title, AuthService, AuthGuard],
+	providers: [MenuService, Title, AuthService, AuthGuard, AngularFireAuth],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

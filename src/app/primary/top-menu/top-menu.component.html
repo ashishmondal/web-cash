@@ -1,3 +1,6 @@
-<p>
-  top-menu works!
-</p>
+<div></div>
+<div>
+	<wc-user-badge [user]="authService.user | async"></wc-user-badge>
+	<button *ngIf="authService.isAuthenticated" (click)="logout()">Log Out</button>
+	<button *ngIf="!authService.isAuthenticated" (click)="login()">Log In</button>
+</div>

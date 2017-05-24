@@ -1,0 +1,13 @@
+@import 'layout';
+
+:host{
+	@include wc-flex-center(column);
+}
+
+.wc-welcome{
+	font-size: 4em;
+}
+
+.wc-login-text{
+	font-size: 2em;
+}

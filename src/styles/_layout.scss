@@ -1,0 +1,12 @@
+.wc-flex-full{
+	display: flex;
+	flex: 1;
+}
+
+@mixin wc-flex-center($direction: row){
+	@extend .wc-flex-full;
+
+	flex-direction: $direction;
+	justify-content: center;
+	align-items: center;
+}
