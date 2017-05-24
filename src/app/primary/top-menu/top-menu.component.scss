@@ -1,0 +1,9 @@
+@import 'layout';
+
+:host{
+	@extend .wc-flex-full;
+}
+
+.wc-menu-container{
+	@extend .wc-flex-full;
+}

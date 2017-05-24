@@ -7,11 +7,13 @@ import { WorkspaceComponent } from './workspace/workspace.component';
 import { RouterModule } from "@angular/router";
 import { UserBadgeComponent } from './top-menu/user-badge/user-badge.component';
 import { HomeComponent } from './home/home.component';
+import { MdButtonModule } from '@angular/material';
 
 @NgModule({
 	imports: [
 		RouterModule,
-		CommonModule
+		CommonModule,
+		MdButtonModule
 	],
 	declarations: [LeftMenuComponent, TopMenuComponent, LogoComponent, WorkspaceComponent, UserBadgeComponent, HomeComponent],
 	exports: [LeftMenuComponent, TopMenuComponent, LogoComponent, WorkspaceComponent, HomeComponent]
