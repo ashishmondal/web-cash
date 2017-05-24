@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
-import { DataService } from "app/shared/data.service";
+import { DataService } from "./data.service";
 import { Observable } from "rxjs/Observable";
-import { CommodityService, Commodity } from "app/shared/commodity.service";
+import { CommodityService, Commodity } from "./commodity.service";
 
 @Injectable()
 export class AccountService {

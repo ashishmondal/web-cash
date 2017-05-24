@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Commodity } from "app/shared/commodity.service";
+import { Commodity } from "app/core/services/commodity.service";
 
 @Component({
 	selector: 'wc-currency',

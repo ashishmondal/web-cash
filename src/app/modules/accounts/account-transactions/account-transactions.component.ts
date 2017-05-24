@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
-import { AccountService, Transaction } from "app/shared/account.service";
+import { Transaction, AccountService } from "app/core/services/account.service";
 
 @Component({
 	selector: 'wc-account-transactions',
@@ -20,7 +20,6 @@ export class AccountTransactionsComponent implements OnInit {
 
 	ngOnInit() {
 		this.route.params
-			// (+) converts string 'id' to a number
 			.switchMap((params: Params) => this.accountService.getTransactions(params['id']))
 			.subscribe(txs => this.transactions = txs);
 	}

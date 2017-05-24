@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import { TreeNode } from "primeng/components/common/api";
-import { AccountService, IAccount } from "app/shared/account.service";
+import { AccountService, IAccount } from "app/core/services/account.service";
 import { Router } from "@angular/router";
 
 @Component({

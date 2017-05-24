@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuService } from "app/shared/menu.service";
+import { MenuService } from "app/core/services/menu.service";
 
 @Component({
 	selector: 'wc-left-menu',
