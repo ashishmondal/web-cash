@@ -6,7 +6,7 @@ import 'rxjs/add/observable/from';
 
 @Injectable()
 export class AuthService {
-	user: Observable<User>;
+	user$: Observable<User>;
 	redirectUrl: string;
 
 	public get isAuthenticated(): boolean {
@@ -14,9 +14,8 @@ export class AuthService {
 	}
 
 	constructor(public afAuth: AngularFireAuth) {
-		this.user = afAuth.authState;
-		afAuth.auth.currentUser
-		this.user.subscribe(u => console.log(afAuth.auth.currentUser));
+		this.user$ = afAuth.authState;
+		this.user$.subscribe(u => console.log(afAuth.auth.currentUser));
 	}
 
 	login() {

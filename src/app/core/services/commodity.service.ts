@@ -2,31 +2,27 @@
 import { Injectable } from "@angular/core";
 import { DataService } from "./data.service";
 import { Observable } from "rxjs/Observable";
+import { IDefferedService } from "app/core/services/deffered.service";
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/publishLast';
 
 @Injectable()
-export class CommodityService {
-	private commodities: Commodity[] = [];
+export class CommodityService implements IDefferedService {
+	public ready$: Observable<any>;
+
+	public get commodities(): Commodity[] {
+		return this._commodities;
+	}
+
+	private _commodities: Commodity[];
 	private commodityStream$: Observable<Commodity[]>;
 
 	constructor(private dataService: DataService) {
-		this.commodityStream$ = this.dataService.getData<ICommodity[]>('commodities')
+		this.ready$ = this.dataService.getData<ICommodity[]>('commodities')
 			.map(commodities => commodities.map(commodity => new Commodity(commodity)))
-			.do(commodities => this.commodities = commodities)
+			.do(commodities => this._commodities = commodities)
 			.publishLast()
 			.refCount();
-	}
-
-	public getCommodity(id: string) {
-		const commodity = this.commodities.find(c => c.id === id);
-
-		if (commodity) {
-			return Observable.of(commodity);
-		} else {
-			return this.commodityStream$
-				.map(commodities => commodities.find(commodity => commodity.id === id));
-		}
 	}
 }
 
