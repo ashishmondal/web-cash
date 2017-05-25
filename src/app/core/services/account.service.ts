@@ -15,9 +15,8 @@ export class AccountService implements IDefferedService {
 	private _rootAccount: AccountSummary;
 
 	constructor(private dataService: DataService, private commodityService: CommodityService) {
-		// this.ready$ = this.getAccountSummary()
-		// .do(as => this._rootAccount = as);
-		this.ready$ = Observable.interval(5000).first()
+		this.ready$ = this.getAccountSummary()
+			.do(as => this._rootAccount = as)
 			.publishLast()
 			.refCount();
 	}

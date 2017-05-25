@@ -14,8 +14,8 @@ export class DefferedServiceRegister {
 	constructor(
 		accountService: AccountService,
 		commodityService: CommodityService) {
-		this.managedServices.push(accountService);
 		this.managedServices.push(commodityService);
+		this.managedServices.push(accountService);
 	}
 
 	public onReady() {
