@@ -2,19 +2,30 @@ import { Injectable } from "@angular/core";
 import { DataService } from "./data.service";
 import { Observable } from "rxjs/Observable";
 import { CommodityService, Commodity } from "./commodity.service";
+import { IDefferedService } from "app/core/services/deffered.service";
+import 'rxjs/add/Observable/interval';
 
 @Injectable()
-export class AccountService {
+export class AccountService implements IDefferedService {
+	public ready$: Observable<any>;
+	public get rootAccount() {
+		return this._rootAccount;
+	}
+
+	private _rootAccount: AccountSummary;
 
 	constructor(private dataService: DataService, private commodityService: CommodityService) {
-
+		this.ready$ = this.getAccountSummary()
+			.do(as => this._rootAccount = as)
+			.publishLast()
+			.refCount();
 	}
 
 	public getAccounts(): Observable<IAccount> {
 		return this.dataService.getData<IAccount>('accounts');
 	}
 
-	public getAccountSummary(): Observable<AccountSummary> {
+	private getAccountSummary(): Observable<AccountSummary> {
 		return this.dataService.getData<IAccountSummary[]>('accounts/summary')
 			.map(accounts => new AccountSummary(this.commodityService, accounts.find(a => a.parentId === null), accounts));
 	}
@@ -96,12 +107,7 @@ export class AccountSummary {
 		this.id = summary.id;
 		this.commodity_guid = summary.commodity_guid;
 
-		if (this.commodity_guid) {
-			commodityService.getCommodity(this.commodity_guid)
-				.subscribe(c => {
-					this.commodity = c;
-				});
-		}
+		this.commodity = commodityService.commodities.find(c => c.id === this.commodity_guid);
 
 		this.subAccounts = allAccounts
 			.filter(a => a.parentId === this.id)

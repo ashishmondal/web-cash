@@ -6,24 +6,20 @@ import { AccountService, IAccount } from "app/core/services/account.service";
 import { Router } from "@angular/router";
 
 @Component({
-  selector: 'wc-accounts-summary',
-  templateUrl: './accounts-summary.component.html',
-  styleUrls: ['./accounts-summary.component.scss']
+	selector: 'wc-accounts-summary',
+	templateUrl: './accounts-summary.component.html',
+	styleUrls: ['./accounts-summary.component.scss']
 })
 export class AccountsSummaryComponent implements OnInit {
 	accounts;
 	tree: TreeNode[];
 	constructor(private accountService: AccountService,
-	private router: Router) { }
+		private router: Router) { }
 
 	ngOnInit() {
-		this.accountService.getAccountSummary()
-			.subscribe(a => {
-				this.accounts = a;
-				this.tree = a.subAccounts
-					.sort((a, b) => a.name.localeCompare(b.name))
-					.map(sa => this.getDataTree(sa));
-			});
+		this.tree = this.accountService.rootAccount.subAccounts
+			.sort((a, b) => a.name.localeCompare(b.name))
+			.map(sa => this.getDataTree(sa));
 	}
 
 	getDataTree(account: IAccount): TreeNode {
@@ -35,7 +31,7 @@ export class AccountsSummaryComponent implements OnInit {
 		}
 	}
 
-	onAccountSelected(event){
+	onAccountSelected(event) {
 		const account = event.node.data as IAccount;
 		this.router.navigate(['/accounts', account.id]);
 	}

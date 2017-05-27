@@ -8,13 +8,14 @@ import { AngularFireAuth } from "angularfire2/auth";
 import { DataService } from "app/core/services/data.service";
 import { CommodityService } from "app/core/services/commodity.service";
 import { AccountService } from "app/core/services/account.service";
+import { DefferedServiceRegister } from "app/core/services/deffered-service-register";
 
 @NgModule({
 	imports: [
 		CommonModule
 	],
 	declarations: [],
-	providers: [MenuService, Title, AuthService, AuthGuard, AngularFireAuth, DataService, CommodityService, AccountService]
+	providers: [DefferedServiceRegister, MenuService, Title, AuthService, AuthGuard, AngularFireAuth, DataService, CommodityService, AccountService]
 
 })
 export class CoreModule { }
