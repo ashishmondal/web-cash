@@ -9,6 +9,7 @@ import { UserBadgeComponent } from './top-menu/user-badge/user-badge.component';
 import { HomeComponent } from './home/home.component';
 import { MdButtonModule, MdDialogModule } from '@angular/material';
 import { SharedModule } from "app/shared/shared.module";
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
 	imports: [
@@ -18,7 +19,7 @@ import { SharedModule } from "app/shared/shared.module";
 		MdButtonModule,
 		SharedModule
 	],
-	declarations: [LeftMenuComponent, TopMenuComponent, LogoComponent, WorkspaceComponent, UserBadgeComponent, HomeComponent],
-	exports: [LeftMenuComponent, TopMenuComponent, LogoComponent, WorkspaceComponent, HomeComponent]
+	declarations: [LeftMenuComponent, TopMenuComponent, LogoComponent, WorkspaceComponent, UserBadgeComponent, HomeComponent, HeaderComponent],
+	exports: [LeftMenuComponent, HeaderComponent, WorkspaceComponent, HomeComponent]
 })
 export class PrimaryModule { }

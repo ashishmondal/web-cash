@@ -1,4 +1,4 @@
-<p-dataTable [value]="transactions" [editable]="true" resizableColumns="true">
+<p-dataTable [value]="transactions" [editable]="true" [scrollable]="true" resizableColumns="true">
 	<p-header>{{accountName}}</p-header>
 	<p-column field="date" header="Date" [style]="{'width':'100px'}">
 		<ng-template let-col let-tx="rowData" pTemplate="body">

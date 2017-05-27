@@ -1,5 +1,14 @@
 @import 'colors';
 
+:host {
+		background-color: $menu-background-color;
+	color: $menu-color;
+
+	&-open{
+		background-color: $menu-open-background-color;
+	}
+}
+
 .wc-menu-group{
 	padding: 20px 20px 10px 20px;
 	font-size: 12px;

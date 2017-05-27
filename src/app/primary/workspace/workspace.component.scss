@@ -1,5 +1,6 @@
 @import 'layout';
 
 :host{
-	@extend .wc-flex-full;
+	@include wc-flex-full();
+	overflow: auto;
 }

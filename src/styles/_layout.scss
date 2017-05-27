@@ -1,12 +1,16 @@
-.wc-flex-full{
+@mixin wc-flex($direction: row){
 	display: flex;
+	flex-direction: $direction;
+}
+
+@mixin wc-flex-full($direction: row){
+	@include wc-flex($direction);
 	flex: 1;
 }
 
 @mixin wc-flex-center($direction: row){
-	@extend .wc-flex-full;
+	@include wc-flex-full($direction);
 
-	flex-direction: $direction;
 	justify-content: center;
 	align-items: center;
 }
