@@ -5,6 +5,7 @@ import { Observable } from "rxjs/Observable";
 import { IDefferedService } from "app/core/services/deffered.service";
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/publishLast';
+import 'rxjs/add/operator/delay';
 
 @Injectable()
 export class CommodityService implements IDefferedService {
@@ -19,6 +20,7 @@ export class CommodityService implements IDefferedService {
 
 	constructor(private dataService: DataService) {
 		this.ready$ = this.dataService.getData<ICommodity[]>('commodities')
+			.delay(2000)
 			.map(commodities => commodities.map(commodity => new Commodity(commodity)))
 			.do(commodities => this._commodities = commodities)
 			.publishLast()

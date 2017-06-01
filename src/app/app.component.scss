@@ -1,9 +1,13 @@
 @import "layout";
+@import "theme";
 
 :host{
-	@include wc-flex(column);
+	@include wc-flex();
+
+	color: mat-color($foreground, text);
+	background-color: mat-color($background, background);
 }
 
-.wc-content{
+wc-workspace{
 	@include wc-flex-full();
 }

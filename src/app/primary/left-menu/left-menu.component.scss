@@ -1,13 +1,5 @@
 @import 'colors';
-
-:host {
-		background-color: $menu-background-color;
-	color: $menu-color;
-
-	&-open{
-		background-color: $menu-open-background-color;
-	}
-}
+@import "theme";
 
 .wc-menu-group{
 	padding: 20px 20px 10px 20px;
@@ -18,27 +10,22 @@
 
 .wc-menu-item{
 	display: block;
-	color: rgba(255, 255, 255, 0.5);
+	color: mat-color($foreground, disabled-text);
 	text-decoration: none;
-	padding: 10px 20px;
+	padding: 0 0 0 1em;
+	margin: 0.5em 1em;
+	border-left: 0.5em solid transparent;
 
 	&:hover{
-		background: $menu-open-background-color;
-
-		i{
-		color: rgb(255, 255, 255);
-		}
+		border-left-color: mat-color($accent);
 	}
 
 	i{
-		color: rgba(255, 255, 255, 0.2);
+		vertical-align: bottom;
 	}
 
 	&-active{
-		color: rgb(255, 255, 255);
-		i{
-		color: rgb(255, 255, 255);
-		}
+		color: mat-color($foreground, text);
 	}
 }
 

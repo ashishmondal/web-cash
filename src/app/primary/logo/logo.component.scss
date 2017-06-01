@@ -1,3 +1,5 @@
+@import "theme";
+
 :host{
 	font-family: 'Titillium Web', sans-serif;
 	font-size: xx-large;
@@ -5,9 +7,9 @@
 }
 
 .wc-web{
-	color: dodgerblue;
+	color: mat-color($accent);
 }
 
 .wc-cash{
-	color: chartreuse;
+	color: mat-color($primary);
 }

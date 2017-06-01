@@ -17,7 +17,7 @@ import { MenuService, MenuGroup, MenuItem } from "app/core/services/menu.service
 export class DashboardModule {
 	constructor(menuService: MenuService){
 		menuService.menu.push(new MenuGroup(null, 0, [
-			new MenuItem('Dashboard', 'home', ['/dashboard'])
+			new MenuItem('Dashboard', 'dashboard', ['/dashboard'])
 		]));
 	}
 }

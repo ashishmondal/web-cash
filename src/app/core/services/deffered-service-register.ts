@@ -19,6 +19,6 @@ export class DefferedServiceRegister {
 	}
 
 	public onReady() {
-		return Observable.merge(...this.managedServices.map(s => s.ready$)).last();
+		return Observable.merge(...this.managedServices.map(s => s.ready$), 1).last();
 	}
 }

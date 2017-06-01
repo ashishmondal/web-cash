@@ -33,7 +33,7 @@ import { SharedModule } from "app/shared/shared.module";
 export class AccountsModule {
 	constructor(menuService: MenuService) {
 		menuService.menu.push(new MenuGroup('Accounts', 1, [
-			new MenuItem('Summary', 'bank', ['/accounts'])
+			new MenuItem('Summary', 'account_balance', ['/accounts'])
 		]));
 	}
 

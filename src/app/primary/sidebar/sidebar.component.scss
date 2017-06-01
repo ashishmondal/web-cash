@@ -1,0 +1,11 @@
+@import "theme";
+@import "layout";
+
+:host{
+	@include wc-flex(column);
+	background-color: mat-color($background, card);
+}
+
+wc-left-menu{
+	flex: 1;
+}
