@@ -1,11 +1,15 @@
-@mixin wc-flex($direction: row){
+@mixin wc-flex-container($direction: row){
 	display: flex;
 	flex-direction: $direction;
 }
 
+@mixin wc-flex-child($flex: 1){
+	flex: $flex;
+}
+
 @mixin wc-flex-full($direction: row){
-	@include wc-flex($direction);
-	flex: 1;
+	@include wc-flex-container($direction);
+	@include wc-flex-child();
 }
 
 @mixin wc-flex-center($direction: row){

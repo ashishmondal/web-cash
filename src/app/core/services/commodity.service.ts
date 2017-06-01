@@ -20,7 +20,7 @@ export class CommodityService implements IDefferedService {
 
 	constructor(private dataService: DataService) {
 		this.ready$ = this.dataService.getData<ICommodity[]>('commodities')
-			.delay(2000)
+			//.delay(2000)
 			.map(commodities => commodities.map(commodity => new Commodity(commodity)))
 			.do(commodities => this._commodities = commodities)
 			.publishLast()

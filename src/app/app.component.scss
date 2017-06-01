@@ -2,12 +2,12 @@
 @import "theme";
 
 :host{
-	@include wc-flex();
+	@include wc-flex-full();
 
 	color: mat-color($foreground, text);
 	background-color: mat-color($background, background);
 }
 
 wc-workspace{
-	@include wc-flex-full();
+	@include wc-flex-child();
 }

@@ -1,10 +1,19 @@
-@import 'layout';
+@import "layout";
+
+:host{
+	@include wc-flex-full();
+}
+
+.wc-table{
+	@include wc-flex-child();
+	display: grid;
+}
 
 .wc-number{
 	text-align: right;
 }
 
-:host #{"/deep/"} md-input-container{ 
+:host #{"/deep/"} md-input-container{
 	.mat-input-wrapper{
 		margin: -1em 0;
 		padding: 0;
