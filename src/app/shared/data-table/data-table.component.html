@@ -1,9 +1,11 @@
 <header [style.grid-template-columns]="gridTemplateColumns">
-	<div *ngFor="let column of columns">{{column.header}}</div>
+	<div *ngFor="let column of columns; let isFirst = first; let isLast = last"
+		[ngClass]="{'wc-header-cell': true, 'wc-first-cell': isFirst, 'wc-last-cell': isLast}">{{column.header}}</div>
 </header>
 <content [style.grid-template-columns]="gridTemplateColumns">
 	<ng-container *ngFor="let item of value">
-		<div *ngFor="let column of columns">
+		<div *ngFor="let column of columns; let isFirst = first; let isLast = last"
+		[ngClass]="{'wc-cell': true, 'wc-first-cell': isFirst, 'wc-last-cell': isLast}">
 			<span *ngIf="!column.template">{{item[column.field]}}</span>
 			<ng-container *ngIf="column.template">
 				<ng-container *ngTemplateOutlet="column.template; context: { rowData: item}"></ng-container>

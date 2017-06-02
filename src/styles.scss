@@ -4,12 +4,10 @@
 @import "theme";
 
 @import 'colors';
-@import 'fonts';
 
 html {
+	@include wc-font();
 	overflow: hidden;
-	font-size: $font-size;
-	font-family: $sans-font-face;
 }
 
 body{

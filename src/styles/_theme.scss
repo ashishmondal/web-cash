@@ -12,3 +12,21 @@ $theme: mat-dark-theme($primary, $accent, $warn);
 
 $foreground: map-get($theme, foreground);
 $background: map-get($theme, background);
+
+$monospace-font-face: 'Inconsolata', monospace;
+
+$font-size: 1em;
+
+$_font-weight-map: (
+	light: 300,
+	regular: 400,
+	medium: 500,
+	bold: 700,
+	black: 900
+);
+
+@mixin wc-font($font-weight: regular){
+	font-family: $mat-font-family;
+	font-weight: map-get($_font-weight-map, $font-weight);
+	font-size: $mat-body-font-size-base;
+}

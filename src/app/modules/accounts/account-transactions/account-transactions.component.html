@@ -1,11 +1,13 @@
 <wc-data-table [value]="transactions">
 	<wc-data-column field="date" header="Date" columnWidth="100px">
 		<ng-template let-tx="rowData">
-			<md-input-container>
-				<input mdInput [mdDatepicker]="myDatepicker" [(ngModel)]="tx.date">
-				<button mdSuffix [mdDatepickerToggle]="myDatepicker"></button>
-			</md-input-container>
-			<md-datepicker #myDatepicker></md-datepicker>
+			<div> {{tx.date.toLocaleDateString()}}
+				<!--<md-input-container>
+					<input mdInput [mdDatepicker]="myDatepicker" [(ngModel)]="tx.date">
+					<button mdSuffix [mdDatepickerToggle]="myDatepicker"></button>
+				</md-input-container>
+				<md-datepicker #myDatepicker></md-datepicker>-->
+			</div>
 		</ng-template>
 	</wc-data-column>
 	<wc-data-column field="num" header="Num" columnWidth="40px"></wc-data-column>
