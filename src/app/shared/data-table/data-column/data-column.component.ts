@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, HostBinding } from '@angular/core';
+import { Component, OnInit, Input, HostBinding, TemplateRef, Optional, ContentChild } from '@angular/core';
 import { DataTableComponent } from "app/shared/data-table/data-table.component";
 
 @Component({
@@ -11,10 +11,11 @@ export class DataColumnComponent implements OnInit {
 	@Input() header: string;
 	@Input() columnWidth: string = '1fr';
 	@Input() editable: boolean;
+	@ContentChild(TemplateRef) template;
 
 	constructor(dataTable: DataTableComponent) {
 		dataTable.addColumn(this);
-	 }
+	}
 
 	ngOnInit() {
 	}

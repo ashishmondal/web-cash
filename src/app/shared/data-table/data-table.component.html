@@ -3,8 +3,11 @@
 </header>
 <content [style.grid-template-columns]="gridTemplateColumns">
 	<ng-container *ngFor="let item of value">
-		<ng-container *ngFor="let column of columns">
-			<div>{{item[column.field]}}</div>
-		</ng-container>
+		<div *ngFor="let column of columns">
+			<span *ngIf="!column.template">{{item[column.field]}}</span>
+			<ng-container *ngIf="column.template">
+				<ng-container *ngTemplateOutlet="column.template; context: { rowData: item}"></ng-container>
+			</ng-container>
+		</div>
 	</ng-container>
 </content>
