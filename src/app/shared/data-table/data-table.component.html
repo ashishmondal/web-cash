@@ -1,0 +1,10 @@
+<header [style.grid-template-columns]="gridTemplateColumns">
+	<div *ngFor="let column of columns">{{column.header}}</div>
+</header>
+<content [style.grid-template-columns]="gridTemplateColumns">
+	<ng-container *ngFor="let item of value">
+		<ng-container *ngFor="let column of columns">
+			<div>{{item[column.field]}}</div>
+		</ng-container>
+	</ng-container>
+</content>

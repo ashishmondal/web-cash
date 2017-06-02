@@ -4,9 +4,8 @@
 	@include wc-flex-full();
 }
 
-.wc-table{
+wc-data-table{
 	@include wc-flex-child();
-	display: grid;
 }
 
 .wc-number{

@@ -1,0 +1,14 @@
+@import "layout";
+
+:host{
+	@include wc-flex-container(column);
+}
+
+header, content{
+	display: grid;
+	overflow-y: scroll;
+}
+
+content{
+	@include wc-flex-child();
+}
