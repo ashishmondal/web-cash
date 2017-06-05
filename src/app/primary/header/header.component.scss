@@ -1,0 +1,8 @@
+@import "theme";
+@import "layout";
+
+:host{
+	@include wc-flex-container();
+
+	background-color: mat-color($background, card);
+}

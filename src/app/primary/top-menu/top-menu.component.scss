@@ -1,9 +1,17 @@
 @import 'layout';
 
 :host{
+	@include wc-flex-full(column);
+}
+
+.wc-menu{
 	@include wc-flex-full();
 }
 
 .wc-menu-container{
 	@include wc-flex-full();
+}
+
+button {
+	text-transform: uppercase;
 }

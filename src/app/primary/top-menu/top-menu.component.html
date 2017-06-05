@@ -2,8 +2,8 @@
 	<div class="wc-menu-container"></div>
 	<div class="wc-menu-auth">
 		<wc-user-badge [user]="authService.user | async"></wc-user-badge>
-		<button md-raised-button *ngIf="authService.isAuthenticated" (click)="logout()">Log Out</button>
-		<button md-raised-button *ngIf="!authService.isAuthenticated" (click)="login()">Log In</button>
+		<button md-button *ngIf="authService.isAuthenticated" (click)="logout()">Log Out</button>
+		<button md-button *ngIf="!authService.isAuthenticated" (click)="login()">Log In</button>
 	</div>
 </div>
 <md-progress-bar mode="indeterminate"></md-progress-bar>

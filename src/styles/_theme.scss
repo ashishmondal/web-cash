@@ -6,14 +6,14 @@ $primary: mat-palette($mat-grey, 800, 500, 900);
 $accent:  mat-palette($mat-light-blue, 500, 900, A100);
 $warn:    mat-palette($mat-deep-orange);
 
-$theme: mat-dark-theme($primary, $accent, $warn);
+$theme: mat-light-theme($primary, $accent, $warn);
 
 @include angular-material-theme($theme);
 
 $foreground: map-get($theme, foreground);
 $background: map-get($theme, background);
 
-$monospace-font-face: 'Inconsolata', monospace;
+$monospace-font-face: 'Roboto Mono', monospace;
 
 $font-size: 1em;
 

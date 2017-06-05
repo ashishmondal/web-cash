@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto|Titillium+Web:700|Inconsolata|Material+Icons');
+@import url('https://fonts.googleapis.com/css?family=Roboto|Titillium+Web:700|Roboto+Mono|Material+Icons');
 @import "~primeng/resources/themes/omega/theme.css";
 @import "~primeng/resources/primeng.min.css";
 @import "theme";
@@ -18,19 +18,4 @@ body{
 
 html, body {
 	height: 100%;
-}
-
-.wc-top{
-	box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.15);
-	z-index: 2;
-}
-
-.wc-logo {
-	@extend .wc-top;
-	background-color: $menu-background-color;
-}
-
-.wc-top-menu{
-	@extend .wc-top;
-
 }

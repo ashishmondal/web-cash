@@ -10,7 +10,6 @@ import { HomeComponent } from './home/home.component';
 import { MdButtonModule, MdDialogModule, MdProgressBarModule } from '@angular/material';
 import { SharedModule } from "app/shared/shared.module";
 import { HeaderComponent } from './header/header.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
 	imports: [
@@ -26,7 +25,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 		// local
 		SharedModule
 	],
-	declarations: [LeftMenuComponent, TopMenuComponent, LogoComponent, WorkspaceComponent, UserBadgeComponent, HomeComponent, HeaderComponent, SidebarComponent],
-	exports: [LeftMenuComponent, HeaderComponent, WorkspaceComponent, HomeComponent, SidebarComponent]
+	declarations: [LeftMenuComponent, TopMenuComponent, LogoComponent, WorkspaceComponent, UserBadgeComponent, HomeComponent, HeaderComponent],
+	exports: [LeftMenuComponent, HeaderComponent, WorkspaceComponent]
 })
 export class PrimaryModule { }
