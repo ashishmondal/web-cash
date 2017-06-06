@@ -1,9 +1,9 @@
 @import "layout";
 
 :host{
-	@include wc-flex-full();
+	@include wc-flex-container();
 }
 
-wc-pie{
+div{
 	@include wc-flex-child();
 }

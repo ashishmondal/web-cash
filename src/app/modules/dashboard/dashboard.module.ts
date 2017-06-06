@@ -4,10 +4,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TreeTableModule } from 'primeng/components/treetable/treetable';
 import { DashboardRoutingModule } from "app/modules/dashboard/dashboard-routing.module";
 import { MenuService, MenuGroup, MenuItem } from "app/core/services/menu.service";
+import { PieModule } from "app/shared/viz/pie/pie.module";
 
 @NgModule({
 	imports: [
 		CommonModule,
+		PieModule,
 
 		DashboardRoutingModule
 	],

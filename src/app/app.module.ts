@@ -12,6 +12,7 @@ import { AngularFireModule} from 'angularfire2';
 import { environment } from '../environments/environment';
 import { AngularFireAuth } from "angularfire2/auth";
 import { CoreModule } from "app/core/core.module";
+import { VizModule } from "app/shared/viz/viz.module";
 
 @NgModule({
 	declarations: [
@@ -25,6 +26,7 @@ import { CoreModule } from "app/core/core.module";
 		FormsModule,
 		HttpModule,
 		AngularFireModule.initializeApp(environment.firebase),
+		VizModule.forRoot(),
 
 		CoreModule,
 		PrimaryModule,
