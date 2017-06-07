@@ -3,7 +3,6 @@ import { DataService } from "./data.service";
 import { Observable } from "rxjs/Observable";
 import { CommodityService, Commodity } from "./commodity.service";
 import { IDefferedService } from "app/core/services/deffered.service";
-import 'rxjs/add/Observable/interval';
 
 @Injectable()
 export class AccountService implements IDefferedService {
