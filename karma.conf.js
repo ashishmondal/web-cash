@@ -16,6 +16,7 @@ module.exports = function (config) {
 			clearContext: false // leave Jasmine Spec Runner output visible in browser
 		},
 		files: [
+			'https://www.gstatic.com/charts/loader.js',
 			{ pattern: './src/test.ts', watched: false }
 		],
 		preprocessors: {
@@ -35,6 +36,10 @@ module.exports = function (config) {
 			Chrome_travis_ci: {
 				base: 'Chrome',
 				flags: ['--no-sandbox']
+			},
+			ChromeNoSecurity: {
+				base: 'Chrome',
+				flags: ['--disable-web-security']
 			}
 		},
 		reporters: config.angularCli && config.angularCli.codeCoverage
@@ -44,7 +49,7 @@ module.exports = function (config) {
 		colors: true,
 		logLevel: config.LOG_INFO,
 		autoWatch: true,
-		browsers: ['Chrome'],
+		browsers: ['ChromeNoSecurity'],
 		singleRun: false
 	};
 
