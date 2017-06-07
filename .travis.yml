@@ -8,7 +8,7 @@ before_script:
 - npm install -g @angular/cli
 - npm install -g gulp
 - npm install
-- ng build --prod
+- npm run build
 
 after_success:
   gulp deploy
