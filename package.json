@@ -7,7 +7,7 @@
     "start": "ng serve",
     "prebuild": "./scripts/prebuild.js",
     "build": "ng build --prod",
-    "test": "ng test",
+    "test": "ng test --watch=false",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "chmod +x ./scripts/*.js"
