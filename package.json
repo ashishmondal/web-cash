@@ -8,7 +8,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "prebuild": "./scripts/prebuild.js",
+    "postinstall": "chmod +x ./scripts/*.js"
   },
   "browserslist": [
     "last 2 versions",
@@ -42,6 +44,7 @@
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
     "codelyzer": "~2.0.0",
+    "ejs": "^2.5.6",
     "gulp": "^3.9.1",
     "gulp-util": "^3.0.8",
     "jasmine-core": "~2.5.2",

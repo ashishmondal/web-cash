@@ -10,7 +10,7 @@ export class DataTableComponent implements OnInit {
 
 	@Input() value: any[];
 
-	private columns: DataColumnComponent[] = [];
+	public columns: DataColumnComponent[] = [];
 
 	get gridTemplateColumns() {
 		return this.columns.map(c => c.columnWidth).join(' ');

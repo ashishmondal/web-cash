@@ -1,4 +1,4 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule, ModuleWithProviders, OpaqueToken } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PieModule } from "app/shared/viz/pie/pie.module";
 
@@ -10,12 +10,12 @@ import { PieModule } from "app/shared/viz/pie/pie.module";
 	declarations: []
 })
 export class VizModule {
-	static forRoot(): ModuleWithProviders {
-		google.charts.load('current', { 'packages': ['corechart'] });
+	private static chartsLoaded = false;
 
-		return {
-			ngModule: VizModule,
-			providers: []
+	constructor() {
+		if (!VizModule.chartsLoaded) {
+			google.charts.load('current', { 'packages': ['corechart'] });
+			VizModule.chartsLoaded = true;
 		}
 	}
 }

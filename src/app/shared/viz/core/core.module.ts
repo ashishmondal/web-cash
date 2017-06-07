@@ -8,4 +8,12 @@ import { CommonModule } from '@angular/common';
 	declarations: []
 })
 export class CoreModule {
+	private static chartsLoaded = false;
+
+	constructor() {
+		if (!CoreModule.chartsLoaded) {
+			google.charts.load('current', { 'packages': ['corechart'] });
+			CoreModule.chartsLoaded = true;
+		}
+	}
 }
