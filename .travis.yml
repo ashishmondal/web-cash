@@ -26,4 +26,4 @@ script:
 - npm run build
 
 deploy:
-  gulp deploy
+- gulp deploy
