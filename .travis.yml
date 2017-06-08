@@ -3,7 +3,11 @@ dist: trusty
 language: node_js
 node_js:
   - 'node'
-
+ 
+branches:
+  only:
+  - master
+  
 before_install:
  - export CHROME_BIN=/usr/bin/google-chrome
  - export DISPLAY=:99.0
@@ -13,11 +17,13 @@ before_install:
  - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
  - sudo dpkg -i google-chrome*.deb
 
-before_script:
+install:
 - npm install -g @angular/cli
 - npm install -g gulp
 - npm install
+
+script:
 - npm run build
 
-after_success:
+deploy:
   gulp deploy
