@@ -1,2 +1,2 @@
 <wc-logo></wc-logo>
-<wc-top-menu></wc-top-menu>
+<wc-top-menu [user]="user" (onSignIn)="onSignIn.next()" (onSignOut)="onSignOut.next()"></wc-top-menu>

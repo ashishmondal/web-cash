@@ -1,4 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { IUserInfo } from 'app/core/models/user-info';
 
 @Component({
 	selector: 'wc-header',
@@ -7,6 +8,10 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 	styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+	@Input() user: IUserInfo;
+
+	@Output() onSignIn = new EventEmitter();
+	@Output() onSignOut = new EventEmitter();
 
 	constructor() { }
 

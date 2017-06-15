@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { User } from 'firebase/app';
+import { IUserInfo } from 'app/core/models/user-info';
 
 @Component({
 	selector: 'wc-user-badge',
@@ -9,7 +9,7 @@ import { User } from 'firebase/app';
 })
 export class UserBadgeComponent implements OnInit {
 
-	@Input() user: User;
+	@Input() user: IUserInfo;
 
 	constructor() { }
 
