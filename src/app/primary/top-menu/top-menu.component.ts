@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
-import { MdDialog } from "@angular/material";
-import { AuthService } from "app/core/services/auth.service";
-import { WaitMessageComponent } from "app/shared/wait-message/wait-message.component";
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Router } from '@angular/router';
+import { MdDialog } from '@angular/material';
+import { AuthService } from '../../core/services/auth.service';
+import { WaitMessageComponent } from '../../shared/wait-message/wait-message.component';
 
 @Component({
 	selector: 'wc-top-menu',
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	templateUrl: './top-menu.component.html',
 	styleUrls: ['./top-menu.component.scss']
 })
