@@ -75,3 +75,5 @@ export function reducer(state = initialState, action: account.Actions): State {
 // export const getAll = createSelector(getEntities, getIds, (entities, ids) => {
 // 	return ids.map(id => entities[id]);
 // });
+
+export const getAccounts = (state: State) => state.ids.map(id => state.entities[id]);

@@ -1,7 +1,7 @@
+import { createSelector } from 'reselect';
 import { compose } from '@ngrx/core/compose';
 import { ActionReducer, combineReducers } from '@ngrx/store';
 import * as fromRouter from '@ngrx/router-store';
-import { createSelector } from 'reselect';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { environment } from 'environments/environment';
 
@@ -11,6 +11,7 @@ import { environment } from 'environments/environment';
  * the state of the reducer plus any selector functions. The `* as`
  * notation packages up all of the exports into a single object.
  */
+import * as fromUser from './user';
 import * as fromAccounts from './accounts';
 import * as fromBook from './book';
 import * as fromTransactions from './transactions';
@@ -20,6 +21,7 @@ import * as fromTransactions from './transactions';
  * our top level state interface is just a map of keys to inner state types.
  */
 export interface State {
+	user: fromUser.State;
 	accounts: fromAccounts.State;
 	books: fromBook.State;
 	transactions: fromTransactions.State;
@@ -33,6 +35,7 @@ export interface State {
  * the result from right to left.
  */
 const reducers = {
+	user: fromUser.reducer,
 	accounts: fromAccounts.reducer,
 	book: fromBook.reducer,
 	transactions: fromTransactions.reducer
@@ -49,6 +52,15 @@ export function reducer(state: any, action: any) {
 	}
 }
 
+// Users
+export const getUserState = (state: State) => state.user;
+export const getUserSignedOut = createSelector(getUserState, fromUser.getSignedOut);
+export const getUserSigningIn = createSelector(getUserState, fromUser.getSigningIn);
+export const getUserSignedIn = createSelector(getUserState, fromUser.getSignedIn);
+export const getUser = createSelector(getUserState, fromUser.getUser);
+
+// Accounts
 export const getAccountsState = (state: State) => state.accounts;
-// export const getAccountEntities = createSelector(getAccountsState, fromAccounts.)
+export const getAccounts = createSelector(getAccountsState, fromAccounts.getAccounts);
+
 

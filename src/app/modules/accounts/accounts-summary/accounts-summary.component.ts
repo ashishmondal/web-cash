@@ -1,9 +1,12 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import { TreeNode } from 'primeng/components/common/api';
-import { AccountService, IAccount } from '../../../core/services/account.service';
-import { Router } from '@angular/router';
+import * as fromRoot from '../../../core/reducers';
+import { IAccount } from '../../../core/models';
 
 @Component({
 	selector: 'wc-accounts-summary',
@@ -12,28 +15,27 @@ import { Router } from '@angular/router';
 	styleUrls: ['./accounts-summary.component.scss']
 })
 export class AccountsSummaryComponent implements OnInit {
-	accounts;
-	tree: TreeNode[];
-	constructor(private accountService: AccountService,
-		private router: Router) { }
-
-	ngOnInit() {
-		this.tree = this.accountService.rootAccount.subAccounts
-			.sort((a, b) => a.name.localeCompare(b.name))
-			.map(sa => this.getDataTree(sa));
+	accountTree$: Observable<TreeNode[]>;
+	constructor(private store: Store<fromRoot.State>, private router: Router) {
+		this.accountTree$ = store.select(fromRoot.getAccounts)
+			.map(accounts => this.getDataTree(null, accounts));
 	}
 
-	getDataTree(account: IAccount): TreeNode {
-		return {
-			data: account,
-			children: account.subAccounts
-				.sort((a, b) => a.name.localeCompare(b.name))
-				.map(sa => this.getDataTree(sa))
-		}
+	ngOnInit() {
+	}
+
+	getDataTree(account: null | IAccount, allAccounts: IAccount[]): TreeNode[] {
+		return allAccounts
+			.filter(a => a.parent_guid === (<any>account) && account.guid)
+			.sort((a, b) => a.name.localeCompare(b.name))
+			.map(a => ({
+				data: a,
+				children: this.getDataTree(a, allAccounts)
+			}));
 	}
 
 	onAccountSelected(event) {
 		const account = event.node.data as IAccount;
-		this.router.navigate(['/accounts', account.id]);
+		this.router.navigate(['/accounts', account.guid]);
 	}
 }
