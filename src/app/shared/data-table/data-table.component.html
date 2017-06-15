@@ -6,7 +6,7 @@
 	<ng-container *ngFor="let item of value">
 		<div *ngFor="let column of columns; let isFirst = first; let isLast = last"
 		[ngClass]="{'wc-cell': true, 'wc-first-cell': isFirst, 'wc-last-cell': isLast}">
-			<span *ngIf="!column.template">{{item[column.field]}}</span>
+			<div *ngIf="!column.template">{{item[column.field]}}</div>
 			<ng-container *ngIf="column.template">
 				<ng-container *ngTemplateOutlet="column.template; context: { rowData: item}"></ng-container>
 			</ng-container>

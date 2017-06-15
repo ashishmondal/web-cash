@@ -33,7 +33,9 @@ content{
 
 .wc-cell{
 	height: $mat-data-table-row-height;
-
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 
 	:hover{
 		background-color: mat-color($background, hover);

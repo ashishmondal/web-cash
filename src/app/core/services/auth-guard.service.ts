@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { AuthService } from './auth.service';
-import { Observable } from "rxjs/Observable";
-import { DefferedServiceRegister } from "app/core/services/deffered-service-register";
+import { Observable } from 'rxjs/Observable';
+import { DefferedServiceRegister } from 'app/core/services/deffered-service-register';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -12,11 +12,11 @@ export class AuthGuard implements CanActivate {
 
 	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 		const dsRegister$ = this.dsRegister.onReady()
-				.map(() => true)
-				.catch(e => {
-					console.log("services error: %o", e);
-					return Observable.of(false);
-				});
+			.map(() => true)
+			.catch(e => {
+				console.log('services error: %o', e);
+				return Observable.of(false);
+			});
 
 		if (this.authService.isAuthenticated) {
 			return dsRegister$;

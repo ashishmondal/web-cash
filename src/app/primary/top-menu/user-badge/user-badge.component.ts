@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { User } from 'firebase/app';
 
 @Component({
 	selector: 'wc-user-badge',
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	templateUrl: './user-badge.component.html',
 	styleUrls: ['./user-badge.component.scss']
 })
