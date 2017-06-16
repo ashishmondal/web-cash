@@ -1,5 +1,5 @@
-<wc-header [user]="user | async" (onSignIn)="signIn()" (onSignOut)="signOut()"></wc-header>
+<wc-header [isBusy]="isBusy$ | async" [user]="user$ | async" (onSignIn)="signIn()" (onSignOut)="signOut()"></wc-header>
 <content>
-	<wc-left-menu></wc-left-menu>
-	<wc-workspace></wc-workspace>
+  <wc-left-menu></wc-left-menu>
+  <wc-workspace></wc-workspace>
 </content>

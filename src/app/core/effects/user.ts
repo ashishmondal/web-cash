@@ -13,10 +13,16 @@ export class UserEffects {
 	@Effect()
 	signIn$: Observable<Action> = this.action$
 		.ofType(user.SIGN_IN)
-		.switchMap(() => this.authService.login())
-		.switchMap(() => this.authService.user$)
-		.map(u => !!u ? new user.SignInSuccessAction(u) : new user.SignInFailAction())
+		.do(() => this.authService.signIn().catch(e => { throw e; }))
+		.map(() => new user.SignInInitiatedAction())
 		.catch(() => of(new user.SignInFailAction()));
+
+	@Effect()
+	signOut$: Observable<Action> = this.action$
+		.ofType(user.SIGN_OUT)
+		.do(() => this.authService.signOut().catch(e => { throw e; }))
+		.map(() => new user.SignOutInitiatedAction())
+		.catch(() => of(new user.SignOutFailAction()));
 
 	constructor(private action$: Actions, private authService: AuthService) {
 	}

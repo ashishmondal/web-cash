@@ -1,2 +1,5 @@
-<wc-logo></wc-logo>
-<wc-top-menu [user]="user" (onSignIn)="onSignIn.next()" (onSignOut)="onSignOut.next()"></wc-top-menu>
+<div class="wc-header-content">
+  <wc-logo></wc-logo>
+  <wc-top-menu [user]="user" (onSignIn)="onSignIn.next()" (onSignOut)="onSignOut.next()"></wc-top-menu>
+</div>
+<md-progress-bar [style.visibility]="isBusy ? 'visible' : 'hidden'" mode="indeterminate"></md-progress-bar>

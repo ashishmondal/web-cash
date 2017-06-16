@@ -54,10 +54,9 @@ export function reducer(state: any, action: any) {
 
 // Users
 export const getUserState = (state: State) => state.user;
-export const getUserSignedOut = createSelector(getUserState, fromUser.getSignedOut);
-export const getUserSigningIn = createSelector(getUserState, fromUser.getSigningIn);
-export const getUserSignedIn = createSelector(getUserState, fromUser.getSignedIn);
+export const getUserAuthState = createSelector(getUserState, fromUser.getAuthState);
 export const getUser = createSelector(getUserState, fromUser.getUser);
+export const getUserAuthStateBusy = createSelector(getUserState, fromUser.getAuthBusy);
 
 // Accounts
 export const getAccountsState = (state: State) => state.accounts;

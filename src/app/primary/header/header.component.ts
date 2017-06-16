@@ -9,6 +9,7 @@ import { IUserInfo } from 'app/core/models/user-info';
 })
 export class HeaderComponent implements OnInit {
 	@Input() user: IUserInfo;
+	@Input() isBusy: boolean;
 
 	@Output() onSignIn = new EventEmitter();
 	@Output() onSignOut = new EventEmitter();
