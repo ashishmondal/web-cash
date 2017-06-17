@@ -20,6 +20,7 @@ import { environment } from '../environments/environment';
 import { reducer } from 'app/core/reducers';
 
 import { UserEffects } from 'app/core/effects/user';
+import { BookEffects } from 'app/core/effects/book';
 
 @NgModule({
 	declarations: [
@@ -57,6 +58,7 @@ import { UserEffects } from 'app/core/effects/user';
 		 * See: https://github.com/ngrx/effects/blob/master/docs/api.md#run
 		 */
 		EffectsModule.run(UserEffects),
+		EffectsModule.run(BookEffects),
 
 		/**
 		 * Store devtools instrument the store retaining past versions of state

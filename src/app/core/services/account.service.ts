@@ -1,8 +1,9 @@
-import { Injectable } from "@angular/core";
-import { DataService } from "./data.service";
-import { Observable } from "rxjs/Observable";
-import { CommodityService, Commodity } from "./commodity.service";
-import { IDefferedService } from "app/core/services/deffered.service";
+import { IAccount } from '../models/account';
+import { Injectable } from '@angular/core';
+import { DataService } from './data.service';
+import { Observable } from 'rxjs/Observable';
+import { CommodityService, Commodity } from './commodity.service';
+import { IDefferedService } from 'app/core/services/deffered.service';
 
 @Injectable()
 export class AccountService implements IDefferedService {
@@ -20,8 +21,8 @@ export class AccountService implements IDefferedService {
 			.refCount();
 	}
 
-	public getAccounts(): Observable<IAccount> {
-		return this.dataService.getData<IAccount>('accounts');
+	public getAccounts() {
+		return this.dataService.getData<IAccount[]>('accounts');
 	}
 
 	private getAccountSummary(): Observable<AccountSummary> {
@@ -67,10 +68,10 @@ export interface IData {
 	id: string;
 }
 
-export interface IAccount extends IData {
+export interface IAccountDeprecated extends IData {
 	name: string;
 	type: string;
-	subAccounts: IAccount[];
+	subAccounts: IAccountDeprecated[];
 }
 
 export interface IAccountSummary extends IData {

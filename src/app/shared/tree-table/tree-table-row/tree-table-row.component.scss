@@ -1,0 +1,30 @@
+@import "layout";
+@import "theme";
+$mat-data-table-header-height: 56px;
+$mat-data-table-row-height: 48px;
+$mat-data-table-padding: 24px;
+.wc-data-row {
+  display: grid;
+}
+
+.wc-header-cell,
+.wc-cell {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid mat-color($foreground, divider);
+  padding-right: $mat-data-table-padding;
+}
+
+.wc-cell {
+  height: $mat-data-table-row-height;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+   :hover {
+    background-color: mat-color($background, hover);
+  }
+}
+
+.wc-first-cell {
+  padding-left: $mat-data-table-padding;
+}

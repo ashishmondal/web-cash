@@ -22,6 +22,7 @@ import * as fromTransactions from './transactions';
  */
 export interface State {
 	user: fromUser.State;
+	router: fromRouter.RouterState;
 	accounts: fromAccounts.State;
 	books: fromBook.State;
 	transactions: fromTransactions.State;

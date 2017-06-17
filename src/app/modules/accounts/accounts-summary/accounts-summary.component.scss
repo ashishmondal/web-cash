@@ -1,0 +1,8 @@
+@import "layout";
+:host {
+  @include wc-flex-full();
+}
+
+wc-tree-table {
+  @include wc-flex-child();
+}

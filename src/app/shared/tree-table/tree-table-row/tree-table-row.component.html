@@ -1,0 +1,10 @@
+<div class="wc-data-row" [style.grid-template-columns]="gridTemplateColumns">
+  <div *ngFor="let column of columns; let isFirst = first; let isLast = last" [ngClass]="{'wc-cell': true, 'wc-first-cell': isFirst, 'wc-last-cell': isLast}">
+    <div *ngIf="!column.template">{{item.data[column.field]}}</div>
+    <ng-container *ngIf="column.template">
+      <ng-container *ngTemplateOutlet="column.template; context: { rowData: item.data}"></ng-container>
+    </ng-container>
+  </div>
+</div>
+<wc-tree-table-row *ngFor="let item of item.children" [columns]="columns" [item]="item" [gridTemplateColumns]="gridTemplateColumns"
+  [indent]="indent+5"></wc-tree-table-row>

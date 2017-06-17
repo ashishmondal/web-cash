@@ -1,4 +1,5 @@
 import * as account from '../actions/account';
+import * as book from '../actions/book';
 import { IAccount } from '../models';
 
 export interface State {
@@ -13,8 +14,17 @@ const initialState: State = {
 	selectedId: null
 };
 
-export function reducer(state = initialState, action: account.Actions): State {
+export function reducer(state = initialState, action: account.Actions | book.Actions): State {
 	switch (action.type) {
+		case book.LOAD_SUCCESS: {
+			const accounts = action.payload;
+			return {
+				ids: accounts.map(a => a.guid),
+				entities: accounts.reduce((entities: { [id: string]: IAccount }, account: IAccount) =>
+					Object.assign(entities, { [account.guid]: account }), {}),
+				selectedId: null
+			}
+		}
 		// case account.LOAD: {
 		// 	return Object.assign({}, state, {
 		// 		loading: true

@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import { TreeNode } from 'primeng/components/common/api';
 import * as fromRoot from '../../../core/reducers';
+import * as book from '../../../core/actions/book';
 import { IAccount } from '../../../core/models';
 
 @Component({
@@ -18,19 +19,27 @@ export class AccountsSummaryComponent implements OnInit {
 	accountTree$: Observable<TreeNode[]>;
 	constructor(private store: Store<fromRoot.State>, private router: Router) {
 		this.accountTree$ = store.select(fromRoot.getAccounts)
-			.map(accounts => this.getDataTree(null, accounts));
+			.map(accounts => {
+				const tree = this.getDataTree(null, accounts);
+				return tree.length > 0 ? tree[0].children : tree;
+			});
 	}
 
 	ngOnInit() {
+		this.store.dispatch(new book.LoadAction())
 	}
 
 	getDataTree(account: null | IAccount, allAccounts: IAccount[]): TreeNode[] {
 		return allAccounts
-			.filter(a => a.parent_guid === (<any>account) && account.guid)
+			.filter(a => {
+
+				return a.parent_guid === (account === null ? null : account.guid);
+			})
 			.sort((a, b) => a.name.localeCompare(b.name))
 			.map(a => ({
 				data: a,
-				children: this.getDataTree(a, allAccounts)
+				children: this.getDataTree(a, allAccounts),
+				toString: () => a.name
 			}));
 	}
 
