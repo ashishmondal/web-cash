@@ -11,6 +11,9 @@ import { SharedModule } from 'app/shared/shared.module';
 import { AccountsRoutingModule } from './accounts-routing.module';
 import { AccountsSummaryComponent } from './accounts-summary/accounts-summary.component';
 import { AccountTransactionsComponent } from './account-transactions/account-transactions.component';
+import { ModuleWithMenus } from "app/core/module-with-menu";
+import * as fromRoot from 'app/core/reducers';
+import { Store } from "@ngrx/store";
 
 @NgModule({
 	imports: [
@@ -31,11 +34,21 @@ import { AccountTransactionsComponent } from './account-transactions/account-tra
 		AccountTransactionsComponent
 	]
 })
-export class AccountsModule {
-	constructor(menuService: MenuService) {
-		menuService.menu.push(new MenuGroup('Accounts', 1, [
-			new MenuItem('Summary', 'account_balance', ['/accounts'])
-		]));
+export class AccountsModule extends ModuleWithMenus<fromRoot.State> {
+	constructor(store: Store<fromRoot.State>) {
+		super(store);
+		super.addMenu({
+			name: 'Accounts',
+			order: 1,
+			menuItems: [
+				{
+					groupName: 'Accounts',
+					icon: 'account_balance',
+					text: 'Summary',
+					routerLink: ['/accounts']
+				}
+			]
+		});
 	}
 
 }

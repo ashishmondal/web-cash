@@ -3,6 +3,10 @@
 $mat-data-table-header-height: 56px;
 $mat-data-table-row-height: 48px;
 $mat-data-table-padding: 24px;
+
+:host{
+	@include wc-flex-container(column);
+}
 .wc-data-row {
   display: grid;
 }

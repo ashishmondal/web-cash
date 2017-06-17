@@ -1,5 +1,5 @@
 import * as user from '../actions/user';
-import { IUserInfo } from '../models/user-info';
+import { IUserInfo } from '../models';
 
 export enum AuthState {
 	SigningIn,

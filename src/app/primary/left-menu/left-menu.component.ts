@@ -1,5 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { MenuService } from '../../core/services/menu.service';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
 	selector: 'wc-left-menu',
@@ -9,12 +8,9 @@ import { MenuService } from '../../core/services/menu.service';
 })
 export class LeftMenuComponent implements OnInit {
 
-	public get menu() {
-		return this.menuService.menu
-			.sort((a, b) => a.order - b.order);
-	}
+	@Input() menu;
 
-	constructor(private menuService: MenuService) { }
+	constructor() { }
 
 	ngOnInit() {
 	}

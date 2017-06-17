@@ -15,6 +15,8 @@ import * as fromUser from './user';
 import * as fromAccounts from './accounts';
 import * as fromBook from './book';
 import * as fromTransactions from './transactions';
+import * as fromMenuGroups from './menu-groups';
+import * as fromMenuItems from './menu-items';
 
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
@@ -26,6 +28,8 @@ export interface State {
 	accounts: fromAccounts.State;
 	books: fromBook.State;
 	transactions: fromTransactions.State;
+	menuGroups: fromMenuGroups.State;
+	menuItems: fromMenuItems.State;
 }
 
 /**
@@ -39,7 +43,9 @@ const reducers = {
 	user: fromUser.reducer,
 	accounts: fromAccounts.reducer,
 	book: fromBook.reducer,
-	transactions: fromTransactions.reducer
+	transactions: fromTransactions.reducer,
+	menuGroups: fromMenuGroups.reducer,
+	menuItems: fromMenuItems.reducer
 }
 
 const developmentReducer: ActionReducer<State> = compose(storeFreeze, combineReducers)(reducers);
@@ -62,5 +68,24 @@ export const getUserAuthStateBusy = createSelector(getUserState, fromUser.getAut
 // Accounts
 export const getAccountsState = (state: State) => state.accounts;
 export const getAccounts = createSelector(getAccountsState, fromAccounts.getAccounts);
+
+// Menu
+export const getMenuGroupsState = (state: State) => state.menuGroups;
+export const getMenuGroupNames = createSelector(getMenuGroupsState, fromMenuGroups.getNames);
+export const getMenuGroupEntities = createSelector(getMenuGroupsState, fromMenuGroups.getEntities);
+export const getMenuGroups = createSelector(getMenuGroupNames, getMenuGroupEntities,
+	(names, entities) => names.map(n => entities[n]));
+
+export const getMenuItemsState = (state: State) => state.menuItems;
+export const getMenuItems = createSelector(getMenuItemsState, fromMenuItems.getMenus);
+
+export const getMenu = createSelector(getMenuGroups, getMenuItems, (groups, menuItems) => {
+	return groups
+		.sort((ga, gb) => ga.order - gb.order)
+		.map(g => ({
+			name: g.name,
+			menuItems: menuItems.filter(mi => mi.groupName === g.name)
+		}));
+});
 
 

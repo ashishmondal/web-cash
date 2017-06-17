@@ -15,11 +15,13 @@ import * as user from './core/actions/user';
 })
 export class AppComponent {
 	user$: Observable<IUserInfo>;
+	menu$: Observable<any>;
 
 	isBusy$: Observable<boolean>;
 	constructor(private store: Store<fromRoot.State>) {
 		this.user$ = store.select(fromRoot.getUser);
 		this.isBusy$ = store.select(fromRoot.getUserAuthStateBusy);
+		this.menu$ = store.select(fromRoot.getMenu);
 	}
 
 	signIn() {
