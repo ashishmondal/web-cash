@@ -1,33 +1,32 @@
-import { IAccount } from '../models/account';
 import { Injectable } from '@angular/core';
 import { DataService } from './data.service';
 import { Observable } from 'rxjs/Observable';
 import { CommodityService, Commodity } from './commodity.service';
 import { IDefferedService } from 'app/core/services/deffered.service';
+import { IAccount, IAccountSummary } from '../models';
 
 @Injectable()
-export class AccountService implements IDefferedService {
-	public ready$: Observable<any>;
-	public get rootAccount() {
-		return this._rootAccount;
-	}
+export class AccountService {
+//	public ready$: Observable<any>;
+	// public get rootAccount() {
+	// 	return this._rootAccount;
+	// }
 
-	private _rootAccount: AccountSummary;
+	//private _rootAccount: AccountSummary;
 
 	constructor(private dataService: DataService, private commodityService: CommodityService) {
-		this.ready$ = this.getAccountSummary()
-			.do(as => this._rootAccount = as)
-			.publishLast()
-			.refCount();
+		// this.ready$ = this.getAccountSummary()
+		// 	.do(as => this._rootAccount = as)
+		// 	.publishLast()
+		// 	.refCount();
 	}
 
 	public getAccounts() {
 		return this.dataService.getData<IAccount[]>('accounts');
 	}
 
-	private getAccountSummary(): Observable<AccountSummary> {
-		return this.dataService.getData<IAccountSummary[]>('accounts/summary')
-			.map(accounts => new AccountSummary(this.commodityService, accounts.find(a => a.parentId === null), accounts));
+	public getAccountSummary() {
+		return this.dataService.getData<IAccountSummary[]>('accounts/summary');
 	}
 
 
@@ -74,46 +73,46 @@ export interface IAccountDeprecated extends IData {
 	subAccounts: IAccountDeprecated[];
 }
 
-export interface IAccountSummary extends IData {
-	commodity_guid: string;
-	parentId: string;
-	name: string;
-	account_type: string;
-	description: string;
-	total: number | null;
-}
+// export interface IAccountSummary extends IData {
+// 	commodity_guid: string;
+// 	parentId: string;
+// 	name: string;
+// 	account_type: string;
+// 	description: string;
+// 	total: number | null;
+// }
 
-export class AccountSummary {
-	commodity_guid: string;
-	parentId: string;
-	name: string;
-	type: string;
-	description: string;
-	id: string;
-	subAccounts: AccountSummary[];
-	commodity: Commodity | null;
+// export class AccountSummary {
+// 	commodity_guid: string;
+// 	parentId: string;
+// 	name: string;
+// 	type: string;
+// 	description: string;
+// 	id: string;
+// 	subAccounts: AccountSummary[];
+// 	commodity: Commodity | null;
 
-	get total(): number {
-		let total = (this.summary.total || 0);
-		total = AccountService.isNegativeBalanceAccountType(this.type) ? -total : total;
-		return total + this.subAccounts.map(sa => sa.total)
-			.reduce((previous, current) => previous + current, 0);
-	}
+// 	get total(): number {
+// 		let total = (this.summary.total || 0);
+// 		total = AccountService.isNegativeBalanceAccountType(this.type) ? -total : total;
+// 		return total + this.subAccounts.map(sa => sa.total)
+// 			.reduce((previous, current) => previous + current, 0);
+// 	}
 
-	constructor(private commodityService: CommodityService, private summary: IAccountSummary, allAccounts: IAccountSummary[]) {
-		this.name = summary.name;
-		this.type = summary.account_type;
-		this.description = summary.description;
-		this.id = summary.id;
-		this.commodity_guid = summary.commodity_guid;
+// 	constructor(private commodityService: CommodityService, private summary: IAccountSummary, allAccounts: IAccountSummary[]) {
+// 		this.name = summary.name;
+// 		this.type = summary.account_type;
+// 		this.description = summary.description;
+// 		this.id = summary.id;
+// 		this.commodity_guid = summary.commodity_guid;
 
-		this.commodity = commodityService.commodities.find(c => c.id === this.commodity_guid);
+// 		this.commodity = commodityService.commodities.find(c => c.id === this.commodity_guid);
 
-		this.subAccounts = allAccounts
-			.filter(a => a.parentId === this.id)
-			.map(a => new AccountSummary(commodityService, a, allAccounts));
-	}
-}
+// 		this.subAccounts = allAccounts
+// 			.filter(a => a.parentId === this.id)
+// 			.map(a => new AccountSummary(commodityService, a, allAccounts));
+// 	}
+// }
 
 export interface ISplit {
 	guid: string;

@@ -7,3 +7,4 @@ export * from './transaction';
 export * from './user-info';
 export * from './menu-group';
 export * from './menu-item';
+export * from './account-summary';

@@ -23,6 +23,7 @@ import { reducer } from 'app/core/reducers';
 
 import { UserEffects } from 'app/core/effects/user';
 import { BookEffects } from 'app/core/effects/book';
+import { AccountSummaryEffects } from 'app/core/effects/account-summary';
 
 @NgModule({
 	declarations: [
@@ -62,6 +63,7 @@ import { BookEffects } from 'app/core/effects/book';
 		 */
 		EffectsModule.run(UserEffects),
 		EffectsModule.run(BookEffects),
+		EffectsModule.run(AccountSummaryEffects),
 
 		/**
 		 * Store devtools instrument the store retaining past versions of state

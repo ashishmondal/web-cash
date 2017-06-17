@@ -17,6 +17,7 @@ import * as fromBook from './book';
 import * as fromTransactions from './transactions';
 import * as fromMenuGroups from './menu-groups';
 import * as fromMenuItems from './menu-items';
+import * as fromAccountSummary from './account-summary';
 
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
@@ -30,6 +31,7 @@ export interface State {
 	transactions: fromTransactions.State;
 	menuGroups: fromMenuGroups.State;
 	menuItems: fromMenuItems.State;
+	accountSummary: fromAccountSummary.State;
 }
 
 /**
@@ -45,7 +47,8 @@ const reducers = {
 	book: fromBook.reducer,
 	transactions: fromTransactions.reducer,
 	menuGroups: fromMenuGroups.reducer,
-	menuItems: fromMenuItems.reducer
+	menuItems: fromMenuItems.reducer,
+	accountSummary: fromAccountSummary.reducer
 }
 
 const developmentReducer: ActionReducer<State> = compose(storeFreeze, combineReducers)(reducers);
@@ -67,6 +70,7 @@ export const getUserAuthStateBusy = createSelector(getUserState, fromUser.getAut
 
 // Accounts
 export const getAccountsState = (state: State) => state.accounts;
+export const getAccountEntities = createSelector(getAccountsState, fromAccounts.getAccountEntities);
 export const getAccounts = createSelector(getAccountsState, fromAccounts.getAccounts);
 
 // Menu
@@ -86,6 +90,16 @@ export const getMenu = createSelector(getMenuGroups, getMenuItems, (groups, menu
 			name: g.name,
 			menuItems: menuItems.filter(mi => mi.groupName === g.name)
 		}));
+});
+
+// Account Summary
+export const getAccountSummaryState = (state: State) => state.accountSummary;
+export const getAccountSummaryLoading = createSelector(getAccountSummaryState, fromAccountSummary.getLoading);
+export const getAccountSummaryLoaded = createSelector(getAccountSummaryState, fromAccountSummary.getLoaded);
+export const getAccountSummaryEntities = createSelector(getAccountSummaryState, fromAccountSummary.getEntities);
+
+export const getAccountSummary = createSelector(getAccountEntities, getAccountSummaryEntities, (accounts, summaries) => {
+	return summaries.map(s => Object.assign({}, s, accounts[s.guid]));
 });
 
 

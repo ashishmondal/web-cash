@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import { TreeNode } from 'primeng/components/common/api';
 import * as fromRoot from '../../../core/reducers';
-import * as book from '../../../core/actions/book';
+import * as accountSummary from '../../../core/actions/account-summary';
 import { IAccount } from '../../../core/models';
 
 @Component({
@@ -26,7 +26,7 @@ export class AccountsSummaryComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.store.dispatch(new book.LoadAction())
+		this.store.dispatch(new accountSummary.LoadAction())
 	}
 
 	getDataTree(account: null | IAccount, allAccounts: IAccount[]): TreeNode[] {

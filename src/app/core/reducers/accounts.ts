@@ -86,4 +86,5 @@ export function reducer(state = initialState, action: account.Actions | book.Act
 // 	return ids.map(id => entities[id]);
 // });
 
+export const getAccountEntities = (state: State) => state.entities;
 export const getAccounts = (state: State) => state.ids.map(id => state.entities[id]);
