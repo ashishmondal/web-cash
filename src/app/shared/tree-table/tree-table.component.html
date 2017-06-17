@@ -1,30 +1,6 @@
 <header [style.grid-template-columns]="gridTemplateColumns">
-  <div *ngFor="let column of columns; let isFirst = first; let isLast = last" [ngClass]="{'wc-header-cell': true, 'wc-first-cell': isFirst, 'wc-last-cell': isLast}">{{column.header}}</div>
+	<div *ngFor="let column of columns; let isFirst = first; let isLast = last" [ngClass]="{'wc-header-cell': true, 'wc-first-cell': isFirst, 'wc-last-cell': isLast}">{{column.header}}</div>
 </header>
-<!--<content [style.grid-template-columns]="'1fr'">
-  <ng-container *ngTemplateOutlet="row2; context: {value: value}"></ng-container>
-</content>-->
-<content>
-  <wc-tree-table-row *ngFor="let item of value" [columns]="columns" [item]="item" [gridTemplateColumns]="gridTemplateColumns"></wc-tree-table-row>
-</content>
-
-<ng-template #row2>
-  <ng-container *ngFor="let item of value">
-    <div>{{item.data.name}}</div>
-    <ng-container *ngTemplateOutlet="row2; context: {value: []}"></ng-container>
-  </ng-container>
-</ng-template>
-
-<ng-template #row>
-  <ng-container *ngFor="let item of value">
-    <div *ngFor="let column of columns; let isFirst = first; let isLast = last" [ngClass]="{'wc-cell': true, 'wc-first-cell': isFirst, 'wc-last-cell': isLast}">
-      <div *ngIf="!column.template">{{item.data[column.field]}}</div>
-      <ng-container *ngIf="column.template">
-        <ng-container *ngTemplateOutlet="column.template; context: { rowData: item.data}"></ng-container>
-      </ng-container>
-    </div>
-    <ng-container *ngIf="item.children.length">
-      <!--<ng-container *ngTemplateOutlet="row; context: {value: []}"></ng-container>-->
-    </ng-container>
-  </ng-container>
-</ng-template>
+<perfect-scrollbar>
+	<wc-tree-table-row *ngFor="let item of value" [columns]="columns" [item]="item" [gridTemplateColumns]="gridTemplateColumns"></wc-tree-table-row>
+</perfect-scrollbar>

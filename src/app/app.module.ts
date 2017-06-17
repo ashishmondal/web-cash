@@ -9,6 +9,8 @@ import { RouterStoreModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+
 import { AngularFireModule } from 'angularfire2';
 
 import { PrimaryModule } from './primary/primary.module';
@@ -28,6 +30,7 @@ import { BookEffects } from 'app/core/effects/book';
 		PageNotFoundComponent,
 	],
 	imports: [
+		PerfectScrollbarModule.forRoot(),
 		AppRoutingModule,
 		BrowserModule,
 		BrowserAnimationsModule,

@@ -3,23 +3,19 @@
 $mat-data-table-header-height: 56px;
 $mat-data-table-row-height: 48px;
 $mat-data-table-padding: 24px;
+
 :host {
   @include wc-flex-container(column);
 }
 
-header,
-content {
-  display: grid;
-  overflow-y: scroll;
-}
-
 header {
   @include wc-font(medium);
+  display: grid;
   color: mat-color($foreground, secondary-text);
   height: $mat-data-table-header-height;
 }
 
-content {
+perfect-scrollbar {
   @include wc-flex-child();
 }
 

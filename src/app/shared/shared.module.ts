@@ -8,9 +8,12 @@ import { DataColumnComponent } from './data-table/data-column/data-column.compon
 import { TreeTableComponent } from './tree-table/tree-table.component';
 import { TreeDataColumnComponent } from 'app/shared/tree-table/tree-data-column/data-column.component';
 import { TreeTableRowComponent } from './tree-table/tree-table-row/tree-table-row.component';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+
 
 @NgModule({
 	imports: [
+		PerfectScrollbarModule,
 		NgCommonModule,
 		MdProgressSpinnerModule
 	],

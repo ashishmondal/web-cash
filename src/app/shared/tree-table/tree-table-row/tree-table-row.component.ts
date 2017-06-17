@@ -12,7 +12,7 @@ export class TreeTableRowComponent implements OnInit {
 
 	@Input() gridTemplateColumns = '';
 
-	@Input() @HostBinding('style.padding-left.px') indent = 0;
+	@Input() @HostBinding('style.margin-left.px') indent = 0;
 
 	constructor() { }
 
