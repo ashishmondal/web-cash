@@ -7,7 +7,7 @@ import { WorkspaceComponent } from './workspace/workspace.component';
 import { RouterModule } from "@angular/router";
 import { UserBadgeComponent } from './top-menu/user-badge/user-badge.component';
 import { HomeComponent } from './home/home.component';
-import { MdButtonModule, MdDialogModule, MdProgressBarModule } from '@angular/material';
+import { MdButtonModule, MdDialogModule, MdProgressBarModule, MdIconModule, MdMenuModule } from '@angular/material';
 import { SharedModule } from "app/shared/shared.module";
 import { HeaderComponent } from './header/header.component';
 
@@ -21,6 +21,8 @@ import { HeaderComponent } from './header/header.component';
 		MdDialogModule,
 		MdButtonModule,
 		MdProgressBarModule,
+		MdIconModule,
+		MdMenuModule,
 
 		// local
 		SharedModule

@@ -12,6 +12,10 @@
 	@include wc-flex-full();
 }
 
+.wc-menu-auth{
+	@include wc-flex-container(row, center);
+}
+
 button {
 	text-transform: uppercase;
 }

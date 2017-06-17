@@ -1,8 +1,13 @@
 <div class="wc-menu">
-  <div class="wc-menu-container"></div>
-  <div class="wc-menu-auth">
-    <wc-user-badge *ngIf="user" [user]="user"></wc-user-badge>
-    <button md-button *ngIf="user" (click)="onSignOut.next()">Sign Out</button>
-    <button md-button *ngIf="!user" (click)="onSignIn.next()">Sign In</button>
-  </div>
+	<div class="wc-menu-container"></div>
+	<div class="wc-menu-auth">
+		<wc-user-badge *ngIf="user" [user]="user"></wc-user-badge>
+		<button md-icon-button *ngIf="user" [mdMenuTriggerFor]="userMenu">
+				<md-icon>more_vert</md-icon>
+		</button>
+		<button md-button *ngIf="!user" (click)="onSignIn.next()">Sign In</button>
+	</div>
 </div>
+<md-menu #userMenu="mdMenu" [overlapTrigger]="false">
+	<button md-menu-item (click)="onSignOut.next()"> Sign Out </button>
+</md-menu>
