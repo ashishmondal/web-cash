@@ -7,7 +7,7 @@ import 'rxjs/add/operator/do';
 import { TreeNode } from 'primeng/components/common/api';
 import * as fromRoot from '../../../core/reducers';
 import * as accountSummary from '../../../core/actions/account-summary';
-import { IAccount } from '../../../core/models';
+import { IAccount, IAccountSummary } from '../../../core/models';
 
 @Component({
 	selector: 'wc-accounts-summary',
@@ -18,7 +18,7 @@ import { IAccount } from '../../../core/models';
 export class AccountsSummaryComponent implements OnInit {
 	accountTree$: Observable<TreeNode[]>;
 	constructor(private store: Store<fromRoot.State>, private router: Router) {
-		this.accountTree$ = store.select(fromRoot.getAccounts)
+		this.accountTree$ = store.select(fromRoot.getAccountSummary)
 			.map(accounts => {
 				const tree = this.getDataTree(null, accounts);
 				return tree.length > 0 ? tree[0].children : tree;
@@ -48,3 +48,36 @@ export class AccountsSummaryComponent implements OnInit {
 		this.router.navigate(['/accounts', account.guid]);
 	}
 }
+
+export class AccountSummary {
+	commodity_guid: string;
+	parentId: string;
+	name: string;
+	type: string;
+	description: string;
+	id: string;
+	subAccounts: AccountSummary[];
+
+	get total(): number {
+		let total = (this.summary.total || 0);
+		//total = AccountService.isNegativeBalanceAccountType(this.type) ? -total : total;
+		return total + this.subAccounts.map(sa => sa.total)
+			.reduce((previous, current) => previous + current, 0);
+	}
+
+	constructor(private summary: ISummary, allAccounts: ISummary[]) {
+		this.name = summary.name;
+		this.type = summary.account_type;
+		this.description = summary.description;
+		this.id = summary.guid;
+		this.commodity_guid = summary.commodity_guid;
+
+		//this.commodity = commodityService.commodities.find(c => c.id === this.commodity_guid);
+
+		this.subAccounts = allAccounts
+			.filter(a => a.parent_guid === this.id)
+			.map(a => new AccountSummary(a, allAccounts));
+	}
+}
+
+type ISummary = IAccountSummary & IAccount;
