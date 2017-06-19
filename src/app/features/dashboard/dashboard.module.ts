@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { Store } from '@ngrx/store';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { TreeTableModule } from 'primeng/components/treetable/treetable';
-import { DashboardRoutingModule } from "app/modules/dashboard/dashboard-routing.module";
-import { MenuService, MenuGroup, MenuItem } from "app/core/services/menu.service";
-import { PieModule } from "app/shared/viz/pie/pie.module";
-import { Store } from "@ngrx/store";
+import { DashboardRoutingModule } from './dashboard-routing.module';
+import { MenuService, MenuGroup, MenuItem } from 'app/core/services/menu.service';
+import { PieModule } from 'app/shared/viz/pie/pie.module';
+import { ModuleWithMenus } from 'app/core/module-with-menu';
+
 import * as fromRoot from 'app/core/reducers';
 import * as menu from 'app/core/actions/menu';
-import { ModuleWithMenus } from "app/core/module-with-menu";
 
 @NgModule({
 	imports: [
