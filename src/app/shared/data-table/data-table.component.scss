@@ -35,9 +35,9 @@ perfect-scrollbar {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-   :hover {
-    background-color: mat-color($background, hover);
-  }
+  //    :hover {
+  //     background-color: mat-color($background, hover);
+  //   }
 }
 
 .wc-first-cell {
