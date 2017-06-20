@@ -1,37 +1,47 @@
-import * as collection from '../actions/book';
+import { IBook } from 'app/core/models';
+import * as book from '../actions/book';
 
 export interface State {
 	loaded: boolean;
 	loading: boolean;
+	book: IBook | null;
 	accountIds: string[];
 };
 
 const initialState: State = {
 	loaded: false,
 	loading: false,
+	book: null,
 	accountIds: []
 };
 
-export function reducer(state = initialState, action: collection.Actions): State {
+export function reducer(state = initialState, action: book.Actions): State {
 	switch (action.type) {
-		case collection.LOAD: {
+		case book.LOAD:
+		case book.LOAD_ACCOUNTS: {
 			return Object.assign({}, state, {
 				loading: true
 			});
 		}
 
-		case collection.LOAD_SUCCESS: {
-			const accounts = action.payload;
-
-			return {
+		case book.LOAD_SUCCESS: {
+			return Object.assign({}, state, {
 				loaded: true,
 				loading: false,
-				accountIds: accounts.map(account => account.guid)
-			};
+				book: action.payload
+			});
 		}
 
-		case collection.ADD_ACCOUNT_SUCCESS:
-		case collection.REMOVE_ACCOUNT_FAIL: {
+		case book.LOAD_ACCOUNTS_SUCCESS: {
+			return Object.assign({}, state, {
+				loaded: true,
+				loading: false,
+				accountsIds: action.payload.map(a => a.guid)
+			});
+		}
+
+		case book.ADD_ACCOUNT_SUCCESS:
+		case book.REMOVE_ACCOUNT_FAIL: {
 			const account = action.payload;
 
 			if (state.accountIds.indexOf(account.guid) > -1) {
@@ -43,8 +53,8 @@ export function reducer(state = initialState, action: collection.Actions): State
 			});
 		}
 
-		case collection.REMOVE_ACCOUNT_SUCCESS:
-		case collection.ADD_ACCOUNT_FAIL: {
+		case book.REMOVE_ACCOUNT_SUCCESS:
+		case book.ADD_ACCOUNT_FAIL: {
 			const account = action.payload;
 
 			return Object.assign({}, state, {
@@ -58,9 +68,7 @@ export function reducer(state = initialState, action: collection.Actions): State
 	}
 }
 
-
 export const getLoaded = (state: State) => state.loaded;
-
 export const getLoading = (state: State) => state.loading;
-
+export const getBook = (state: State) => state.book;
 export const getAccountIds = (state: State) => state.accountIds;

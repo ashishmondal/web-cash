@@ -3,22 +3,16 @@ import { DataService } from './data.service';
 import { Observable } from 'rxjs/Observable';
 import { CommodityService, Commodity } from './commodity.service';
 import { IDefferedService } from 'app/core/services/deffered.service';
-import { IAccount, IAccountSummary } from '../models';
+import { IAccount, IAccountSummary, IBook } from '../models';
 
 @Injectable()
 export class AccountService {
-//	public ready$: Observable<any>;
-	// public get rootAccount() {
-	// 	return this._rootAccount;
-	// }
-
-	//private _rootAccount: AccountSummary;
 
 	constructor(private dataService: DataService, private commodityService: CommodityService) {
-		// this.ready$ = this.getAccountSummary()
-		// 	.do(as => this._rootAccount = as)
-		// 	.publishLast()
-		// 	.refCount();
+	}
+
+	public getBook() {
+		return this.dataService.getData<IBook>('book');
 	}
 
 	public getAccounts() {

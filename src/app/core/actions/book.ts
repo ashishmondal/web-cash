@@ -1,21 +1,49 @@
 import { Action } from '@ngrx/store';
-import { IAccount } from '../models/account';
+import { IBook, IAccount } from 'app/core/models';
 
 
+export const LOAD = '[Book] Load';
+export const LOAD_SUCCESS = '[Book] Load Success';
+export const LOAD_FAIL = '[Book] Load Fail';
+export const LOAD_ACCOUNTS = '[Book] Load Accounts';
+export const LOAD_ACCOUNTS_SUCCESS = '[Book] Load Accounts Success';
+export const LOAD_ACCOUNTS_FAIL = '[Book] Load Accounts Fail';
 export const ADD_ACCOUNT = '[Book] Add Account';
 export const ADD_ACCOUNT_SUCCESS = '[Book] Add Account Success';
 export const ADD_ACCOUNT_FAIL = '[Book] Add Account Fail';
 export const REMOVE_ACCOUNT = '[Book] Remove Account';
 export const REMOVE_ACCOUNT_SUCCESS = '[Book] Remove Account Success';
 export const REMOVE_ACCOUNT_FAIL = '[Book] Remove Account Fail';
-export const LOAD = '[Book] Load';
-export const LOAD_SUCCESS = '[Book] Load Success';
-export const LOAD_FAIL = '[Book] Load Fail';
 
+export class LoadAction implements Action {
+	readonly type = LOAD;
+}
 
-/**
- * Add Account to Book Actions
- */
+export class LoadSuccessAction implements Action {
+	readonly type = LOAD_SUCCESS;
+	constructor(public payload: IBook) { }
+}
+
+export class LoadFailAction implements Action {
+	readonly type = LOAD_FAIL;
+}
+
+export class LoadAccountsAction implements Action {
+	readonly type = LOAD_ACCOUNTS;
+}
+
+export class LoadAccountsSuccessAction implements Action {
+	readonly type = LOAD_ACCOUNTS_SUCCESS;
+
+	constructor(public payload: IAccount[]) { }
+}
+
+export class LoadAccountsFailAction implements Action {
+	readonly type = LOAD_ACCOUNTS_FAIL;
+
+	constructor(public payload: any) { }
+}
+
 export class AddAccountAction implements Action {
 	readonly type = ADD_ACCOUNT;
 
@@ -56,33 +84,18 @@ export class RemoveAccountFailAction implements Action {
 	constructor(public payload: IAccount) { }
 }
 
-/**
- * Load Book Actions
- */
-export class LoadAction implements Action {
-	readonly type = LOAD;
-}
-
-export class LoadSuccessAction implements Action {
-	readonly type = LOAD_SUCCESS;
-
-	constructor(public payload: IAccount[]) { }
-}
-
-export class LoadFailAction implements Action {
-	readonly type = LOAD_FAIL;
-
-	constructor(public payload: any) { }
-}
 
 
 export type Actions
-	= AddAccountAction
+	= LoadAction
+	| LoadSuccessAction
+	| LoadFailAction
+	| AddAccountAction
 	| AddAccountSuccessAction
 	| AddAccountFailAction
 	| RemoveAccountAction
 	| RemoveAccountSuccessAction
 	| RemoveAccountFailAction
-	| LoadAction
-	| LoadSuccessAction
-	| LoadFailAction;
+	| LoadAccountsAction
+	| LoadAccountsSuccessAction
+	| LoadAccountsFailAction;

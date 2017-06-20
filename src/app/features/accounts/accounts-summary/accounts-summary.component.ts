@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import { TreeNode } from 'primeng/components/common/api';
 import * as fromRoot from '../../../core/reducers';
+import { getAccountSummary } from './reducer';
 import * as accountSummary from '../../../core/actions/account-summary';
 import { IAccount, IAccountSummary } from '../../../core/models';
 
@@ -16,13 +17,9 @@ import { IAccount, IAccountSummary } from '../../../core/models';
 	styleUrls: ['./accounts-summary.component.scss']
 })
 export class AccountsSummaryComponent implements OnInit {
-	accountTree$: Observable<TreeNode[]>;
+	accountTree$: Observable<any[]>;
 	constructor(private store: Store<fromRoot.State>, private router: Router) {
-		this.accountTree$ = store.select(fromRoot.getAccountSummary)
-			.map(accounts => {
-				const tree = this.getDataTree(null, accounts);
-				return tree.length > 0 ? tree[0].children : tree;
-			});
+		this.accountTree$ = store.select(getAccountSummary);
 	}
 
 	ngOnInit() {
@@ -60,7 +57,7 @@ export class AccountSummary {
 
 	get total(): number {
 		let total = (this.summary.total || 0);
-		//total = AccountService.isNegativeBalanceAccountType(this.type) ? -total : total;
+		// total = AccountService.isNegativeBalanceAccountType(this.type) ? -total : total;
 		return total + this.subAccounts.map(sa => sa.total)
 			.reduce((previous, current) => previous + current, 0);
 	}
@@ -72,7 +69,7 @@ export class AccountSummary {
 		this.id = summary.guid;
 		this.commodity_guid = summary.commodity_guid;
 
-		//this.commodity = commodityService.commodities.find(c => c.id === this.commodity_guid);
+		// this.commodity = commodityService.commodities.find(c => c.id === this.commodity_guid);
 
 		this.subAccounts = allAccounts
 			.filter(a => a.parent_guid === this.id)

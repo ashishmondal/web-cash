@@ -1,47 +1,45 @@
 @import "layout";
 @import "theme";
-
 $mat-data-table-header-height: 56px;
 $mat-data-table-row-height: 48px;
 $mat-data-table-padding: 24px;
-
-:host{
-	@include wc-flex-container(column);
+:host {
+  @include wc-flex-container(column);
 }
 
-header, content{
-	display: grid;
-	overflow-y: scroll;
+header,
+content {
+  display: grid;
 }
 
 header {
-	@include wc-font(medium);
-	color: mat-color($foreground, secondary-text);
-	height: $mat-data-table-header-height;
+  @include wc-font(medium);
+  color: mat-color($foreground, secondary-text);
+  height: $mat-data-table-header-height;
 }
 
-content{
-	@include wc-flex-child();
+perfect-scrollbar {
+  @include wc-flex-child();
 }
 
-.wc-header-cell, .wc-cell {
-	display: flex;
-	align-items: center;
-	border-bottom: 1px solid mat-color($foreground, divider);
-	padding-right: $mat-data-table-padding;
+.wc-header-cell,
+.wc-cell {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid mat-color($foreground, divider);
+  padding-right: $mat-data-table-padding;
 }
 
-.wc-cell{
-	height: $mat-data-table-row-height;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	overflow: hidden;
-
-	:hover{
-		background-color: mat-color($background, hover);
-	}
+.wc-cell {
+  height: $mat-data-table-row-height;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+   :hover {
+    background-color: mat-color($background, hover);
+  }
 }
 
-.wc-first-cell{
-	padding-left: $mat-data-table-padding;
+.wc-first-cell {
+  padding-left: $mat-data-table-padding;
 }

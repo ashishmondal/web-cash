@@ -5,9 +5,6 @@ import { WaitMessageComponent } from './wait-message/wait-message.component';
 import { MdProgressSpinnerModule } from '@angular/material';
 import { DataTableComponent } from './data-table/data-table.component';
 import { DataColumnComponent } from './data-table/data-column/data-column.component';
-import { TreeTableComponent } from './tree-table/tree-table.component';
-import { TreeDataColumnComponent } from 'app/shared/tree-table/tree-data-column/data-column.component';
-import { TreeTableRowComponent } from './tree-table/tree-table-row/tree-table-row.component';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
 
@@ -21,18 +18,13 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 		CurrencyComponent,
 		WaitMessageComponent,
 		DataTableComponent,
-		DataColumnComponent,
-		TreeTableComponent,
-		TreeDataColumnComponent,
-		TreeTableRowComponent
+		DataColumnComponent
 	],
 	exports: [
 		CurrencyComponent,
 		WaitMessageComponent,
 		DataTableComponent,
-		DataColumnComponent,
-		TreeTableComponent,
-		TreeDataColumnComponent
+		DataColumnComponent
 	],
 	entryComponents: [
 		WaitMessageComponent

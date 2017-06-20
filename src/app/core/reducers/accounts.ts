@@ -16,7 +16,7 @@ const initialState: State = {
 
 export function reducer(state = initialState, action: account.Actions | book.Actions): State {
 	switch (action.type) {
-		case book.LOAD_SUCCESS: {
+		case book.LOAD_ACCOUNTS_SUCCESS: {
 			const accounts = action.payload;
 			return {
 				ids: accounts.map(a => a.guid),

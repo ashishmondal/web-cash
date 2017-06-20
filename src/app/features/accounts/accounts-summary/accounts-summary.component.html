@@ -1,11 +1,11 @@
-<wc-tree-table [value]="accountTree$ | async" selectionMode="single" (onNodeSelect)="onAccountSelected($event)">
-  <wc-tree-data-column field="name" header="Name" columnWidth="2fr"></wc-tree-data-column>
-  <wc-tree-data-column field="description" header="Description"></wc-tree-data-column>
-  <wc-tree-data-column field="total" header="Total">
+<wc-data-table [value]="accountTree$ | async" [treeView]="true" selectionMode="single" (onNodeSelect)="onAccountSelected($event)">
+  <wc-data-column field="name" header="Name" columnWidth="2fr"></wc-data-column>
+  <wc-data-column field="description" header="Description"></wc-data-column>
+  <wc-data-column field="total" header="Total">
     <!--<ng-template let-node="rowData" pTemplate="body">
       <wc-currency *ngIf="node.data.commodity" [amount]="node.data.total" [commodity]="node.data.commodity"></wc-currency>
     </ng-template>-->
-  </wc-tree-data-column>
-  <wc-tree-data-column field="reconciled" header="Reconciled"></wc-tree-data-column>
-  <wc-tree-data-column field="lastReconcile" header="Last reconciled Date"></wc-tree-data-column>
-</wc-tree-table>
+  </wc-data-column>
+  <wc-data-column field="reconciled" header="Reconciled"></wc-data-column>
+  <wc-data-column field="lastReconcile" header="Last reconciled Date"></wc-data-column>
+</wc-data-table>

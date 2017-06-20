@@ -27,7 +27,7 @@ export interface State {
 	user: fromUser.State;
 	router: fromRouter.RouterState;
 	accounts: fromAccounts.State;
-	books: fromBook.State;
+	book: fromBook.State;
 	transactions: fromTransactions.State;
 	menuGroups: fromMenuGroups.State;
 	menuItems: fromMenuItems.State;
@@ -67,6 +67,11 @@ export const getUserState = (state: State) => state.user;
 export const getUserAuthState = createSelector(getUserState, fromUser.getAuthState);
 export const getUser = createSelector(getUserState, fromUser.getUser);
 export const getUserAuthStateBusy = createSelector(getUserState, fromUser.getAuthBusy);
+
+// Boook
+
+export const getBookState = (state: State) => state.book;
+export const getBook = createSelector(getBookState, fromBook.getBook);
 
 // Accounts
 export const getAccountsState = (state: State) => state.accounts;

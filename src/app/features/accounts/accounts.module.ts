@@ -11,9 +11,9 @@ import { SharedModule } from 'app/shared/shared.module';
 import { AccountsRoutingModule } from './accounts-routing.module';
 import { AccountsSummaryComponent } from './accounts-summary/accounts-summary.component';
 import { AccountTransactionsComponent } from './account-transactions/account-transactions.component';
-import { ModuleWithMenus } from "app/core/module-with-menu";
+import { ModuleWithMenus } from 'app/core/module-with-menu';
 import * as fromRoot from 'app/core/reducers';
-import { Store } from "@ngrx/store";
+import { Store } from '@ngrx/store';
 
 @NgModule({
 	imports: [

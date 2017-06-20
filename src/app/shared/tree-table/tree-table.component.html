@@ -1,6 +1,0 @@
-<header [style.grid-template-columns]="gridTemplateColumns">
-	<div *ngFor="let column of columns; let isFirst = first; let isLast = last" [ngClass]="{'wc-header-cell': true, 'wc-first-cell': isFirst, 'wc-last-cell': isLast}">{{column.header}}</div>
-</header>
-<perfect-scrollbar>
-	<wc-tree-table-row *ngFor="let item of value" [columns]="columns" [item]="item" [gridTemplateColumns]="gridTemplateColumns"></wc-tree-table-row>
-</perfect-scrollbar>
