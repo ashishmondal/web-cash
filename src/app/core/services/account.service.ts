@@ -3,7 +3,7 @@ import { DataService } from './data.service';
 import { Observable } from 'rxjs/Observable';
 import { CommodityService, Commodity } from './commodity.service';
 import { IDefferedService } from 'app/core/services/deffered.service';
-import { IAccount, IAccountSummary, IBook } from '../models';
+import { IAccount, IAccountSummary, IBook, ICommodity } from '../models';
 
 @Injectable()
 export class AccountService {
@@ -21,6 +21,10 @@ export class AccountService {
 
 	public getAccountSummary() {
 		return this.dataService.getData<IAccountSummary[]>('accounts/summary');
+	}
+
+	public getCommodities() {
+		return this.dataService.getData<ICommodity[]>('commodities');
 	}
 
 
@@ -42,18 +46,18 @@ export class AccountService {
 				return transactions;
 			}, <Transaction[]>[]));
 	}
-	public static isNegativeBalanceAccountType(type: string) {
-		// INCOME
-		// ASSET
-		// CREDIT
-		// EXPENSE
-		// BANK
-		// LIABILITY
-		// CASH
-		// ROOT
-		// EQUITY
-		return ['EQUITY', 'INCOME', 'LIABILITY', 'CREDIT'].indexOf(type) >= 0;
-	}
+	// public static isNegativeBalanceAccountType(type: string) {
+	// INCOME
+	// ASSET
+	// CREDIT
+	// EXPENSE
+	// BANK
+	// LIABILITY
+	// CASH
+	// ROOT
+	// EQUITY
+	// 	return ['EQUITY', 'INCOME', 'LIABILITY', 'CREDIT'].indexOf(type) >= 0;
+	// }
 }
 
 

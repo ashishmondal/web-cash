@@ -6,6 +6,9 @@ type Account = IAccount & IAccountSummary;
 
 export class AccountSummary {
 	children: AccountSummary[];
+	public get total() {
+		return this.children.reduce((acc, val) => acc + val.total, +this.data.total);
+	}
 
 	constructor(public data: Account, allAccounts: Account[]) {
 		this.children = allAccounts.filter(a => a.parent_guid === data.guid)

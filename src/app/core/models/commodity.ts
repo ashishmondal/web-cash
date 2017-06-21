@@ -3,7 +3,7 @@ export interface ICommodity {
 	namespace: string;
 	mnemonic: string;
 	fullname: null | string;
-	cusip: null |string;
+	cusip: null | string;
 	fraction: number;
 	quote_flag: number;
 	quote_source: null | string;

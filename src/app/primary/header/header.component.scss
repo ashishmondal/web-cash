@@ -2,7 +2,7 @@
 @import "layout";
 :host {
   @include wc-flex-container(column);
-  background-color: mat-color($background, card);
+  background-color: mat-color($primary);
 }
 
 .wc-header-content {

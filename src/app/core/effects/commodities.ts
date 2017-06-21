@@ -6,25 +6,18 @@ import { Actions, Effect } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/mergeMap';
-import * as book from '../actions/book';
+import * as commodities from '../actions/commodity';
 import { IUserInfo } from 'app/core/models/user-info';
 import { AccountService } from '../services/account.service';
 
 @Injectable()
-export class BookEffects {
+export class CommoditiesEffects {
 	@Effect()
 	loadBook$: Observable<Action> = this.action$
-		.ofType(book.LOAD)
-		.switchMap(() => this.accountService.getBook())
-		.map(b => new book.LoadSuccessAction(b))
-		.catch(e => of(new book.LoadFailAction()));
-
-	@Effect()
-	loadAccounts$: Observable<Action> = this.action$
-		.ofType(book.LOAD_ACCOUNTS)
-		.switchMap(() => this.accountService.getAccounts())
-		.map(accounts => new book.LoadAccountsSuccessAction(accounts))
-		.catch(e => of(new book.LoadAccountsFailAction(e)));
+		.ofType(commodities.LOAD)
+		.switchMap(() => this.accountService.getCommodities())
+		.map(b => new commodities.LoadSuccessAction(b))
+		.catch(e => of(new commodities.LoadFailAction()));
 
 	constructor(private action$: Actions, private accountService: AccountService) {
 	}

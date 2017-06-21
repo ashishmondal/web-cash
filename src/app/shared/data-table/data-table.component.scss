@@ -24,7 +24,7 @@ perfect-scrollbar {
 
 .wc-header-cell,
 .wc-cell {
-  display: flex;
+  @include wc-flex-container();
   align-items: center;
   border-bottom: 1px solid mat-color($foreground, divider);
   padding-right: $mat-data-table-padding;
@@ -34,8 +34,7 @@ perfect-scrollbar {
   height: $mat-data-table-row-height;
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden;
-  //    :hover {
+  overflow: hidden; //    :hover {
   //     background-color: mat-color($background, hover);
   //   }
 }

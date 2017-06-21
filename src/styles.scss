@@ -2,20 +2,17 @@
 @import "~primeng/resources/themes/omega/theme.css";
 @import "~primeng/resources/primeng.min.css";
 @import "theme";
-
-@import 'colors';
-
 html {
-	@include wc-font();
-	overflow: hidden;
+  @include wc-font();
+  overflow: hidden;
 }
 
-body{
-	margin: 0;
-	display: flex;
-	background-color: $background;
+body {
+  margin: 0;
+  display: flex;
 }
 
-html, body {
-	height: 100%;
+html,
+body {
+  height: 100%;
 }

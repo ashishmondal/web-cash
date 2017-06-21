@@ -2,9 +2,13 @@
   <wc-data-column field="name" header="Name" columnWidth="2fr"></wc-data-column>
   <wc-data-column field="description" header="Description"></wc-data-column>
   <wc-data-column field="total" header="Total">
-    <!--<ng-template let-node="rowData" pTemplate="body">
-      <wc-currency *ngIf="node.data.commodity" [amount]="node.data.total" [commodity]="node.data.commodity"></wc-currency>
-    </ng-template>-->
+    <ng-template let-node="rowData">
+      <div style="
+    flex: 1;
+    text-align: right;
+">{{node.total | currency:'INR':true:'2.2-2'}}</div>
+      <!--<wc-currency *ngIf="node.data.commodity" [amount]="node.data.total" [commodity]="node.data.commodity"></wc-currency>-->
+    </ng-template>
   </wc-data-column>
   <wc-data-column field="reconciled" header="Reconciled"></wc-data-column>
   <wc-data-column field="lastReconcile" header="Last reconciled Date"></wc-data-column>

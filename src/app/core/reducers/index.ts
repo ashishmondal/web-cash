@@ -18,6 +18,7 @@ import * as fromTransactions from './transactions';
 import * as fromMenuGroups from './menu-groups';
 import * as fromMenuItems from './menu-items';
 import * as fromAccountSummary from './account-summary';
+import * as fromCommodities from './commodities';
 
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
@@ -32,6 +33,7 @@ export interface State {
 	menuGroups: fromMenuGroups.State;
 	menuItems: fromMenuItems.State;
 	accountSummary: fromAccountSummary.State;
+	commodities: fromCommodities.State;
 }
 
 /**
@@ -48,7 +50,8 @@ const reducers = {
 	transactions: fromTransactions.reducer,
 	menuGroups: fromMenuGroups.reducer,
 	menuItems: fromMenuItems.reducer,
-	accountSummary: fromAccountSummary.reducer
+	accountSummary: fromAccountSummary.reducer,
+	commodities: fromCommodities.reducer
 }
 
 const developmentReducer: ActionReducer<State> = compose(storeFreeze, combineReducers)(reducers);
@@ -106,5 +109,11 @@ export const getAccountSummaryEntities = createSelector(getAccountSummaryState, 
 export const getAccountSummary = createSelector(getAccountEntities, getAccountSummaryEntities, (accounts, summaries) => {
 	return summaries.map(s => Object.assign({}, s, accounts[s.guid]));
 });
+
+// Commodities
+export const getCommoditiesState = (state: State) => state.commodities;
+export const getCommoditiesLoading = createSelector(getCommoditiesState, fromCommodities.getLoading);
+export const getCommoditiesLoaded = createSelector(getCommoditiesState, fromCommodities.getLoaded);
+export const getCommodities = createSelector(getCommoditiesState, fromCommodities.getEntities);
 
 
