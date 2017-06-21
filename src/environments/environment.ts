@@ -6,9 +6,11 @@
 export const environment = {
 	production: false,
 	firebase: {
-		apiKey: 'your-api-key',
-		authDomain: 'your-auth-domain',
-		databaseURL: 'your-database-url',
-		storageBucket: 'your-storage-bucket',
+		apiKey: "AIzaSyBVM2n-UvLs7eOP5qJ4UuGpqhuyQTRAnOc",
+		authDomain: "webcash-1337.firebaseapp.com",
+		databaseURL: "https://webcash-1337.firebaseio.com",
+		projectId: "webcash-1337",
+		storageBucket: "webcash-1337.appspot.com",
+		messagingSenderId: "228927938698"
 	}
 };
