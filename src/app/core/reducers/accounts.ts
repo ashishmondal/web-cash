@@ -1,27 +1,37 @@
 import * as account from '../actions/account';
 import * as book from '../actions/book';
 import { IAccount } from '../models';
+import { tassign } from 'tassign';
+import { Map } from 'immutable';
 
 export interface State {
-	ids: string[];
-	entities: { [id: string]: IAccount };
+	loading: boolean;
+	loaded: boolean;
+	entities: Map<string, IAccount>;
 	selectedId: null | string;
 }
 
 const initialState: State = {
-	ids: [],
-	entities: {},
+	loading: false,
+	loaded: false,
+	entities: Map<string, IAccount>(),
 	selectedId: null
 };
 
 export function reducer(state = initialState, action: account.Actions | book.Actions): State {
 	switch (action.type) {
+		case book.LOAD_ACCOUNTS: {
+			return tassign(state, {
+				loading: true,
+				loaded: false
+			})
+		}
 		case book.LOAD_ACCOUNTS_SUCCESS: {
 			const accounts = action.payload;
 			return {
-				ids: accounts.map(a => a.guid),
-				entities: accounts.reduce((entities: { [id: string]: IAccount }, account: IAccount) =>
-					Object.assign(entities, { [account.guid]: account }), {}),
+				loading: false,
+				loaded: true,
+				entities: Map<string, IAccount>(action.payload.map(a => [a.guid, a])),
 				selectedId: null
 			}
 		}
@@ -86,5 +96,7 @@ export function reducer(state = initialState, action: account.Actions | book.Act
 // 	return ids.map(id => entities[id]);
 // });
 
-export const getAccountEntities = (state: State) => state.entities;
-export const getAccounts = (state: State) => state.ids.map(id => state.entities[id]);
+export const getLoading = (state: State) => state.loading;
+export const getLoaded = (state: State) => state.loaded;
+export const getAccounts = (state: State) => state.entities;
+export const getSelectedId = (state: State) => state.selectedId;

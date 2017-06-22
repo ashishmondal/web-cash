@@ -78,8 +78,11 @@ export const getBook = createSelector(getBookState, fromBook.getBook);
 
 // Accounts
 export const getAccountsState = (state: State) => state.accounts;
-export const getAccountEntities = createSelector(getAccountsState, fromAccounts.getAccountEntities);
+export const getAccountsLoading = createSelector(getAccountsState, fromAccounts.getLoading);
+export const getAccountsLoadied = createSelector(getAccountsState, fromAccounts.getLoaded);
 export const getAccounts = createSelector(getAccountsState, fromAccounts.getAccounts);
+export const getSelectedId = createSelector(getAccountsState, fromAccounts.getSelectedId);
+
 
 // Menu
 export const getMenuGroupsState = (state: State) => state.menuGroups;
@@ -106,9 +109,9 @@ export const getAccountSummaryLoading = createSelector(getAccountSummaryState, f
 export const getAccountSummaryLoaded = createSelector(getAccountSummaryState, fromAccountSummary.getLoaded);
 export const getAccountSummaryEntities = createSelector(getAccountSummaryState, fromAccountSummary.getEntities);
 
-export const getAccountSummary = createSelector(getAccountEntities, getAccountSummaryEntities, (accounts, summaries) => {
-	return summaries.map(s => Object.assign({}, s, accounts[s.guid]));
-});
+// export const getAccountSummary = createSelector(getAccounts, getAccountSummaryEntities, (accounts, summaries) => {
+// 	return summaries.map(s => Object.assign({}, s, accounts[s.guid]));
+// });
 
 // Commodities
 export const getCommoditiesState = (state: State) => state.commodities;

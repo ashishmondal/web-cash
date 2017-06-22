@@ -26,7 +26,7 @@ export class UserEffects {
 		.ofType(user.SIGN_IN_SUCCESS)
 		.mergeMap(u => [
 			new book.LoadAction(),
-			new account.LoadAction(),
+			new book.LoadAccountsAction(),
 			new commodities.LoadAction()
 		]);
 

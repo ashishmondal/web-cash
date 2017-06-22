@@ -19,13 +19,13 @@ export class AccountSummary {
 
 export const getAccountSummary = createSelector(
 	root.getBook,
-	root.getAccountEntities,
+	root.getAccounts,
 	root.getAccountSummaryEntities,
 	(book, accountsEntities, summaries) => {
 		if (!book) {
 			return [];
 		}
-		const accounts = summaries.map(s => Object.assign({}, s, accountsEntities[s.guid]));
+		const accounts = summaries.map(s => Object.assign({}, s, accountsEntities.get(s.guid)));
 		const root = accounts.find(a => a.guid === book.root_account_guid);
 		return new AccountSummary(root, accounts).children;
 	});

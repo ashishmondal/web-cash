@@ -7,9 +7,6 @@ export const ADD_TRANSACTION_FAIL = '[Transactions] Add Transaction Fail';
 export const REMOVE_TRANSACTION = '[Transactions] Remove Transaction';
 export const REMOVE_TRANSACTION_SUCCESS = '[Transactions] Remove Transaction Success';
 export const REMOVE_TRANSACTION_FAIL = '[Transactions] Remove Transaction Fail';
-export const LOAD = '[Transactions] Load';
-export const LOAD_SUCCESS = '[Transactions] Load Success';
-export const LOAD_FAIL = '[Transactions] Load Fail';
 
 /**
  * Add Transaction to Transactions Actions
@@ -54,33 +51,10 @@ export class RemoveTransactionFailAction implements Action {
 	constructor(public payload: ITransaction) { }
 }
 
-/**
- * Load Transactions Actions
- */
-export class LoadAction implements Action {
-	readonly type = LOAD;
-}
-
-export class LoadSuccessAction implements Action {
-	readonly type = LOAD_SUCCESS;
-
-	constructor(public payload: ITransaction[]) { }
-}
-
-export class LoadFailAction implements Action {
-	readonly type = LOAD_FAIL;
-
-	constructor(public payload: any) { }
-}
-
-
 export type Actions
 	= AddTransactionAction
 	| AddTransactionSuccessAction
 	| AddTransactionFailAction
 	| RemoveTransactionAction
 	| RemoveTransactionSuccessAction
-	| RemoveTransactionFailAction
-	| LoadAction
-	| LoadSuccessAction
-	| LoadFailAction;
+	| RemoveTransactionFailAction;
