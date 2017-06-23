@@ -19,6 +19,7 @@ export class AuthService {
 	}
 
 	constructor(private afAuth: AngularFireAuth, store: Store<fromRoot.State>) {
+		// afAuth.auth.
 		this.user$ = afAuth.authState;
 		this.user$.subscribe(u => {
 			console.log('User Info: %o', afAuth.auth.currentUser);

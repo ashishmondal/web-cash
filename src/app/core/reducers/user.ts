@@ -1,3 +1,4 @@
+import { tassign } from 'tassign';
 import * as user from '../actions/user';
 import { IUserInfo } from '../models';
 
@@ -15,49 +16,49 @@ export interface State {
 }
 
 const initialState: State = {
-	authBusy: true,
-	authState: AuthState.SigningIn,
+	authBusy: false,
+	authState: AuthState.SignedOut,
 	user: null
 };
 
 export function reducer(state = initialState, action: user.Actions) {
 	switch (action.type) {
 		case user.SIGN_IN_INITIATED: {
-			return Object.assign({}, state, {
+			return tassign(state, {
 				authBusy: true,
-				authorizationState: AuthState.SigningIn
+				authState: AuthState.SigningIn
 			});
 		}
 		case user.SIGN_IN_SUCCESS: {
-			return Object.assign({}, state, {
+			return tassign(state, {
 				authBusy: false,
-				authorizationState: AuthState.SignedIn,
+				authState: AuthState.SignedIn,
 				user: action.payload
 			});
 		}
 		case user.SIGN_IN_FAIL: {
-			return Object.assign({}, state, {
+			return tassign(state, {
 				authBusy: false,
-				authorizationState: AuthState.SignedOut
+				authState: AuthState.SignedOut
 			});
 		}
 		case user.SIGN_OUT_INITIATED: {
-			return Object.assign({}, state, {
+			return tassign(state, {
 				authBusy: true,
-				authorizationState: AuthState.SigningOut,
+				authState: AuthState.SigningOut,
 			});
 		}
 		case user.SIGN_OUT_SUCCESS: {
-			return Object.assign({}, state, {
+			return tassign(state, {
 				authBusy: false,
-				authorizationState: AuthState.SignedOut,
+				authState: AuthState.SignedOut,
 				user: null
 			});
 		}
 		case user.SIGN_OUT_FAIL: {
-			return Object.assign({}, state, {
+			return tassign(state, {
 				authBusy: false,
-				authorizationState: AuthState.SignedIn
+				authState: AuthState.SignedIn
 			});
 		}
 		default: return state;

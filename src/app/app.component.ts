@@ -23,6 +23,9 @@ export class AppComponent {
 		this.user$ = store.select(fromRoot.getUser);
 		this.isBusy$ = store.select(fromRoot.getUserAuthStateBusy);
 		this.menu$ = store.select(fromRoot.getMenu);
+
+		// Firebase initiates signin in automatically
+		this.store.dispatch(new user.SignInInitiatedAction());
 	}
 
 	signIn() {

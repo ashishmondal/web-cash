@@ -31,5 +31,5 @@ export const getAccountSummary = createSelector(
 		}
 		const accounts = summaries.map(s => Object.assign({}, s, accountsEntities.get(s.guid)));
 		const root = accounts.find(a => a.guid === book.root_account_guid);
-		return new AccountSummary(root, accounts, commodities).children;
+		return root ? new AccountSummary(root, accounts, commodities).children : [];
 	});
