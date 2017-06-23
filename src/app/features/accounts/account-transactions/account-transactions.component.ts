@@ -1,7 +1,11 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Store } from '@ngrx/store';
+
 import 'rxjs/add/operator/switchMap';
-import { Transaction, AccountService } from "app/core/services/account.service";
+
+import * as fromRoot from '../../../core/reducers';
+import * as fromAccount from 'app/core/actions/account';
 
 @Component({
 	selector: 'wc-account-transactions',
@@ -9,18 +13,15 @@ import { Transaction, AccountService } from "app/core/services/account.service";
 	styleUrls: ['./account-transactions.component.scss']
 })
 export class AccountTransactionsComponent implements OnInit {
-	accountName: string = "Account"
-	transactions: Transaction[];
-
 	constructor(
+		private store: Store<fromRoot.State>,
 		private route: ActivatedRoute,
-		private router: Router,
-		private accountService: AccountService
+		private router: Router
 	) { }
 
 	ngOnInit() {
+
 		this.route.params
-			.switchMap((params: Params) => this.accountService.getTransactions(params['id']))
-			.subscribe(txs => this.transactions = txs);
+			.subscribe((params: Params) => this.store.dispatch(new fromAccount.LoadTransactionsAction(params['id'])));
 	}
 }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { MdDatepickerModule, MdNativeDateModule, MdInputModule } from '@angular/material';
+import { MdDatepickerModule, MdNativeDateModule, MdInputModule, MdButtonModule } from '@angular/material';
 
 import { SharedModule as PrimeSharedModule, TreeTableModule } from 'primeng/primeng';
 
@@ -27,7 +27,8 @@ import { Store } from '@ngrx/store';
 
 		MdInputModule,
 		MdDatepickerModule,
-		MdNativeDateModule
+		MdNativeDateModule,
+		MdButtonModule
 	],
 	declarations: [
 		AccountsSummaryComponent,

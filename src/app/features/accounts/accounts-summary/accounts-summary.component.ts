@@ -25,9 +25,4 @@ export class AccountsSummaryComponent implements OnInit {
 	ngOnInit() {
 		this.store.dispatch(new accountSummary.LoadAction())
 	}
-
-	onAccountSelected(event) {
-		const account = event.node.data as IAccount;
-		this.router.navigate(['/accounts', account.guid]);
-	}
 }

@@ -3,7 +3,7 @@ import { DataService } from './data.service';
 import { Observable } from 'rxjs/Observable';
 import { CommodityService, Commodity } from './commodity.service';
 import { IDefferedService } from 'app/core/services/deffered.service';
-import { IAccount, IAccountSummary, IBook, ICommodity } from '../models';
+import { IAccount, IAccountSummary, IBook, ICommodity, ITransaction } from '../models';
 
 @Injectable()
 export class AccountService {
@@ -27,8 +27,12 @@ export class AccountService {
 		return this.dataService.getData<ICommodity[]>('commodities');
 	}
 
-
 	public getTransactions(accountId: string) {
+		return this.dataService.getData<ITransaction[]>(`transactions/${accountId}`);
+	}
+
+
+	public getTransactions2(accountId: string) {
 		return this.dataService.getData<ISplit[]>(`transactions/${accountId}`)
 			.map(splits => splits.map(s => new Split(s)))
 			.map(splits => splits.reduce((transactions, split) => {

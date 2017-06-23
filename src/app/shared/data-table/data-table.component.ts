@@ -16,8 +16,11 @@ export class DataTableComponent {
 	@ContentChildren(DataColumnComponent) dataColumns: QueryList<DataColumnComponent>;
 
 	get nodes() {
-		const n = this.treeView ? this.getFlattenedTree() : (<any[]>this.value).map<ITreeNode>(v => ({ data: v, children: [] }));
-		return n;
+		return this.value ?
+			this.treeView ?
+				this.getFlattenedTree() :
+				(<any[]>this.value).map<ITreeNode>(v => ({ data: v, children: [] })) :
+			[];
 	}
 
 	get gridTemplateColumns() {

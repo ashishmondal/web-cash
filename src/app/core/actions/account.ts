@@ -1,16 +1,37 @@
 import { Action } from '@ngrx/store';
 import { ITransaction } from '../models/transaction';
 
-export const ADD_TRANSACTION = '[Transactions] Add Transaction';
-export const ADD_TRANSACTION_SUCCESS = '[Transactions] Add Transaction Success';
-export const ADD_TRANSACTION_FAIL = '[Transactions] Add Transaction Fail';
-export const REMOVE_TRANSACTION = '[Transactions] Remove Transaction';
-export const REMOVE_TRANSACTION_SUCCESS = '[Transactions] Remove Transaction Success';
-export const REMOVE_TRANSACTION_FAIL = '[Transactions] Remove Transaction Fail';
+export const LOAD_TRANSACTIONS = '[Account] Load Transactions';
+export const LOAD_TRANSACTIONS_SUCCESS = '[Account] Load Transactions Success';
+export const LOAD_TRANSACTIONS_FAIL = '[Account] Load Transactions Fail';
+export const ADD_TRANSACTION = '[Account] Add Transaction';
+export const ADD_TRANSACTION_SUCCESS = '[Account] Add Transaction Success';
+export const ADD_TRANSACTION_FAIL = '[Account] Add Transaction Fail';
+export const REMOVE_TRANSACTION = '[Account] Remove Transaction';
+export const REMOVE_TRANSACTION_SUCCESS = '[Account] Remove Transaction Success';
+export const REMOVE_TRANSACTION_FAIL = '[Account] Remove Transaction Fail';
 
-/**
- * Add Transaction to Transactions Actions
- */
+export class LoadTransactionsAction implements Action {
+	readonly type = LOAD_TRANSACTIONS;
+
+	constructor(
+		/**
+		 * Account GUID
+		 */
+		public payload: string
+	) { }
+}
+
+export class LoadTransactionsSuccessAction implements Action {
+	readonly type = LOAD_TRANSACTIONS_SUCCESS;
+
+	constructor(payload: ITransaction[]) { }
+}
+
+export class LoadTransactionFailAction implements Action {
+	readonly type = LOAD_TRANSACTIONS_FAIL;
+}
+
 export class AddTransactionAction implements Action {
 	readonly type = ADD_TRANSACTION;
 
@@ -52,7 +73,10 @@ export class RemoveTransactionFailAction implements Action {
 }
 
 export type Actions
-	= AddTransactionAction
+	= LoadTransactionsAction
+	| LoadTransactionsSuccessAction
+	| LoadTransactionFailAction
+	| AddTransactionAction
 	| AddTransactionSuccessAction
 	| AddTransactionFailAction
 	| RemoveTransactionAction
