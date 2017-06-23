@@ -17,7 +17,7 @@ export class AccountEffects {
 		.map(toPayload)
 		.switchMap(guid => this.accountService.getTransactions(guid))
 		.map(accounts => new account.LoadTransactionsSuccessAction(accounts))
-		.catch(e => of(new account.LoadAccountsFailAction(e)));
+		.catch(e => of(new account.LoadTransactionsFailAction(e)));
 
 	constructor(private action$: Actions, private accountService: AccountService) {
 	}

@@ -1,9 +1,9 @@
 @import 'theme';
-
 :host {
-	font-family: $monospace-font-face;
-	text-align: right
+  font-family: $monospace-font-face;
+  text-align: right
 }
-.wc-negative-currency{
-	color: red;
+
+.wc-negative-currency {
+  color: mat-color($warn);
 }

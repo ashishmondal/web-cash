@@ -28,8 +28,10 @@ export class LoadTransactionsSuccessAction implements Action {
 	constructor(payload: ITransaction[]) { }
 }
 
-export class LoadTransactionFailAction implements Action {
+export class LoadTransactionsFailAction implements Action {
 	readonly type = LOAD_TRANSACTIONS_FAIL;
+
+	constructor(public payload: any) { }
 }
 
 export class AddTransactionAction implements Action {
@@ -75,7 +77,7 @@ export class RemoveTransactionFailAction implements Action {
 export type Actions
 	= LoadTransactionsAction
 	| LoadTransactionsSuccessAction
-	| LoadTransactionFailAction
+	| LoadTransactionsFailAction
 	| AddTransactionAction
 	| AddTransactionSuccessAction
 	| AddTransactionFailAction

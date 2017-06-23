@@ -4,7 +4,6 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
-import { TreeNode } from 'primeng/components/common/api';
 import * as fromRoot from '../../../core/reducers';
 import { getAccountSummary } from './account-summary.reducer';
 import * as accountSummary from '../../../core/actions/account-summary';

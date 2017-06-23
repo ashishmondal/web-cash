@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto|Titillium+Web:700|Roboto+Mono|Material+Icons');
-@import "~primeng/resources/themes/omega/theme.css";
-@import "~primeng/resources/primeng.min.css";
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500|Titillium+Web:700|Roboto+Mono|Material+Icons');
 @import "theme";
 html {
   @include wc-font();
@@ -15,4 +13,10 @@ body {
 html,
 body {
   height: 100%;
+}
+
+html {
+  @extend .mat-typography;
+  color: mat-color($foreground, text);
+  background-color: mat-color($background, background);
 }

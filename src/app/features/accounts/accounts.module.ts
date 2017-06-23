@@ -3,8 +3,6 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MdDatepickerModule, MdNativeDateModule, MdInputModule, MdButtonModule } from '@angular/material';
 
-import { SharedModule as PrimeSharedModule, TreeTableModule } from 'primeng/primeng';
-
 import { MenuService, MenuGroup, MenuItem } from 'app/core/services/menu.service';
 import { SharedModule } from 'app/shared/shared.module';
 
@@ -22,8 +20,6 @@ import { Store } from '@ngrx/store';
 		CommonModule,
 
 		AccountsRoutingModule,
-		PrimeSharedModule,
-		TreeTableModule,
 
 		MdInputModule,
 		MdDatepickerModule,
