@@ -81,8 +81,14 @@ export const getAccountsState = (state: State) => state.accounts;
 export const getAccountsLoading = createSelector(getAccountsState, fromAccounts.getLoading);
 export const getAccountsLoadied = createSelector(getAccountsState, fromAccounts.getLoaded);
 export const getAccounts = createSelector(getAccountsState, fromAccounts.getAccounts);
-export const getSelectedId = createSelector(getAccountsState, fromAccounts.getSelectedId);
+export const getSelectedAccountId = createSelector(getAccountsState, fromAccounts.getSelectedId);
 
+// Transactions
+export const getTransactionsState = (state: State) => state.transactions;
+export const getTransactionsLoading = createSelector(getTransactionsState, fromTransactions.getLoading);
+export const getTransactionsLoadied = createSelector(getTransactionsState, fromTransactions.getLoaded);
+export const getTransactions = createSelector(getTransactionsState, fromTransactions.getEntities);
+export const getSelectedTransactionId = createSelector(getTransactionsState, fromTransactions.getSelectedId);
 
 // Menu
 export const getMenuGroupsState = (state: State) => state.menuGroups;

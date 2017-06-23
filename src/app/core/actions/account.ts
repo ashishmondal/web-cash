@@ -25,7 +25,7 @@ export class LoadTransactionsAction implements Action {
 export class LoadTransactionsSuccessAction implements Action {
 	readonly type = LOAD_TRANSACTIONS_SUCCESS;
 
-	constructor(payload: ITransaction[]) { }
+	constructor(public payload: ITransaction[]) { }
 }
 
 export class LoadTransactionsFailAction implements Action {

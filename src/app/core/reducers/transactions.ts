@@ -18,6 +18,27 @@ export function reducer(state = initialState, action: account.Actions): State {
 			})
 		}
 
+		case account.LOAD_TRANSACTIONS_SUCCESS: {
+			return {
+				loading: false,
+				loaded: true,
+				entities: Map<string, ITransaction>(action.payload.map(t => [t.guid, t])),
+				selectedId: null
+			}
+		}
+
+		case account.LOAD_TRANSACTIONS_FAIL: {
+			return tassign(state, {
+				loading: false,
+				loaded: false
+			});
+		}
+
 		default: return state;
 	}
 }
+
+export const getLoading = (state: State) => state.loading;
+export const getLoaded = (state: State) => state.loaded;
+export const getEntities = (state: State) => state.entities;
+export const getSelectedId = (state: State) => state.selectedId;

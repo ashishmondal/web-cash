@@ -31,25 +31,6 @@ export class AccountService {
 		return this.dataService.getData<ITransaction[]>(`transactions/${accountId}`);
 	}
 
-
-	public getTransactions2(accountId: string) {
-		return this.dataService.getData<ISplit[]>(`transactions/${accountId}`)
-			.map(splits => splits.map(s => new Split(s)))
-			.map(splits => splits.reduce((transactions, split) => {
-				const transaction = transactions.find(t => t[0].split.tx_guid === split.split.tx_guid);
-				if (transaction) {
-					transaction.push(split);
-				} else {
-					transactions.push([split]);
-				}
-				return transactions;
-			}, <Split[][]>[]))
-			.map(sg => sg.reduce((transactions, splits) => {
-				const lastBalance = transactions.length > 0 ? transactions[transactions.length - 1].balance : 0;
-				transactions.push(new Transaction(splits, lastBalance));
-				return transactions;
-			}, <Transaction[]>[]));
-	}
 	// public static isNegativeBalanceAccountType(type: string) {
 	// INCOME
 	// ASSET

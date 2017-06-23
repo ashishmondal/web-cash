@@ -18,9 +18,9 @@ import { reducer } from 'app/core/reducers';
 
 import { UserEffects } from 'app/core/effects/user';
 import { BookEffects } from 'app/core/effects/book';
+import { AccountEffects } from './effects/account';
 import { CommoditiesEffects } from 'app/core/effects/commodities';
 import { AccountSummaryEffects } from 'app/core/effects/account-summary';
-
 
 @NgModule({
 	imports: [
@@ -31,6 +31,7 @@ import { AccountSummaryEffects } from 'app/core/effects/account-summary';
 
 		EffectsModule.run(UserEffects),
 		EffectsModule.run(BookEffects),
+		EffectsModule.run(AccountEffects),
 		EffectsModule.run(AccountSummaryEffects),
 		EffectsModule.run(CommoditiesEffects),
 
