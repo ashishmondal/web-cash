@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Commodity } from "app/core/services/commodity.service";
+import { ICommodity } from 'app/core/models';
 
 @Component({
 	selector: 'wc-currency',
@@ -9,7 +9,7 @@ import { Commodity } from "app/core/services/commodity.service";
 export class CurrencyComponent {
 
 	@Input() amount: number;
-	@Input() commodity: Commodity;
+	@Input() commodity: ICommodity;
 
 	constructor() { }
 

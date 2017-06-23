@@ -1,14 +1,12 @@
 import { Injectable } from '@angular/core';
 import { DataService } from './data.service';
 import { Observable } from 'rxjs/Observable';
-import { CommodityService, Commodity } from './commodity.service';
-import { IDefferedService } from 'app/core/services/deffered.service';
 import { IAccount, IAccountSummary, IBook, ICommodity, ITransaction } from '../models';
 
 @Injectable()
 export class AccountService {
 
-	constructor(private dataService: DataService, private commodityService: CommodityService) {
+	constructor(private dataService: DataService) {
 	}
 
 	public getBook() {
