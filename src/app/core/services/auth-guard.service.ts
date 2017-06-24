@@ -19,7 +19,6 @@ export class AuthGuard implements CanActivate {
 		return this.store.select(fromRoot.getUserAuthState)
 			.take(1)
 			.switchMap(authState => {
-				console.log(authState);
 				switch (authState) {
 					case user.AuthState.SignedIn: return Observable.of(true);
 					case user.AuthState.SigningIn:

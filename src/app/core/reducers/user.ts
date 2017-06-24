@@ -16,8 +16,8 @@ export interface State {
 }
 
 const initialState: State = {
-	authBusy: false,
-	authState: AuthState.SignedOut,
+	authBusy: true,
+	authState: AuthState.SigningIn,
 	user: null
 };
 

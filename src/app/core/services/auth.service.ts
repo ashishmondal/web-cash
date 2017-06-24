@@ -18,7 +18,7 @@ export class AuthService {
 		return !!this.afAuth.auth.currentUser;
 	}
 
-	constructor(private afAuth: AngularFireAuth, store: Store<fromRoot.State>) {
+	constructor(private afAuth: AngularFireAuth, private store: Store<fromRoot.State>) {
 		// afAuth.auth.
 		this.user$ = afAuth.authState;
 		this.user$.subscribe(u => {
@@ -34,11 +34,19 @@ export class AuthService {
 		});
 	}
 
-	signIn() {
-		return Observable.from<{ user: IUserInfo }>(this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider()));
+	async signIn() {
+		try {
+			await this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+		} catch (error) {
+			this.store.dispatch(new user.SignInFailAction(error));
+		}
 	}
 
-	signOut() {
-		return Observable.from(this.afAuth.auth.signOut());
+	async signOut() {
+		try {
+			await this.afAuth.auth.signOut();
+		} catch (error) {
+			this.store.dispatch(new user.SignOutFailAction(error));
+		}
 	}
 }

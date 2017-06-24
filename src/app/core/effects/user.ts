@@ -15,11 +15,11 @@ import { AuthService } from '../services/auth.service';
 @Injectable()
 export class UserEffects {
 	@Effect()
-	signIn$: Observable<Action> = this.action$
+	initiateSignIn$: Observable<Action> = this.action$
 		.ofType(user.SIGN_IN)
-		.do(() => this.authService.signIn().catch(e => { throw e; }))
+		.do(() => this.authService.signIn())
 		.map(() => new user.SignInInitiatedAction())
-		.catch(() => of(new user.SignInFailAction()));
+		.catch(e => of(new user.SignInFailAction(e)));
 
 	@Effect()
 	signInSuccess$: Observable<Action> = this.action$
@@ -33,9 +33,9 @@ export class UserEffects {
 	@Effect()
 	signOut$: Observable<Action> = this.action$
 		.ofType(user.SIGN_OUT)
-		.do(() => this.authService.signOut().catch(e => { throw e; }))
+		.do(() => this.authService.signOut())
 		.map(() => new user.SignOutInitiatedAction())
-		.catch(() => of(new user.SignOutFailAction()));
+		.catch(e => of(new user.SignOutFailAction(e)));
 
 	constructor(private action$: Actions, private authService: AuthService) {
 	}
