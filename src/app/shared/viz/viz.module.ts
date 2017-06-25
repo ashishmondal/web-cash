@@ -1,6 +1,6 @@
 import { NgModule, ModuleWithProviders, OpaqueToken } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PieModule } from "app/shared/viz/pie/pie.module";
+import { PieModule } from 'app/shared/viz/pie/pie.module';
 
 @NgModule({
 	imports: [

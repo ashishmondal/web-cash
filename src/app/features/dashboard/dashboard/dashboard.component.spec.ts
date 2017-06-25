@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardComponent } from './dashboard.component';
-import { PieModule } from "app/shared/viz/pie/pie.module";
+import { PieModule } from 'app/shared/viz/pie/pie.module';
 
 describe('DashboardComponent', () => {
 	let component: DashboardComponent;

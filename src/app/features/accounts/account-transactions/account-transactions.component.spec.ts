@@ -1,10 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+
+import { StoreModule } from '@ngrx/store';
+
+import { reducer } from 'app/core/reducers';
 
 import { AccountTransactionsComponent } from './account-transactions.component';
-import { SharedModule } from "app/shared/shared.module";
-import { RouterTestingModule } from "@angular/router/testing";
-import { AccountService } from "app/core/services/account.service";
-import { Observable } from "rxjs/Observable";
+import { SharedModule } from 'app/shared/shared.module';
+import { AccountService } from 'app/core/services/account.service';
+import { Observable } from 'rxjs/Observable';
 
 describe('AccountTransactionsComponent', () => {
 	let component: AccountTransactionsComponent;
@@ -17,7 +21,8 @@ describe('AccountTransactionsComponent', () => {
 		TestBed.configureTestingModule({
 			imports: [
 				RouterTestingModule,
-				SharedModule
+				SharedModule,
+				StoreModule.provideStore(reducer)
 			],
 			declarations: [AccountTransactionsComponent],
 			providers: [

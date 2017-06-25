@@ -1,32 +1,29 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MdButtonModule } from '@angular/material';
+
+import { StoreModule } from '@ngrx/store';
+
+import { reducer } from 'app/core/reducers';
 
 import { AccountsSummaryComponent } from './accounts-summary.component';
-import { TreeTableModule } from "primeng/primeng";
-import { SharedModule } from "app/shared/shared.module";
-import { AccountService } from "app/core/services/account.service";
-import { RouterTestingModule } from "@angular/router/testing";
-import { Observable } from "rxjs/Observable";
+import { SharedModule } from 'app/shared/shared.module';
+import { AccountService } from 'app/core/services/account.service';
+import { Observable } from 'rxjs/Observable';
 
 describe('AccountsSummaryComponent', () => {
 	let component: AccountsSummaryComponent;
 	let fixture: ComponentFixture<AccountsSummaryComponent>;
-	const AccountServiceMock = {
-		rootAccount: {
-			subAccounts: []
-		}
-	};
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			imports: [
 				RouterTestingModule,
-				TreeTableModule,
-				SharedModule
+				SharedModule,
+				MdButtonModule,
+				StoreModule.provideStore(reducer)
 			],
-			declarations: [AccountsSummaryComponent],
-			providers: [
-				{ provide: AccountService, useValue: AccountServiceMock }
-			]
+			declarations: [AccountsSummaryComponent]
 		})
 			.compileComponents();
 	}));

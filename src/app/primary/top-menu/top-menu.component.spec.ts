@@ -1,10 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TopMenuComponent } from './top-menu.component';
-import { UserBadgeComponent } from "app/primary/top-menu/user-badge/user-badge.component";
-import { MdDialogModule, MdButtonModule, MdProgressBarModule } from "@angular/material";
-import { AuthService } from "app/core/services/auth.service";
-import { RouterTestingModule } from "@angular/router/testing";
+import { UserBadgeComponent } from 'app/primary/top-menu/user-badge/user-badge.component';
+import { MdProgressBarModule, MdDialogModule, MdButtonModule, MdIconModule, MdMenuModule } from '@angular/material';
+import { AuthService } from 'app/core/services/auth.service';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('TopMenuComponent', () => {
 	let component: TopMenuComponent;
@@ -17,10 +17,12 @@ describe('TopMenuComponent', () => {
 				RouterTestingModule,
 				MdDialogModule,
 				MdButtonModule,
-				MdProgressBarModule
+				MdProgressBarModule,
+				MdIconModule,
+				MdMenuModule
 			],
 			declarations: [TopMenuComponent, UserBadgeComponent],
-			providers: [{provide: AuthService, useValue: AuthServiceMock}]
+			providers: [{ provide: AuthService, useValue: AuthServiceMock }]
 		})
 			.compileComponents();
 	}));
