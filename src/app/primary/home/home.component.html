@@ -1,2 +1,2 @@
-<div class="wc-welcome">Welcome to WebCash</div>
-<div class="wc-login-text" >Please log in to continue</div>
+<h1>Welcome to WebCash</h1>
+<h3 *ngIf="!(user$ | async)">Please Sign In to Continue</h3>
