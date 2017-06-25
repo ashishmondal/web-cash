@@ -1,32 +1,36 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
-import { MdDialog } from "@angular/material";
-import { AuthService } from "app/core/services/auth.service";
-import { WaitMessageComponent } from "app/shared/wait-message/wait-message.component";
+import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
+import { IUserInfo } from 'app/core/models/user-info';
 
 @Component({
 	selector: 'wc-top-menu',
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	templateUrl: './top-menu.component.html',
 	styleUrls: ['./top-menu.component.scss']
 })
 export class TopMenuComponent implements OnInit {
+	@Input() user: IUserInfo;
 
-	constructor(public authService: AuthService, private router: Router, private dialog: MdDialog) { }
+	@Output() onSignIn = new EventEmitter();
+	@Output() onSignOut = new EventEmitter();
+
+	constructor() { }
 
 	ngOnInit() {
+		
 	}
 
-	login() {
-		const dialogRef = this.dialog.open(WaitMessageComponent);
-		this.authService.login()
-			.subscribe(() => {
-				this.router.navigate([this.authService.redirectUrl || '/dashboard'])
-					.then(() => dialogRef.close());
-			});
-	}
+	// login() {
+	// 	const dialogRef = this.dialog.open(WaitMessageComponent);
+	// 	this.authService.login()
+	// 		.subscribe(() => {
+	// 			this.router.navigate([this.authService.redirectUrl || '/dashboard'])
+	// 				.then(() => dialogRef.close());
+	// 		});
+	// }
 
-	logout() {
-		this.authService.logout();
-		this.router.navigate(['']);
-	}
+	// logout() {
+	// 	this.authService.logout();
+	// 	this.router.navigate(['']);
+	// }
 }

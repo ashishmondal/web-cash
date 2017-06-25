@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
 	selector: 'wc-workspace',
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	templateUrl: './workspace.component.html',
 	styleUrls: ['./workspace.component.scss']
 })

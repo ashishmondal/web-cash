@@ -1,6 +1,7 @@
-@mixin wc-flex-container($direction: row){
+@mixin wc-flex-container($direction: row, $alignItems: initial){
 	display: flex;
 	flex-direction: $direction;
+	align-items: $alignItems;
 }
 
 @mixin wc-flex-child($flex: 1){

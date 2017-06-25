@@ -1,15 +1,11 @@
 @import "theme";
-
-:host{
-	font-family: 'Titillium Web', sans-serif;
-	font-size: x-large;
-	padding: 5px 20px;
+@import "layout";
+:host {
+  @include wc-flex-container(row, center);
+  padding: 1em 2em;
 }
 
-.wc-web{
-	color: mat-color($accent);
-}
-
-.wc-cash{
-	color: mat-color($primary);
+h1 {
+  color: mat-color($accent);
+  margin: 0;
 }

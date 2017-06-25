@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CurrencyComponent } from './currency.component';
-import { Commodity } from "app/core/services/commodity.service";
 
 describe('CurrencyComponent', () => {
 	let component: CurrencyComponent;
@@ -18,10 +17,17 @@ describe('CurrencyComponent', () => {
 		fixture = TestBed.createComponent(CurrencyComponent);
 		component = fixture.componentInstance;
 		component.amount = 100;
-		component.commodity = new Commodity({
-			guid: '',
-			mnemonic: 'INR'
-		});
+		component.commodity = {
+			'guid': '7ad051989f2922097958bbe353c29793',
+			'namespace': 'CURRENCY',
+			'mnemonic': 'INR',
+			'fullname': 'Indian Rupee',
+			'cusip': '356',
+			'fraction': 100,
+			'quote_flag': 1,
+			'quote_source': 'currency',
+			'quote_tz': null
+		};
 		fixture.detectChanges();
 	});
 

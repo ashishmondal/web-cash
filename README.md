@@ -19,3 +19,9 @@ Right now, the following features are available:
 ## What is the technical stack?
 
 It is a MEAN stack product, except that instead of MongoDB, M stands for MySQL, since GnuCash does not support any of the NoSQL databases.
+
+### Front End
+* [Angular](https://angular.io/) (4, as of now)
+* [AngularFire2](https://github.com/angular/angularfire2) for authentication
+* [ngrx](https://github.com/ngrx) for state management
+* [immutable](https://facebook.github.io/immutable-js/) for storing state

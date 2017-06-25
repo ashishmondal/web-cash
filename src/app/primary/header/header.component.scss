@@ -1,8 +1,10 @@
 @import "theme";
 @import "layout";
+:host {
+  @include wc-flex-container(column);
+  background-color: mat-color($primary);
+}
 
-:host{
-	@include wc-flex-container();
-
-	background-color: mat-color($background, card);
+.wc-header-content {
+  @include wc-flex-full();
 }

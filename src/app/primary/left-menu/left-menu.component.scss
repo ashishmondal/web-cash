@@ -1,33 +1,28 @@
-@import 'colors';
 @import "theme";
-
-.wc-menu-group{
-	padding: 20px 20px 10px 20px;
-	font-weight: bold;
-	text-transform: uppercase;
+.wc-menu-group {
+  padding: 20px 20px 10px 20px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
-.wc-menu-item{
-	display: block;
-	color: mat-color($foreground, disabled-text);
-	text-decoration: none;
-	padding: 0 0 0 1em;
-	margin: 0.5em 1em;
-	border-left: 0.5em solid transparent;
-
-	&:hover{
-		border-left-color: mat-color($accent);
-	}
-
-	i{
-		vertical-align: bottom;
-	}
-
-	&-active{
-		color: mat-color($foreground, text);
-	}
+.wc-menu-item {
+  display: block;
+  color: mat-color($foreground, disabled-text);
+  text-decoration: none;
+  padding: 0 0 0 1em;
+  margin: 0.5em 1em;
+  border-left: 0.5em solid transparent;
+  &:hover {
+    border-left-color: mat-color($accent);
+  }
+  i {
+    vertical-align: bottom;
+  }
+  &-active {
+    color: mat-color($foreground, text);
+  }
 }
 
-.wc-menu-text{
-	margin-left: 5px;
+.wc-menu-text {
+  margin-left: 5px;
 }

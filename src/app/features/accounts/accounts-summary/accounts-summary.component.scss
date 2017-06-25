@@ -1,0 +1,12 @@
+@import "layout";
+:host {
+  @include wc-flex-full();
+}
+
+wc-data-table {
+  @include wc-flex-child();
+}
+
+wc-currency {
+  @include wc-flex-child();
+}
