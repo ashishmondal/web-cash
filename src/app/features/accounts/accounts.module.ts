@@ -3,7 +3,6 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MdDatepickerModule, MdNativeDateModule, MdInputModule, MdButtonModule } from '@angular/material';
 
-import { MenuService, MenuGroup, MenuItem } from 'app/core/services/menu.service';
 import { SharedModule } from 'app/shared/shared.module';
 
 import { AccountsRoutingModule } from './accounts-routing.module';

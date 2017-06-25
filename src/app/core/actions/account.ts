@@ -1,6 +1,8 @@
 import { Action } from '@ngrx/store';
 import { ITransaction } from '../models/transaction';
 
+export const SELECT_ACCOUNT = '[Account] Select Account';
+
 export const LOAD_TRANSACTIONS = '[Account] Load Transactions';
 export const LOAD_TRANSACTIONS_SUCCESS = '[Account] Load Transactions Success';
 export const LOAD_TRANSACTIONS_FAIL = '[Account] Load Transactions Fail';
@@ -10,6 +12,12 @@ export const ADD_TRANSACTION_FAIL = '[Account] Add Transaction Fail';
 export const REMOVE_TRANSACTION = '[Account] Remove Transaction';
 export const REMOVE_TRANSACTION_SUCCESS = '[Account] Remove Transaction Success';
 export const REMOVE_TRANSACTION_FAIL = '[Account] Remove Transaction Fail';
+
+export class SelectAccountAction implements Action {
+	readonly type = SELECT_ACCOUNT;
+
+	constructor(public payload: string) { }
+}
 
 export class LoadTransactionsAction implements Action {
 	readonly type = LOAD_TRANSACTIONS;
@@ -75,7 +83,8 @@ export class RemoveTransactionFailAction implements Action {
 }
 
 export type Actions
-	= LoadTransactionsAction
+	= SelectAccountAction
+	| LoadTransactionsAction
 	| LoadTransactionsSuccessAction
 	| LoadTransactionsFailAction
 	| AddTransactionAction

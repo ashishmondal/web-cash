@@ -20,6 +20,11 @@ const initialState: State = {
 
 export function reducer(state = initialState, action: account.Actions | book.Actions): State {
 	switch (action.type) {
+		case account.SELECT_ACCOUNT: {
+			return tassign(state, {
+				selectedId: action.payload
+			});
+		}
 		case book.LOAD_ACCOUNTS: {
 			return tassign(state, {
 				loading: true,
@@ -28,12 +33,11 @@ export function reducer(state = initialState, action: account.Actions | book.Act
 		}
 		case book.LOAD_ACCOUNTS_SUCCESS: {
 			const accounts = action.payload;
-			return {
+			return tassign(state, {
 				loading: false,
 				loaded: true,
-				entities: Map<string, IAccount>(action.payload.map(a => [a.guid, a])),
-				selectedId: null
-			}
+				entities: Map<string, IAccount>(action.payload.map(a => [a.guid, a]))
+			});
 		}
 		// case account.LOAD: {
 		// 	return Object.assign({}, state, {

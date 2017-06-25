@@ -5,7 +5,6 @@ import { Store } from '@ngrx/store';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import { MenuService, MenuGroup, MenuItem } from 'app/core/services/menu.service';
 import { PieModule } from 'app/shared/viz/pie/pie.module';
 import { ModuleWithMenus } from 'app/core/module-with-menu';
 

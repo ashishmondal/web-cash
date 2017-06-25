@@ -2,7 +2,7 @@
 @import "theme";
 $mat-data-table-header-height: 56px;
 $mat-data-table-row-height: 48px;
-$mat-data-table-padding: 24px;
+$mat-data-table-padding: 12px;
 :host {
   @include wc-flex-container(column);
 }
@@ -27,7 +27,10 @@ perfect-scrollbar {
   @include wc-flex-container();
   align-items: center;
   border-bottom: 1px solid mat-color($foreground, divider);
-  padding-right: $mat-data-table-padding;
+  padding- {
+    right: $mat-data-table-padding;
+    left: $mat-data-table-padding;
+  }
 }
 
 .wc-cell {
@@ -40,5 +43,5 @@ perfect-scrollbar {
 }
 
 .wc-first-cell {
-  padding-left: $mat-data-table-padding;
+  padding-left: 2 * $mat-data-table-padding;
 }

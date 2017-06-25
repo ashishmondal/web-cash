@@ -33,7 +33,8 @@ export class AccountTransactionsComponent implements OnInit {
 		console.log('init');
 		this.route.params
 			.subscribe((params: Params) => {
-				const accountId = '' + params['id']
+				const accountId = '' + params['id'];
+				this.store.dispatch(new fromAccount.SelectAccountAction(accountId));
 				this.store.dispatch(new fromAccount.LoadTransactionsAction(accountId));
 				this.store.dispatch(new fromBook.LoadSplitsAction(accountId));
 			});
