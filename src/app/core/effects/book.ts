@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Action } from '@ngrx/store';
-import { Actions, Effect } from '@ngrx/effects';
+import { Actions, Effect, toPayload } from '@ngrx/effects';
 
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
@@ -25,6 +25,14 @@ export class BookEffects {
 		.switchMap(() => this.accountService.getAccounts())
 		.map(accounts => new book.LoadAccountsSuccessAction(accounts))
 		.catch(e => of(new book.LoadAccountsFailAction(e)));
+
+	@Effect()
+	loadSplits$: Observable<Action> = this.action$
+		.ofType(book.LOAD_SPLITS)
+		.map(toPayload)
+		.switchMap(accountId => this.accountService.getSplits(accountId))
+		.map(accounts => new book.LoadSplitsSuccessAction(accounts))
+		.catch(e => of(new book.LoadSplitsFailAction(e)));
 
 	constructor(private action$: Actions, private accountService: AccountService) {
 	}

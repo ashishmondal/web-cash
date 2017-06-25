@@ -21,7 +21,7 @@ export class AppComponent {
 	isBusy$: Observable<boolean>;
 	constructor(private store: Store<fromRoot.State>) {
 		this.user$ = store.select(fromRoot.getUser);
-		this.isBusy$ = store.select(fromRoot.getUserAuthStateBusy);
+		this.isBusy$ = store.select(fromRoot.getAppBusy);
 		this.menu$ = store.select(fromRoot.getMenu);
 	}
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { DataService } from './data.service';
 import { Observable } from 'rxjs/Observable';
-import { IAccount, IAccountSummary, IBook, ICommodity, ITransaction } from '../models';
+import { IAccount, IAccountSummary, IBook, ICommodity, ITransaction, ISplit } from '../models';
 
 @Injectable()
 export class AccountService {
@@ -27,6 +27,10 @@ export class AccountService {
 
 	public getTransactions(accountId: string) {
 		return this.dataService.getData<ITransaction[]>(`transactions/${accountId}`);
+	}
+
+	public getSplits(accountId: string) {
+		return this.dataService.getData<ISplit[]>(`splits/${accountId}`);
 	}
 
 	// public static isNegativeBalanceAccountType(type: string) {
@@ -95,38 +99,38 @@ export interface IAccountDeprecated extends IData {
 // 	}
 // }
 
-export interface ISplit {
-	guid: string;
-	reconcile_state: string;
-	reconcile_date: string | null;
-	amount: number;
-	tx_guid: string;
-	post_date: string;
-	description: string;
-}
+// export interface ISplit {
+// 	guid: string;
+// 	reconcile_state: string;
+// 	reconcile_date: string | null;
+// 	amount: number;
+// 	tx_guid: string;
+// 	post_date: string;
+// 	description: string;
+// }
 
-export class Split {
-	constructor(public split: ISplit) {
+// export class Split {
+// 	constructor(public split: ISplit) {
 
-	}
-}
+// 	}
+// }
 
-export class Transaction {
-	id: string;
-	date: Date;
-	number: number;
-	description: string;
-	reconciled: string;
-	amount: number;
-	balance: number;
-	constructor(public splits: Split[], lastBalance: number) {
-		const split = splits[0].split;
-		this.id = split.tx_guid;
-		this.date = new Date(split.post_date);
-		this.description = split.description;
-		this.reconciled = split.reconcile_state;
-		this.amount = splits.map(s => s.split.amount)
-			.reduce((previous, current) => previous + current, 0);
-		this.balance = lastBalance + this.amount;
-	}
-}
+// export class Transaction {
+// 	id: string;
+// 	date: Date;
+// 	number: number;
+// 	description: string;
+// 	reconciled: string;
+// 	amount: number;
+// 	balance: number;
+// 	constructor(public splits: Split[], lastBalance: number) {
+// 		const split = splits[0].split;
+// 		this.id = split.tx_guid;
+// 		this.date = new Date(split.post_date);
+// 		this.description = split.description;
+// 		this.reconciled = split.reconcile_state;
+// 		this.amount = splits.map(s => s.split.amount)
+// 			.reduce((previous, current) => previous + current, 0);
+// 		this.balance = lastBalance + this.amount;
+// 	}
+// }

@@ -6,9 +6,9 @@ export interface ISplit {
 	action: string;
 	reconcile_state: string;
 	reconcile_date: Date;
-	value_num: string;
-	value_denom: string;
-	quantity_num: string;
-	quantity_denom: string;
+	value_num: number;
+	value_denom: number;
+	quantity_num: number;
+	quantity_denom: number;
 	lot_guid: null | string;
 }

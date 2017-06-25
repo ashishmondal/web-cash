@@ -2,15 +2,15 @@ import { IBook } from 'app/core/models';
 import * as book from '../actions/book';
 
 export interface State {
-	loaded: boolean;
 	loading: boolean;
+	loaded: boolean;
 	book: IBook | null;
 	// accountIds: string[];
 };
 
 const initialState: State = {
-	loaded: false,
 	loading: false,
+	loaded: false,
 	book: null// ,
 	// accountIds: []
 };

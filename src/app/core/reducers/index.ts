@@ -15,6 +15,7 @@ import * as fromUser from './user';
 import * as fromAccounts from './accounts';
 import * as fromBook from './book';
 import * as fromTransactions from './transactions';
+import * as fromSplits from './splits';
 import * as fromMenuGroups from './menu-groups';
 import * as fromMenuItems from './menu-items';
 import * as fromAccountSummary from './account-summary';
@@ -30,6 +31,7 @@ export interface State {
 	accounts: fromAccounts.State;
 	book: fromBook.State;
 	transactions: fromTransactions.State;
+	splits: fromSplits.State;
 	menuGroups: fromMenuGroups.State;
 	menuItems: fromMenuItems.State;
 	accountSummary: fromAccountSummary.State;
@@ -48,6 +50,7 @@ const reducers = {
 	accounts: fromAccounts.reducer,
 	book: fromBook.reducer,
 	transactions: fromTransactions.reducer,
+	splits: fromSplits.reducer,
 	menuGroups: fromMenuGroups.reducer,
 	menuItems: fromMenuItems.reducer,
 	accountSummary: fromAccountSummary.reducer,
@@ -74,6 +77,8 @@ export const getUserAuthStateBusy = createSelector(getUserState, fromUser.getAut
 // Boook
 
 export const getBookState = (state: State) => state.book;
+export const getBookLoading = createSelector(getBookState, fromBook.getLoading);
+export const getBookLoaded = createSelector(getBookState, fromBook.getLoaded);
 export const getBook = createSelector(getBookState, fromBook.getBook);
 
 // Accounts
@@ -82,6 +87,13 @@ export const getAccountsLoading = createSelector(getAccountsState, fromAccounts.
 export const getAccountsLoadied = createSelector(getAccountsState, fromAccounts.getLoaded);
 export const getAccounts = createSelector(getAccountsState, fromAccounts.getAccounts);
 export const getSelectedAccountId = createSelector(getAccountsState, fromAccounts.getSelectedId);
+
+// Splits
+export const getSplitsState = (state: State) => state.splits;
+export const getSplitsLoading = createSelector(getSplitsState, fromSplits.getLoading);
+export const getSplitsLoadied = createSelector(getSplitsState, fromSplits.getLoaded);
+export const getSplits = createSelector(getSplitsState, fromSplits.getEntities);
+export const getSelectedSplitId = createSelector(getSplitsState, fromSplits.getSelectedId);
 
 // Transactions
 export const getTransactionsState = (state: State) => state.transactions;
@@ -125,4 +137,12 @@ export const getCommoditiesLoading = createSelector(getCommoditiesState, fromCom
 export const getCommoditiesLoaded = createSelector(getCommoditiesState, fromCommodities.getLoaded);
 export const getCommodities = createSelector(getCommoditiesState, fromCommodities.getEntities);
 
-
+export const getAppBusy = createSelector(
+	getUserAuthStateBusy,
+	getBookLoading,
+	getAccountsLoading,
+	getCommoditiesLoading,
+	getAccountSummaryLoading,
+	getTransactionsLoading,
+	getSplitsLoading,
+	(u, b, a, c, as, s) => u || b || a || c || as || s);

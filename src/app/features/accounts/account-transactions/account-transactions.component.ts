@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 
 import * as fromRoot from '../../../core/reducers';
+import * as fromBook from 'app/core/actions/book';
 import * as fromAccount from 'app/core/actions/account';
 import { ITransaction } from 'app/core/models';
 import { getAccountTransactions } from './account-transactions.reducer';
@@ -25,12 +26,16 @@ export class AccountTransactionsComponent implements OnInit {
 		private router: Router
 	) {
 		this.transactions$ = store.select(getAccountTransactions);
+		console.log('ctor');
 	}
 
 	ngOnInit() {
+		console.log('init');
 		this.route.params
 			.subscribe((params: Params) => {
-				this.store.dispatch(new fromAccount.LoadTransactionsAction(params['id']));
+				const accountId = '' + params['id']
+				this.store.dispatch(new fromAccount.LoadTransactionsAction(accountId));
+				this.store.dispatch(new fromBook.LoadSplitsAction(accountId));
 			});
 	}
 }
