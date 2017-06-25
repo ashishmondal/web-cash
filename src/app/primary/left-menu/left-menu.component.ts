@@ -8,7 +8,14 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
 })
 export class LeftMenuComponent implements OnInit {
 
-	@Input() menu;
+	@Input() menu: {
+		name: string;
+		menuItems: {
+			icon: string;
+			text: string;
+			routerLink: string;
+		}[];
+	};
 
 	constructor() { }
 

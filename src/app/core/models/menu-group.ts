@@ -1,4 +1,4 @@
-export interface IMenuGroup{
-	name: string | null;
+export interface IMenuGroup {
+	name: string;
 	order: number;
 }

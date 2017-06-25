@@ -7,8 +7,8 @@ type Account = IAccount & IAccountSummary;
 
 export class AccountSummary {
 	public children: AccountSummary[];
-	public commodity: ICommodity;
-	public get total() {
+	public commodity: ICommodity | null;
+	public get total(): number {
 		return this.children.reduce((acc, val) => acc + val.total, +this.data.total);
 	}
 

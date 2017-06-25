@@ -29,7 +29,7 @@ export class DataTableComponent {
 
 	constructor() { }
 
-	private getFlattenedTree(nodes: ITreeNode[] = this.value, level = 0) {
+	private getFlattenedTree(nodes: ITreeNode[] = this.value, level = 0): ITreeNode[] {
 		return nodes &&
 			nodes
 				.map(node => { node.level = level; return node; })

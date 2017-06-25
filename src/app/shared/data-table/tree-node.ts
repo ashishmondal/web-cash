@@ -1,6 +1,6 @@
 export interface ITreeNode {
 	data: any;
-	children: ITreeNode[] | null;
+	children?: ITreeNode[];
 	expanded?: boolean;
 	level?: number
 }

@@ -21,7 +21,7 @@ const initialState: State = {
 export function reducer(state = initialState, action: account.Actions | book.Actions): State {
 	switch (action.type) {
 		case account.SELECT_ACCOUNT: {
-			return tassign(state, {
+			return tassign(state, <State>{
 				selectedId: action.payload
 			});
 		}

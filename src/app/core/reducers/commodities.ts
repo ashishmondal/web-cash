@@ -1,22 +1,13 @@
 import { Map } from 'immutable';
 import { tassign } from 'tassign';
 import { ICommodity } from '../models';
+import { IState, initState } from './state';
 import * as commodity from '../actions/commodity';
 
-export interface State {
-	loading?: boolean;
-	loaded?: boolean;
-	entities?: Map<string, ICommodity>,
-	selectedId?: string | null;
-}
+export type State = IState<ICommodity>;
 
 
-const initialState = {
-	loading: false,
-	loaded: false,
-	entities: Map<string, ICommodity>(),
-	selectedId: null
-};
+const initialState = initState<ICommodity>();
 
 export function reducer(state = initialState, action: commodity.Actions): State {
 	switch (action.type) {

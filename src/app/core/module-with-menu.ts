@@ -20,7 +20,7 @@ export abstract class ModuleWithMenus<TState>{
 }
 
 export interface IMenu {
-	name: string | null;
+	name: string;
 	order: number;
 	menuItems: IMenuItem[];
 }

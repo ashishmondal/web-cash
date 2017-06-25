@@ -14,9 +14,9 @@ const initialState: State = {
 	selectedGroup: null
 }
 
-export function reducer(state = initialState, action: menu.Actions){
-	switch(action.type){
-		case menu.ADD_GROUP:{
+export function reducer(state = initialState, action: menu.Actions) {
+	switch (action.type) {
+		case menu.ADD_GROUP: {
 			return tassign(state, {
 				names: [...state.names, action.payload.name],
 				entities: tassign(state.entities, {

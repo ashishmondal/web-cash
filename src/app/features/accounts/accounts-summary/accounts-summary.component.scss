@@ -1,6 +1,12 @@
 @import "layout";
+@import "theme";
 :host {
   @include wc-flex-full();
+}
+
+.wc-placeholder-account {
+  color: mat-color($accent);
+  padding: 0 16px;
 }
 
 wc-data-table {

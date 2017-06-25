@@ -28,5 +28,14 @@ export const getAccountTransactions = createSelector(root.getSelectedAccountId, 
 					amount: amount,
 					balance: balance
 				}
-			});
+			})
+			.concat([{
+				date: new Date(),
+				num: '',
+				description: '',
+				transfer: '',
+				reconciled: '',
+				amount: 0,
+				balance: balance
+			}]);
 	});

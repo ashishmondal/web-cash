@@ -30,7 +30,7 @@ export function reducer(state = initialState, action: user.Actions) {
 			});
 		}
 		case user.SIGN_IN_SUCCESS: {
-			return tassign(state, {
+			return tassign(state, <State>{
 				authBusy: false,
 				authState: AuthState.SignedIn,
 				user: action.payload
@@ -49,7 +49,7 @@ export function reducer(state = initialState, action: user.Actions) {
 			});
 		}
 		case user.SIGN_OUT_SUCCESS: {
-			return tassign(state, {
+			return tassign(state, <State>{
 				authBusy: false,
 				authState: AuthState.SignedOut,
 				user: null
