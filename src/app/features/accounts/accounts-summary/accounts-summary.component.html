@@ -1,4 +1,4 @@
-<wc-data-table [value]="accountTree$ | async" [treeView]="true" selectionMode="single" (onNodeSelect)="onAccountSelected($event)">
+<wc-data-table [value]="accountTree$ | async" [treeView]="true" selectionMode="single">
   <wc-data-column field="name" header="Name" columnWidth="2fr">
     <ng-template let-node="rowData">
       <a md-button color="accent" [disabled]="!!node.data.placeholder" [routerLink]="'/accounts/'+node.data.guid">{{node.data.name}}</a>
