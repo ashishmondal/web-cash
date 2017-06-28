@@ -1,16 +1,24 @@
 <header [style.grid-template-columns]="gridTemplateColumns">
-  <div *ngFor="let column of dataColumns; let isFirst = first; let isLast = last" [ngClass]="{'wc-header-cell': true, 'wc-first-cell': isFirst, 'wc-last-cell': isLast}">{{column.header}}</div>
+  <div *ngFor="let column of dataColumns; let isFirst = first; let isLast = last" [ngClass]="{'wc-header-cell': true, 'wc-first-cell': isFirst, 'wc-last-cell': isLast}"
+    [ngStyle]="column.headerStyle">{{column.header}}</div>
 </header>
 <perfect-scrollbar>
   <content [style.grid-template-columns]="gridTemplateColumns">
     <ng-container *ngFor="let item of nodes">
-      <div *ngFor="let column of dataColumns; let isFirst = first; let isLast = last" [ngClass]="{'wc-cell': true, 'wc-first-cell': isFirst, 'wc-last-cell': isLast}">
+      <div (click)="onClick(item, column)" *ngFor="let column of dataColumns; let isFirst = first; let isLast = last" [ngClass]="{'wc-cell': true, 'wc-first-cell': isFirst, 'wc-last-cell': isLast}">
         <button md-icon-button [style.margin-left.px]="item.level * 10" *ngIf="treeView && isFirst" [style.visibility]="item.children.length > 0 ? 'visible'
-		: 'hidden'" (click)="item.expanded = !item.expanded">
+		: 'hidden'" (click)="onNodeExpanderClicked(item)">
 				<md-icon *ngIf="!item.expanded">keyboard_arrow_right</md-icon>
 				<md-icon *ngIf="item.expanded">keyboard_arrow_down</md-icon>
 		</button>
-        <div *ngIf="!column.template">{{item.data[column.field]}}</div>
+        <ng-container *ngIf="!column.template">
+          <div *ngIf="!(editable && column.editable && item===selectedItem)">{{item.data[column.field]}}</div>
+          <ng-container *ngIf="editable && column.editable && item===selectedItem">
+            <md-input-container>
+              <input mdInput [(ngModel)]="item.data[column.field]">
+            </md-input-container>
+          </ng-container>
+        </ng-container>
         <ng-container *ngIf="column.template">
           <ng-container *ngTemplateOutlet="column.template; context: { rowData: item}"></ng-container>
         </ng-container>

@@ -9,7 +9,9 @@ export class DataColumnComponent implements OnInit {
 	@Input() field: string;
 	@Input() header: string;
 	@Input() columnWidth = '1fr';
-	@Input() editable: boolean;
+	@Input() editable = false;
+	@Input() headerStyle: { [key: string]: string };
+
 	@ContentChild(TemplateRef) template: TemplateRef<any>;
 
 	constructor() {

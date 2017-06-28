@@ -1,30 +1,35 @@
-<wc-data-table [value]="transactions$ | async">
-  <wc-data-column field="date" header="Date" columnWidth="100px">
+<wc-data-table [value]="transactions$ | async" [editable]="true">
+  <wc-data-column field="date" header="Date" columnWidth="100px" [editable]="true">
     <ng-template let-tx="rowData">
-      <div> {{tx.data.date.toLocaleDateString()}}
-        <!--<md-input-container>
-        <input mdInput [mdDatepicker]="myDatepicker" [(ngModel)]="tx.date">
+      <div> {{tx.data.date.toLocaleDateString()}}</div>
+      <!--<md-input-container>
+        <input mdInput [mdDatepicker]="myDatepicker" [(ngModel)]="tx.data.date">
         <button mdSuffix [mdDatepickerToggle]="myDatepicker"></button>
       </md-input-container>
       <md-datepicker #myDatepicker></md-datepicker>-->
-      </div>
     </ng-template>
   </wc-data-column>
-  <wc-data-column field="num" header="Num" columnWidth="40px"></wc-data-column>
-  <wc-data-column field="description" header="Description" [editable]="true"> </wc-data-column>
-  <wc-data-column field="transfer" header="Transfer" columnWidth="120px"></wc-data-column>
-  <wc-data-column field="reconciled" header="R" columnWidth="20px"></wc-data-column>
-  <wc-data-column header="Credit" columnWidth="90px">
+  <wc-data-column field="num" header="Num" columnWidth="40px" [editable]="true"></wc-data-column>
+  <wc-data-column field="description" header="Description" [editable]="true">
+    <!--<ng-template let-tx="rowData">
+      <md-input-container>
+        <input mdInput placeholder="First name">
+      </md-input-container>
+    </ng-template>-->
+  </wc-data-column>
+  <wc-data-column field="transfer" header="Transfer" columnWidth="120px" [editable]="true"></wc-data-column>
+  <wc-data-column field="reconciled" header="R" columnWidth="20px" [editable]="true"></wc-data-column>
+  <wc-data-column header="Credit" [headerStyle]="{ 'justify-content': 'flex-end' }" columnWidth="90px" [editable]="true">
     <ng-template let-tx="rowData">
       <div class="wc-number" *ngIf="tx.data.amount>0">{{tx.data.amount | number:'1.2-2'}}</div>
     </ng-template>
   </wc-data-column>
-  <wc-data-column header="Debit" columnWidth="90px">
+  <wc-data-column header="Debit" [headerStyle]="{ 'justify-content': 'flex-end' }" columnWidth="90px" [editable]="true">
     <ng-template let-tx="rowData">
       <div class="wc-number" *ngIf="tx.data.amount<0">{{-tx.data.amount | number:'1.2-2'}}</div>
     </ng-template>
   </wc-data-column>
-  <wc-data-column field="balance" header="Balance" columnWidth="90px">
+  <wc-data-column field="balance" header="Balance" [headerStyle]="{ 'justify-content': 'flex-end' }" columnWidth="90px" [editable]="true">
     <ng-template let-tx="rowData.data">
       <div class="wc-number">{{tx.balance | number:'1.2-2'}}</div>
     </ng-template>

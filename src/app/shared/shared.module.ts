@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
-import { MdIconModule, MdButtonModule, MdProgressSpinnerModule } from '@angular/material';
+import { MdIconModule, MdButtonModule, MdProgressSpinnerModule, MdInputModule } from '@angular/material';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
@@ -12,9 +13,9 @@ import { DataColumnComponent } from './data-table/data-column/data-column.compon
 
 @NgModule({
 	imports: [
-		CommonModule,
+		CommonModule, FormsModule,
 
-		MdIconModule, MdButtonModule, MdProgressSpinnerModule,
+		MdIconModule, MdButtonModule, MdProgressSpinnerModule, MdInputModule,
 
 		PerfectScrollbarModule
 	],

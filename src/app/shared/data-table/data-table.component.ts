@@ -1,4 +1,4 @@
-import { Component, ContentChildren, Input, QueryList } from '@angular/core';
+import { Component, ContentChildren, Input, QueryList, ChangeDetectionStrategy, SimpleChanges } from '@angular/core';
 import { DataColumnComponent } from './data-column/data-column.component';
 
 import { ITreeNode } from './tree-node';
@@ -10,17 +10,26 @@ import { ITreeNode } from './tree-node';
 })
 export class DataTableComponent {
 
+	@Input() editable = false;
 	@Input() treeView = false;
-	@Input() value: any[] | ITreeNode[];
+
+	@Input() set value(val: any[] | ITreeNode[]) {
+		this._values = val || [];
+		this._nodes =
+			this.treeView ?
+				this.getFlattenedTree(this._values) :
+				(<any[]>this._values).map<ITreeNode>(v => ({ data: v, children: [] }));
+	}
 
 	@ContentChildren(DataColumnComponent) dataColumns: QueryList<DataColumnComponent>;
 
-	get nodes() {
-		return this.value ?
-			this.treeView ?
-				this.getFlattenedTree() :
-				(<any[]>this.value).map<ITreeNode>(v => ({ data: v, children: [] })) :
-			[];
+	selectedItem: any;
+
+	private _nodes: ITreeNode[] = [];
+	private _values = <any>[];
+
+	public get nodes() {
+		return this._nodes;
 	}
 
 	get gridTemplateColumns() {
@@ -29,11 +38,20 @@ export class DataTableComponent {
 
 	constructor() { }
 
-	private getFlattenedTree(nodes: ITreeNode[] = this.value, level = 0): ITreeNode[] {
-		return nodes &&
-			nodes
-				.map(node => { node.level = level; return node; })
+	private getFlattenedTree(nodes?: ITreeNode[], level = 0): ITreeNode[] {
+		return nodes ?
+			nodes.map(node => { node.level = level; return node; })
 				.map(node => !node.expanded ? [node] : [node, ...this.getFlattenedTree(node.children, level + 1)])
-				.reduce((acc, val) => acc.concat(val), <ITreeNode[]>[]);
+				.reduce((acc, val) => acc.concat(val), <ITreeNode[]>[])
+			: [];
+	}
+
+	onNodeExpanderClicked(item: ITreeNode) {
+		item.expanded = !item.expanded;
+		this._nodes = this.getFlattenedTree(this._values);
+	}
+
+	onClick(item: any, column: DataColumnComponent) {
+		this.selectedItem = item;
 	}
 }

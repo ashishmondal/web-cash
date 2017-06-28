@@ -1,10 +1,16 @@
 @import "layout";
-@import "theme";
-$mat-data-table-header-height: 56px;
-$mat-data-table-row-height: 48px;
-$mat-data-table-padding: 12px;
+@import "data-table.component.theme";
 :host {
   @include wc-flex-container(column);
+}
+
+ :host /deep/ .mat-input-underline,
+ :host /deep/ .mat-input-subscript-wrapper {
+  display: none;
+}
+
+md-input-container {
+  flex: 1;
 }
 
 header,
@@ -14,8 +20,6 @@ content {
 
 header {
   @include wc-font(medium);
-  color: mat-color($foreground, secondary-text);
-  height: $mat-data-table-header-height;
 }
 
 perfect-scrollbar {
@@ -26,22 +30,10 @@ perfect-scrollbar {
 .wc-cell {
   @include wc-flex-container();
   align-items: center;
-  border-bottom: 1px solid mat-color($foreground, divider);
-  padding- {
-    right: $mat-data-table-padding;
-    left: $mat-data-table-padding;
-  }
 }
 
 .wc-cell {
-  height: $mat-data-table-row-height;
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden; //    :hover {
-  //     background-color: mat-color($background, hover);
-  //   }
-}
-
-.wc-first-cell {
-  padding-left: 2 * $mat-data-table-padding;
+  overflow: hidden;
 }
