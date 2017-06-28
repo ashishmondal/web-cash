@@ -4,8 +4,12 @@
   @include wc-flex-full(column);
 }
 
-content {
-  @include wc-flex-full();
+md-sidenav-container {
+  height: 100%;
+}
+
+:host/deep/.mat-sidenav-content {
+  @include wc-flex-container(column);
 }
 
 wc-workspace {

@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MdSidenavModule } from '@angular/material';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
@@ -27,6 +28,7 @@ import { environment } from '../environments/environment';
 		BrowserAnimationsModule,
 		FormsModule,
 		HttpModule,
+		MdSidenavModule,
 		AngularFireModule.initializeApp(environment.firebase),
 
 		CoreModule,

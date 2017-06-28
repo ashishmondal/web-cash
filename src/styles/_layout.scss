@@ -1,21 +1,20 @@
-@mixin wc-flex-container($direction: row, $alignItems: initial){
-	display: flex;
-	flex-direction: $direction;
-	align-items: $alignItems;
+@mixin wc-flex-container($direction: row, $alignItems: initial) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $alignItems;
 }
 
-@mixin wc-flex-child($flex: 1){
-	flex: $flex;
+@mixin wc-flex-child($flex: 1) {
+  flex: $flex;
 }
 
-@mixin wc-flex-full($direction: row){
-	@include wc-flex-container($direction);
-	@include wc-flex-child();
+@mixin wc-flex-full($direction: row, $alignItems: initial) {
+  @include wc-flex-container($direction, $alignItems);
+  @include wc-flex-child();
 }
 
-@mixin wc-flex-center($direction: row){
-	@include wc-flex-full($direction);
-
-	justify-content: center;
-	align-items: center;
+@mixin wc-flex-center($direction: row) {
+  @include wc-flex-full($direction);
+  justify-content: center;
+  align-items: center;
 }

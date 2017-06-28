@@ -6,11 +6,11 @@
     </ng-template>
   </wc-data-column>
   <wc-data-column field="description" header="Description"></wc-data-column>
-  <wc-data-column field="total" header="Total">
+  <wc-data-column field="total" header="Total" [headerStyle]="{ 'justify-content': 'flex-end' }">
     <ng-template let-node="rowData">
       <wc-currency *ngIf="node.commodity" [amount]="node.total" [commodity]="node.commodity"></wc-currency>
     </ng-template>
   </wc-data-column>
-  <wc-data-column field="reconciled" header="Reconciled"></wc-data-column>
+  <wc-data-column field="reconciled" header="Reconciled" [headerStyle]="{ 'justify-content': 'flex-end' }"></wc-data-column>
   <wc-data-column field="lastReconcile" header="Last reconciled Date"></wc-data-column>
 </wc-data-table>

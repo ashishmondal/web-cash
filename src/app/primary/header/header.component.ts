@@ -14,6 +14,8 @@ export class HeaderComponent implements OnInit {
 	@Output() onSignIn = new EventEmitter();
 	@Output() onSignOut = new EventEmitter();
 
+	@Output() toggleMenu = new EventEmitter();
+
 	constructor() { }
 
 	ngOnInit() {

@@ -1,5 +1,7 @@
-<wc-header [isBusy]="isBusy$ | async" [user]="user$ | async" (onSignIn)="signIn()" (onSignOut)="signOut()"></wc-header>
-<content>
-  <wc-left-menu *ngIf="user$ | async" [menu]="menu$ | async"></wc-left-menu>
+<wc-header (toggleMenu)="sidenav.toggle()" [isBusy]="isBusy$ | async" [user]="user$ | async" (onSignIn)="signIn()" (onSignOut)="signOut()"></wc-header>
+<md-sidenav-container>
+  <md-sidenav #sidenav mode="side" opened="true">
+    <wc-left-menu *ngIf="user$ | async" [menu]="menu$ | async"></wc-left-menu>
+  </md-sidenav>
   <wc-workspace></wc-workspace>
-</content>
+</md-sidenav-container>
