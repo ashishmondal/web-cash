@@ -8,6 +8,16 @@ md-sidenav-container {
   height: 100%;
 }
 
+md-sidenav {
+  @include wc-flex-container();
+  width: 280px;
+  max-width: 320px;
+}
+
+wc-left-menu {
+  @include wc-flex-child();
+}
+
 :host/deep/.mat-sidenav-content {
   @include wc-flex-container(column);
 }

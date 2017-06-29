@@ -5,21 +5,23 @@
   text-transform: uppercase;
 }
 
+a {
+  width: 100%; //display: block;
+  //color: mat-color($foreground, text);
+  //text-decoration: none; //   padding: 0 0 0 1em;
+  //   margin: 0.5em 1em; //   border-left: 0.5em solid transparent;
+  //   &:hover {
+  //     border-left-color: mat-color($accent);
+  //   }
+}
+
 .wc-menu-item {
-  display: block;
-  color: mat-color($foreground, disabled-text);
-  text-decoration: none;
-  padding: 0 0 0 1em;
-  margin: 0.5em 1em;
-  border-left: 0.5em solid transparent;
-  &:hover {
-    border-left-color: mat-color($accent);
-  }
+  text-align: left;
   i {
     vertical-align: bottom;
   }
   &-active {
-    color: mat-color($foreground, text);
+    color: mat-color($primary);
   }
 }
 

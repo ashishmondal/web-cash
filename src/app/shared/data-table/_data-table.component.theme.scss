@@ -3,18 +3,19 @@ $mat-data-table-header-height: 56px;
 $mat-data-table-row-height: 48px;
 $mat-data-table-padding: 12px;
 header {
+  @extend .mat-elevation-z6;
   color: mat-color($foreground, secondary-text);
   height: $mat-data-table-header-height;
 }
 
 .wc-header-cell,
 .wc-cell {
-  border-bottom: 1px solid mat-color($foreground, divider);
   padding: 0 $mat-data-table-padding;
 }
 
 .wc-cell {
   height: $mat-data-table-row-height;
+  border-bottom: 1px solid mat-color($foreground, divider);
 }
 
 .wc-first-cell {
