@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { PieModule } from 'app/shared/viz/pie/pie.module';
-import { ModuleWithMenus } from 'app/core/module-with-menu';
+import { ModuleWithNavigation } from 'app/core/module-with-nav';
 
 import * as fromRoot from 'app/core/reducers';
 import * as menu from 'app/core/actions/menu';
@@ -21,7 +21,7 @@ import * as menu from 'app/core/actions/menu';
 	declarations: [DashboardComponent],
 	exports: [DashboardComponent]
 })
-export class DashboardModule extends ModuleWithMenus<fromRoot.State> {
+export class DashboardModule extends ModuleWithNavigation<fromRoot.State> {
 	constructor(store: Store<fromRoot.State>) {
 		super(store);
 		super.addMenu({

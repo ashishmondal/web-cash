@@ -16,8 +16,8 @@ import * as fromAccounts from './accounts';
 import * as fromBook from './book';
 import * as fromTransactions from './transactions';
 import * as fromSplits from './splits';
-import * as fromMenuGroups from './menu-groups';
-import * as fromMenuItems from './menu-items';
+import * as fromNavGroups from './nav-groups';
+import * as fromNavItems from './nav-items';
 import * as fromAccountSummary from './account-summary';
 import * as fromCommodities from './commodities';
 
@@ -32,8 +32,8 @@ export interface State {
 	book: fromBook.State;
 	transactions: fromTransactions.State;
 	splits: fromSplits.State;
-	menuGroups: fromMenuGroups.State;
-	menuItems: fromMenuItems.State;
+	navGroups: fromNavGroups.State;
+	navItems: fromNavItems.State;
 	accountSummary: fromAccountSummary.State;
 	commodities: fromCommodities.State;
 }
@@ -51,8 +51,8 @@ const reducers = {
 	book: fromBook.reducer,
 	transactions: fromTransactions.reducer,
 	splits: fromSplits.reducer,
-	menuGroups: fromMenuGroups.reducer,
-	menuItems: fromMenuItems.reducer,
+	navGroups: fromNavGroups.reducer,
+	navItems: fromNavItems.reducer,
 	accountSummary: fromAccountSummary.reducer,
 	commodities: fromCommodities.reducer
 }
@@ -102,22 +102,22 @@ export const getTransactionsLoadied = createSelector(getTransactionsState, fromT
 export const getTransactions = createSelector(getTransactionsState, fromTransactions.getEntities);
 export const getSelectedTransactionId = createSelector(getTransactionsState, fromTransactions.getSelectedId);
 
-// Menu
-export const getMenuGroupsState = (state: State) => state.menuGroups;
-export const getMenuGroupNames = createSelector(getMenuGroupsState, fromMenuGroups.getNames);
-export const getMenuGroupEntities = createSelector(getMenuGroupsState, fromMenuGroups.getEntities);
-export const getMenuGroups = createSelector(getMenuGroupNames, getMenuGroupEntities,
+// Nav
+export const getNavGroupsState = (state: State) => state.navGroups;
+export const getNavGroupNames = createSelector(getNavGroupsState, fromNavGroups.getNames);
+export const getNavGroupEntities = createSelector(getNavGroupsState, fromNavGroups.getEntities);
+export const getNavGroups = createSelector(getNavGroupNames, getNavGroupEntities,
 	(names, entities) => names.map(n => entities[n]));
 
-export const getMenuItemsState = (state: State) => state.menuItems;
-export const getMenuItems = createSelector(getMenuItemsState, fromMenuItems.getMenus);
+export const getNavItemsState = (state: State) => state.navItems;
+export const getNavItems = createSelector(getNavItemsState, fromNavItems.getItems);
 
-export const getMenu = createSelector(getMenuGroups, getMenuItems, (groups, menuItems) => {
+export const getNav = createSelector(getNavGroups, getNavItems, (groups, items) => {
 	return groups
 		.sort((ga, gb) => ga.order - gb.order)
 		.map(g => ({
 			name: g.name,
-			menuItems: menuItems.filter(mi => mi.groupName === g.name)
+			navItems: items.filter(mi => mi.groupName === g.name)
 		}));
 });
 

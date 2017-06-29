@@ -1,15 +1,15 @@
 @import "theme";
 @import "layout";
-$wc-menu-item-height: 48px;
+$wc-nav-item-height: 48px;
 $wc-menu-padding: 16px;
 :host {
   padding-top: 8px;
 }
 
-.wc-menu-group {
+.wc-nav-group {
   @include wc-font(medium);
   @include wc-flex-container(row, center);
-  height: $wc-menu-item-height;
+  height: $wc-nav-item-height;
   padding: 0 $wc-menu-padding;
   text-transform: uppercase;
 }
@@ -17,7 +17,7 @@ $wc-menu-padding: 16px;
 a {
   @include wc-flex-container(row, center);
   width: 100%;
-  height: $wc-menu-item-height;
+  height: $wc-nav-item-height;
 }
 
 md-icon {
@@ -28,14 +28,14 @@ md-icon {
   }
 }
 
-.wc-menu-item {
+.wc-nav-item {
   @include wc-font();
   &-active {
     color: mat-color($primary);
   }
 }
 
-.wc-menu-text {
+.wc-nav-text {
   margin-left: 16px;
 }
 

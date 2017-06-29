@@ -5,6 +5,6 @@ export * from './price';
 export * from './split';
 export * from './transaction';
 export * from './user-info';
-export * from './menu-group';
-export * from './menu-item';
+export * from './nav-group';
+export * from './nav-item';
 export * from './account-summary';

@@ -8,9 +8,9 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
 })
 export class SideNavComponent implements OnInit {
 
-	@Input() menu: {
+	@Input() navGroups: {
 		name: string;
-		menuItems: {
+		navItems: {
 			icon: string;
 			text: string;
 			routerLink: string;

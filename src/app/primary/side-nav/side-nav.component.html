@@ -1,9 +1,9 @@
-<div *ngFor="let group of menu; let isLast=last">
-  <div *ngIf="group.name" class="wc-menu-group">{{group.name}}</div>
-  <a md-button *ngFor="let item of group.menuItems" [routerLink]="item.routerLink" routerLinkActive="wc-menu-item-active">
-    <div class="wc-menu-item">
+<div *ngFor="let group of navGroups; let isLast=last">
+  <div *ngIf="group.name" class="wc-nav-group">{{group.name}}</div>
+  <a md-button *ngFor="let item of group.navItems" [routerLink]="item.routerLink" routerLinkActive="wc-nav-item-active">
+    <div class="wc-nav-item">
       <md-icon>{{item.icon}}</md-icon>
-      <span class="wc-menu-text">{{item.text}}</span>
+      <span class="wc-nav-text">{{item.text}}</span>
     </div>
   </a>
   <div *ngIf="!isLast" class="wc-nav-divider"></div>

@@ -1,4 +1,4 @@
-export interface IMenuItem{
+export interface INavigationItem {
 	groupName: string;
 	text: string;
 	icon: string;

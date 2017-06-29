@@ -16,13 +16,13 @@ import * as book from './core/actions/book';
 })
 export class AppComponent {
 	user$: Observable<IUserInfo>;
-	menu$: Observable<any>;
+	navGroups$: Observable<any>;
 
 	isBusy$: Observable<boolean>;
 	constructor(private store: Store<fromRoot.State>) {
 		this.user$ = store.select(fromRoot.getUser);
 		this.isBusy$ = store.select(fromRoot.getAppBusy);
-		this.menu$ = store.select(fromRoot.getMenu);
+		this.navGroups$ = store.select(fromRoot.getNav);
 	}
 
 	signIn() {

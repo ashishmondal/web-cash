@@ -1,10 +1,10 @@
-import * as menu from '../actions/menu';
-import { IMenuGroup } from '../models';
+import * as nav from '../actions/nav';
+import { INavigationGroup } from '../models';
 import { tassign } from 'tassign';
 
 export interface State {
 	names: string[];
-	entities: { [name: string]: IMenuGroup };
+	entities: { [name: string]: INavigationGroup };
 	selectedGroup: string | null;
 }
 
@@ -14,9 +14,9 @@ const initialState: State = {
 	selectedGroup: null
 }
 
-export function reducer(state = initialState, action: menu.Actions) {
+export function reducer(state = initialState, action: nav.Actions) {
 	switch (action.type) {
-		case menu.ADD_GROUP: {
+		case nav.ADD_GROUP: {
 			return tassign(state, {
 				names: [...state.names, action.payload.name],
 				entities: tassign(state.entities, {
