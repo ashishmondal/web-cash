@@ -38,7 +38,7 @@ export class AccountsModule extends ModuleWithMenus<fromRoot.State> {
 			order: 1,
 			menuItems: [
 				{
-					groupName: 'Accounts',
+					groupName: '',
 					icon: 'account_balance',
 					text: 'Summary',
 					routerLink: ['/accounts']

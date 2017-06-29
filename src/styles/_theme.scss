@@ -3,7 +3,7 @@
 $primary: mat-palette($mat-green, 500, 300, 700);
 $accent: mat-palette($mat-amber, 400, 200, 600);
 $warn: mat-palette($mat-deep-orange);
-$theme: mat-dark-theme($primary, $accent, $warn);
+$theme: mat-light-theme($primary, $accent, $warn);
 @include angular-material-theme($theme);
 $foreground: map-get($theme, foreground);
 $background: map-get($theme, background);
@@ -11,6 +11,5 @@ $monospace-font-face: 'Roboto Mono',
 monospace;
 $_font-weight-map: ( light: 300, regular: 400, medium: 500, bold: 700, black: 900);
 @mixin wc-font($font-weight: regular) {
-  font-family: $mat-font-family;
   font-weight: map-get($_font-weight-map, $font-weight);
 }

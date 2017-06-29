@@ -1,30 +1,46 @@
 @import "theme";
+@import "layout";
+$wc-menu-item-height: 48px;
+$wc-menu-padding: 16px;
+:host {
+  padding-top: 8px;
+}
+
 .wc-menu-group {
-  padding: 20px 20px 10px 20px;
-  font-weight: bold;
+  @include wc-font(medium);
+  @include wc-flex-container(row, center);
+  height: $wc-menu-item-height;
+  padding: 0 $wc-menu-padding;
   text-transform: uppercase;
 }
 
 a {
-  width: 100%; //display: block;
-  //color: mat-color($foreground, text);
-  //text-decoration: none; //   padding: 0 0 0 1em;
-  //   margin: 0.5em 1em; //   border-left: 0.5em solid transparent;
-  //   &:hover {
-  //     border-left-color: mat-color($accent);
-  //   }
+  @include wc-flex-container(row, center);
+  width: 100%;
+  height: $wc-menu-item-height;
+}
+
+md-icon {
+  color: mat-color($foreground, icon);
+  vertical-align: text-bottom;
+  &-active {
+    color: mat-color($primary);
+  }
 }
 
 .wc-menu-item {
-  text-align: left;
-  i {
-    vertical-align: bottom;
-  }
+  @include wc-font();
   &-active {
     color: mat-color($primary);
   }
 }
 
 .wc-menu-text {
-  margin-left: 5px;
+  margin-left: 16px;
+}
+
+.wc-nav-divider {
+  height: 1px;
+  border-bottom: 1px solid mat-color($foreground, disabled);
+  margin-top: 8px;
 }

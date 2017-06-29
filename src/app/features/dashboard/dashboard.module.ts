@@ -25,11 +25,11 @@ export class DashboardModule extends ModuleWithMenus<fromRoot.State> {
 	constructor(store: Store<fromRoot.State>) {
 		super(store);
 		super.addMenu({
-			name: 'Home',
+			name: '',
 			order: 0,
 			menuItems: [
 				{
-					groupName: 'Home',
+					groupName: '',
 					icon: 'dashboard',
 					text: 'Dashboard',
 					routerLink: ['/dashboard']
