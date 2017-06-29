@@ -5,7 +5,7 @@ import { MdButtonModule, MdDialogModule, MdProgressBarModule, MdIconModule, MdMe
 
 import { SharedModule } from 'app/shared/shared.module';
 
-import { LeftMenuComponent } from './left-menu/left-menu.component';
+import { SideNavComponent } from './side-nav/side-nav.component';
 import { TopMenuComponent } from './top-menu/top-menu.component';
 import { LogoComponent } from './logo/logo.component';
 import { WorkspaceComponent } from './workspace/workspace.component';
@@ -29,7 +29,7 @@ import { HeaderComponent } from './header/header.component';
 		// local
 		SharedModule
 	],
-	declarations: [LeftMenuComponent, TopMenuComponent, LogoComponent, WorkspaceComponent, UserBadgeComponent, HomeComponent, HeaderComponent],
-	exports: [LeftMenuComponent, HeaderComponent, WorkspaceComponent]
+	declarations: [SideNavComponent, TopMenuComponent, LogoComponent, WorkspaceComponent, UserBadgeComponent, HomeComponent, HeaderComponent],
+	exports: [SideNavComponent, HeaderComponent, WorkspaceComponent]
 })
 export class PrimaryModule { }

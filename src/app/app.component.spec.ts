@@ -41,7 +41,7 @@ describe('AppComponent', () => {
 		const fixture = TestBed.createComponent(AppComponent);
 		fixture.detectChanges();
 		const compiled = fixture.debugElement.nativeElement;
-		expect(compiled.querySelector('wc-left-menu')).toBeFalsy();
+		expect(compiled.querySelector('wc-side-nav')).toBeFalsy();
 	}));
 
 	it('should have workspace', async(() => {

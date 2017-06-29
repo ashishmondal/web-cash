@@ -1,12 +1,11 @@
 @import "layout";
-
 :host {
-	@include wc-flex-container(row, center);
+  @include wc-flex-container(row, center);
 }
 
 img {
-    height: 40px;
-    width: 40px;
-    margin: 0.5em;
-    border-radius: 50%;
+  height: 32px;
+  width: 32px;
+  margin: 8px;
+  border-radius: 50%;
 }

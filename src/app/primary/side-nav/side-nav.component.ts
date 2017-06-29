@@ -1,12 +1,12 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-	selector: 'wc-left-menu',
+	selector: 'wc-side-nav',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	templateUrl: './left-menu.component.html',
-	styleUrls: ['./left-menu.component.scss']
+	templateUrl: './side-nav.component.html',
+	styleUrls: ['./side-nav.component.scss']
 })
-export class LeftMenuComponent implements OnInit {
+export class SideNavComponent implements OnInit {
 
 	@Input() menu: {
 		name: string;

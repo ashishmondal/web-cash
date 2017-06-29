@@ -1,22 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LeftMenuComponent } from './left-menu.component';
+import { SideNavComponent } from './side-nav.component';
 import { RouterTestingModule } from '@angular/router/testing';
 
 describe('LeftMenuComponent', () => {
-	let component: LeftMenuComponent;
-	let fixture: ComponentFixture<LeftMenuComponent>;
+	let component: SideNavComponent;
+	let fixture: ComponentFixture<SideNavComponent>;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			imports: [RouterTestingModule],
-			declarations: [LeftMenuComponent]
+			declarations: [SideNavComponent]
 		})
 			.compileComponents();
 	}));
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(LeftMenuComponent);
+		fixture = TestBed.createComponent(SideNavComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});
